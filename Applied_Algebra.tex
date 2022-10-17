@@ -1,0 +1,226 @@
+\documentclass[autodetect-engine,dvipdfmx-if-dvi,ja=standard,a4j]{bxjsarticle}
+
+\usepackage{bm} % ベクトル
+\usepackage{array} % 数式モードの表
+\usepackage{tabularx} % 表
+\usepackage{graphicx} % 画像の挿入など
+\usepackage{longtable} % 改ページ可能な表
+%\usepackage{mathcomp} % 数式モードのテキストシンボル
+\usepackage{amsmath,amssymb} % 数式
+\usepackage{xcolor} % 色
+\usepackage{tcolorbox} % 色付きの枠
+\usepackage{wrapfig} % 図に対して文書の回り込み
+\usepackage{amsthm} % 定理環境
+%\usepackage{newtxtext,newtxmath} % Times フォント
+\usepackage{mathrsfs} % 花文字
+\usepackage{empheq} % 連立方程式
+\usepackage{framed} % 改ページ可能な表
+\usepackage{tikz} % 図を書く
+\usepackage{braket} % ブラケット記法
+\usepackage{physics} % 数式を簡単に書く
+\usepackage{listings,jvlisting} % ソースコードとか
+\usepackage{comment} % コメント
+\usepackage{bussproofs} % 証明図
+\usepackage{pxrubrica} % ルビ
+\usepackage{ulem} % 取り消し線
+\usepackage{geometry} % 余白
+\usepackage{ascmac} % 別行で文書を囲む
+\usepackage{fancybox} % 行中で文書を囲む
+
+%\geometry{top=30truemm,bottom=30truemm,inner=25truemm,outer=25truemm} % 余白調整
+
+\lstset{
+  %	\begin{lstlisting}[caption=hoge,label=fuga]
+  %		ソースコード
+  %	\end{lstlisting}
+  %language = {C++},
+  %backgroundcolor={\color[gray]{.85}},
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\small\ttfamily},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0\zw,
+  xleftmargin=3\zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1\zw,
+  lineskip=-0.5ex
+}
+%\renewcommand{\lstlistingname}{Program}
+
+\newtheoremstyle{mystyle1}% スタイル名
+  {}% 上部スペース
+  {}% 下部スペース
+  {\normalfont}% 本文フォント(\itshape:斜体，\bfseries:太字，\normalfont:普通
+  {}% 1行目のインデント量(\parindent:普通の段落)
+  {\bfseries\sffamily}% 見出しフォント
+  {}% 見出し後の句読点
+  { }% 見出し後のスペース(\newline:改行)
+  {\thmname{#1}\thmnumber{#2}\thmnote{\,(#3)\\}}% 見出しの書式
+\theoremstyle{mystyle1}
+\newtheorem{dfn}{定義}[section]
+\newtheorem{thm}[dfn]{定理}
+\newtheorem{axi}[dfn]{公理}
+\newtheorem{cor}[dfn]{系}
+\newtheorem{prop}[dfn]{命題}
+\newtheorem{lem}[dfn]{補題}
+\newtheorem{ex}[dfn]{例題}
+
+\newtheoremstyle{mystyle2}% スタイル名
+  {}% 上部スペース
+  {}% 下部スペース
+  {\normalfont}% 本文フォント(\itshape:斜体，\bfseries:太字，\normalfont:普通
+  {}% 1行目のインデント量(\parindent:普通の段落)
+  {\bfseries\sffamily}% 見出しフォント
+  {}% 見出し後の句読点
+  { }% 見出し後のスペース(\newline:改行)
+  {\thmname{#1}\thmnote{:\,#3\\}}% 見出しの書式
+\theoremstyle{mystyle2}
+\newtheorem{dfn*}{定義}[section]
+\newtheorem{thm*}[dfn*]{定理}
+\newtheorem{axi*}[dfn*]{公理}
+\newtheorem{cor*}[dfn*]{系}
+\newtheorem{prop*}[dfn*]{命題}
+\newtheorem{lem*}[dfn*]{補題}
+\newtheorem{ex*}[dfn*]{例題}
+\newtheorem{example*}[dfn*]{例}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item\relax
+  {\bfseries % ここを変えた
+  #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\makeatletter
+% インライン数式でカンマの後でも改行できるように
+\def\old@comma{,}
+\catcode`\,=13
+\def,{%
+  \ifmmode%
+    \old@comma\discretionary{}{}{}%
+  \else%
+    \old@comma%
+  \fi%
+}
+\makeatother
+
+\newcommand{\redunderline}[1]{{\color{red} \underline{{\color{black} #1}}}}
+
+% tlmgr update --self --all でアップデートすること
+
+\begin{document}
+
+\title{応用代数学}
+\author{}
+\date{\today 現在}
+\maketitle
+
+\setcounter{section}{-1}
+
+\section{準備}
+	集合$X,Y,Z$に対して
+	\begin{itemize}
+		\item $Y\backslash X$:$X,Y\subset Z$に対して，$X$に属さない$Y$の元のなす集合\[Y\backslash X=\qty\{y\mid y\in Y\text{\,かつ\,}y\not\in X\}\]
+		\item $X\sqcup Y$:集合$X$と$Y$の直和(direct sum)あるいは分割和(disjoint sum)を表し，互いに交わらない二つの集合$X$と$Y$の和集合\[A\sqcup B\Leftrightarrow A\cup B\text{\,for\,}A\cap B=\emptyset\]
+		\item (有限)集合$X$の元の個数を$\sharp X$\[\sharp\qty\{a,b,c\}=3\]
+	\end{itemize}
+
+	\underline{写像} 集合$X$から集合$Y$への写像$f$とは，$X$の各元$x$に対して$Y$の元$y=f\qty(x)$を対応させる規則
+	\[f:X\to Y; x\mapsto y=f\qty(x)\]
+	\begin{itemize}
+		\item $f$による$A\subset X$の像(image)\[f\qty(A)=\qty{f\qty(a)\mid a\in A}\subset Y\]
+		\item $f$による$B\subset Y$の逆像あるいは$f$による引き渡し\[f^{-1}\qty(B)=\qty{a\in X\mid f\qty(a)\in B}\]
+		\item $f:X\to Y, g:Y\to Z$において，合成$g\circ f$
+			\begin{align*}
+				\begin{array}{ccccc}
+					g\circ f: & X                     & \longrightarrow & Z                     &                                  \\
+					          & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} &                                  \\
+					          & x                     & \longmapsto     & z                     & =g\circ f\qty(x)=g\qty(f\qty(x))
+				\end{array}
+			\end{align*}
+	\end{itemize}
+
+	\subsection{集合の分割と同値関係}
+		一般に集合$S$を交わりのない(空でない)集合の和で表すことを\redunderline{類別(classification)}という%undlineは赤線
+		\[S=A_1\sqcup A_2\sqcup\cdots\]
+		各部分集合$A_j$をこの類別における\redunderline{類}という
+
+		全ての類から一つずつ元を選んできて得られる集合$R$を\redunderline{完全代表系}という．集合$R$の元を\redunderline{代表元}という．
+		このとき，任意の$x\in S$に対して，集合$S$から集合族$\qty{A_1,A_2,\cdots}$への\redunderline{自然な全射写像}$x\mapsto A_j\qty(\ni x)$が得られる．
+
+		\begin{dfn}[同値関係]
+			集合$S$上の同値関係$\sim$$\Leftrightarrow$集合$S$上の二項関係$\sim$が任意の$a,b,c\in S$に対し，
+			\begin{itemize}
+				\item[反射則] $a\sim a$
+				\item[対称則] $a\sim b \Rightarrow b\sim a$
+				\item[推移則] $a\sim b\text{かつ}b\sim c\Rightarrow a\sim c$
+			\end{itemize}
+		\end{dfn}
+
+		\begin{dfn}[同値類]
+			集合$S$に同値関係$\sim$が存在するとき，$S$の各元$a$に対して定まる空でない部分集合
+			\[C_a=\qty{x\mid x\in S,x\sim a}\]
+			を$a$の同値類(equivalence class)という．
+		\end{dfn}
+
+		\begin{dfn}[商集合]
+			同値関係$\sim$による同値類の集合を$S$の$\sim$による商集合(quotient set)といい$S/\sim$で表す
+			\[S/\sim\,=\qty{C_a\mid a\in S}\]
+		\end{dfn}
+
+		\begin{dfn}[同値類別]
+			同値関係による集合の分割．同値関係$\sim$による同値類別
+			\[S=\bigsqcup_{a\in R\subset S}C_a\]
+			ここで$S$の部分集合$R$は全ての同値類の代表元の集合であり，完全代表系である．
+			このとき，自然な全射$\pi:S\to S/\sim;x\mapsto C_x$が存在する．
+			さらに全単射写像$R\to S/\sim$も存在する．
+		\end{dfn}
+		\begin{screen}
+			\[C_a\cap C_b\neq\emptyset\Rightarrow C_a=C_b\]
+			が成立する(同値関係の性質から直ちに示される)
+		\end{screen}
+
+		\begin{example*}
+			$S$:ある学校の学生全体の集合．$a,b\in S$の間の関係「クラスメートである」は同値関係．
+			この関係を$\sim^\prime$で表すと，$a\sim^\prime b$は「$a$は$b$とクラスメートである」の意．このとき$C_a=\qty{x\in S\mid x\sim a}$は「$a$さんのクラスメート($a$さんを含む)の全体」$\leftrightarrow$ $a$さんの属するクラス
+		\end{example*}
+
+\section{群}
+	\begin{dfn}[二項演算]
+		一般に，集合$M$の2つの元$x,y$に対してただ一つの元$\mu\qty(x,y)\in M$が対応しているとき，$\mu$を$M$上の二項演算という．すなわち，\[\mu:M\times M\to M\]
+		ここで記号$\mu$は省略して，$\mu\qty(x,y)$を$x\cdot y, x\circ y,$あるいは$xy$などと書く(誤解のない限り)．
+	\end{dfn}
+	\begin{dfn}[群]
+		群(group)$G$とは，以下の規則を満たす二項演算$\mu$をもつ集合のこと．
+		\[\mu:G\times G\to G\]
+		厳密には$\qty(G,\mu)$のことを群と呼ぶが群$G$などと省略することが多い．
+		任意の$x,y,z\in G$に対して成立:
+		\begin{enumerate}
+			\item 結合法則\[\mu\qty(\mu\qty(x,y),z)=\mu\qty(x,\mu(y,z))\]
+			\item 単位元$e\in G$の存在．\[\mu\qty(e,x)=\mu\qty(x,e)=x\]
+			\item 逆元の存在．\[\mu\qty(x,x^\prime)=\mu\qty(x^\prime,x)=e\]なる$x^\prime\in G$\footnote{あとで$x$の逆元$x^\prime$は唯一に定まることを示す．$x^\prime$を$x^{-1}$と書くことが多い}
+		\end{enumerate}
+	\end{dfn}
+	\begin{dfn}
+		\redunderline{群$G$の位数(order)}:$G$に含まれる元の個数を表し，$\qty|G|$と書く．
+		位数が有限のとき，\redunderline{有限群}という．有限群でないとき，\redunderline{無限群}という．
+	\end{dfn}
+	一般に群では($\mu\qty(x,y)\neq\mu\qty(y,x)$)
+	\[x\circ y\neq y\circ x\quad\qty(\text{交換関係が必ずしも成立しない})\]
+	\begin{dfn}
+		$G$の任意の元について，$xy=yx$が成り立つとき可換群(Abel群)という．可換群の演算記号を加法的に$x+y$と書くとき，加法群と呼び，このとき加法に関する単位元を$0$と表し，零元と呼ぶことが多い($x$の逆元は$-x$)．
+	\end{dfn}
+\end{document}
