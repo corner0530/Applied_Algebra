@@ -81,7 +81,7 @@
   {\bfseries\sffamily}% 見出しフォント
   {}% 見出し後の句読点
   { }% 見出し後のスペース(\newline:改行)
-  {\thmname{#1}\thmnote{:\,#3\\}}% 見出しの書式
+  {\thmname{#1}\thmnote{:\,(#3)\\}}% 見出しの書式
 \theoremstyle{mystyle2}
 \newtheorem{dfn*}{定義}[section]
 \newtheorem{thm*}[dfn*]{定理}
@@ -91,6 +91,7 @@
 \newtheorem{lem*}[dfn*]{補題}
 \newtheorem{ex*}[dfn*]{例題}
 \newtheorem{example*}[dfn*]{例}
+\newtheorem{remark*}[dfn*]{Remark}
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
@@ -334,4 +335,94 @@
 						\item ユニタリー群\[U_n=\qty{g\in GL_n\qty(\bbC)\mid\overline{^t\!g}\cdot g=1}\]
 					\end{itemize}
 			\end{itemize}
+	\subsection{いろいろな代数系}
+		群以外にさまざまな"代数"が考えられる．
+		\begin{dfn}
+			集合$M$上に二項演算$\mu:M\times M\to M$が定義されているとする．
+			\begin{itemize}
+				\item 結合法則を満たすとき，$M$は\redunderline{半群(semi group)}であるという．
+					\[\mu\qty(\mu\qty(x,y),z)=\mu\qty(x,\mu\qty(y,z))\]
+				\item 単位元(identity)$e\in M$を持つ半群を\redunderline{単位的半群}あるいは，\redunderline{モノイド(monoid)}という．$e$を$1_M,I_d$と表すこともある．
+					\[\mu\qty(e,x)=\mu\qty(x,e)=x\]
+				\item 任意の$x\in M$に対して
+					\[\mu\qty(x,x^\prime)=\mu\qty(x^\prime,x)=e\]
+					を満たす$x^\prime\in M$が存在するモノイドを\redunderline{群}という．
+			\end{itemize}
+		\end{dfn}
+		さらに，環，体などの複雑な"代数系"もある．
+		\begin{example*}[半群の例]%TODO: 直す
+			$\qty(\bbR,\max)$: $x,y\in\bbR$に対して
+			\[x\circ y=\max\qty(x,y)\]
+			このとき，$\qty(\bbR,\max)$は半群．
+			\[\max\qty(\max\qty(x,y),z)=\max(x,\max\qty(y,z))\]
+			さらに形式的な単位元となる$-\infty$を考慮に入れる場合，$\qty(\bbR\cup\qty{-\infty},\max)$はモノイドとなる．逆元は存在しない($\cdots\max\qty(x,x^\prime)=-\infty$となる$x^\prime$が存在しない)
+		\end{example*}
+		\begin{dfn}
+			モノイド$M$の元で逆元$x^\prime$が存在するものを\redunderline{単元(unit)}といい$M^\times$を$M$の単元のなす部分集合とする．このとき，$M^\prime$は群をなし，\redunderline{単元群(unit group)}と呼ばれる．
+		\end{dfn}
+		\begin{example*}
+			$K\in\qty{\bbQ,\bbR,\bbC}$に対して，$K^\times=K\backslash\qty{0}$は積に関して単元群．
+		\end{example*}
+	\subsection{写像の合成と群}
+		集合$X$から$X$自身への写像全体のなす集合を$M\qty(X)$とかく．$x\in X$および$f,g\in M\qty(X)$に対し，写像の合成$f\cdot g\qty(x)=f\qty(g\qty(x))$を$f\cdot g\in M\qty(X)$とかく．このとき
+		\begin{enumerate}
+			\item $f,g,h\in M\qty(X)$に対し，$\qty(f\cdot g)\cdot h=f\cdot\qty(g\cdot h)$
+			\item $e=Id_{X}$を$X$の恒等写像とすると$f\cdot e=e\cdot f=f$
+			\item $S\qty(X)=\qty{f\in M\qty(X)\mid f\text{は全単射}}$とおくと，$e\in S\qty(X)$で，$f,g\in S\qty(X)$ならば，$f\cdot g\in S\qty(X)$．また$f^{-1}$を$f\in S\qty(X)$の逆写像とすると
+				\[f\cdot f^{-1}=f^{-1}\cdot f=e\]
+		\end{enumerate}
+		以上より，次の命題を得る．
+		\begin{prop}
+			任意の集合$X$に対し，$X$から$X$への写像の集合$M\qty(X)$はモノイドをなす．全単射のなす部分集合$S\qty(X)=M\qty(X)^\times$が単位元となる．$S\qty(X)$を$X$の\redunderline{対称群(symmetric group)}
+
+			特に$X$が有限集合のとき$\qty(\sharp X=n<\infty)$，$S\qty(X)$を$n$次対称群といい，$S\qty(X)=S_n$あるいは$\mathcal{S}_n$とかく．$S_n$を$n$次置換群(permutation group)と呼ぶ場合もある．$S_n$の位数は$\qty|S_n|=n!$
+		\end{prop}
+		\begin{remark*}
+			特に$X=\qty{1,2,\cdots,n}$のとき，$S_n=S\qty(X)$の元$\sigma$を1つ選べば，重複なしに$n$個の数字を並べたもの，つまり，$1,2,\cdots,n$の順列の1つが定まる．
+			\[\sigma:X\overset{\text{1to1}}{\to}X;\quad j\mapsto\sigma\qty(j)\in X\]
+			置換の記法
+			$X=\qty{1,2,\cdots,n}=\qty{i_1,i_2,\cdots,i_n}=\qty{j_1,j_2,\cdots,j_n}$に対して，$\sigma=\mqty(i_1&i_2&\cdots&i_n\\j_1&j_2&\cdots&j_n)$は$\sigma\qty(i_k)=j_k\quad\qty(k=1,2,\cdots,n)$を定める．例えば，$X=\qty{1,2,3}$において，$\sigma=\mqty(1&2&3\\3&1&2)\in S_3$とすると，
+			\[\sigma\qty(1)=3,\quad\sigma\qty(2)=1,\quad\sigma\qty(3)=2\]
+			ここで，
+			\[\sigma=\mqty(2&3&1\\1&2&3)=\mqty(1&3&2\\3&2&1)=\mqty(1&2&3\\3&1&2)\]
+		\end{remark*}
+		\begin{dfn}[交代群]
+			$S_n$の元の中で偶数個の互換の積で表すことができる元の全体を$A_n$で表す．\footnote{ここで互換とは，2つの数字(文字)の入れ替え $i\leftrightarrow j$を表し，$\qty(i,j)$と表記する．}
+			この$S_n$の部分集合$A_n$は，$S_n$の演算で群となり，\redunderline{$n$次交代群(alternating group)}と呼ばれる．
+		\end{dfn}
+		\begin{prop}
+			$S_n=A_n\cup\qty(1,2)A_n$である($n\geq 2$)．
+			\[\qty|A_n|=\frac{\qty|S_n|}{2}=\frac{n!}{2}\]
+		\end{prop}
+		\begin{remark*}
+			表示方法によって偶奇性が変わらないことを証明する必要
+		\end{remark*}
+		\subsubsection*{巡回置換の記号}
+			\[\qty(j_1,j_2,\cdots,j_l)\coloneqq\mqty(j_1&j_2&\cdots&j_{l-1}&j_l\\j_2&j_3&\cdots&j_l&j_1)\]
+			\begin{align*}
+				S_3 & =\qty{\mqty(1                                                                                                                                                                               & 2 & 3 \\1&2&3),\mqty(1&2&3\\1&3&2),\mqty(1&2&3\\3&2&1),\mqty(1&2&3\\2&1&3),\mqty(1&2&3\\3&1&2),\mqty(1&2&3\\2&3&1)}\\
+				    & =\qty{{\color{red} e},{\color{blue} \qty(2,3)},{\color{blue} \qty(1,3)},{\color{blue} \qty(1,2)},{\color{red} \qty(1,3,2)=\qty(2,3)\qty(1,2)},{\color{red} \qty(1,2,3)=\qty(1,2)\qty(2,3)}}         \\
+				A_3 & =\qty{e,\qty(2,3)\qty(1,2),\qty(1,2)\qty(2,3)}
+			\end{align*}
+\section{部分群}
+	\begin{dfn}
+		群$G$の空でない部分集合$H$が群$G$の演算で群となるとき，$H$を$G$の\redunderline{部分群(subgroup)}と呼び，$H\leqq G$と書くことがある．
+	\end{dfn}
+	\begin{remark*}
+		群$G$の自明な部分群に，$G$の単位元のみからなる群と，$G$自身の2つある．
+	\end{remark*}
+	\begin{prop}
+		群$G$の空でない部分集合$H$が
+		\[x,y\in H\,\Rightarrow\,x\cdot y^{-1}\in H\]
+		をみたすとき，$H$は$G$の部分群となる．$H$は単位元を含み，$G$の演算で群をなす．
+	\end{prop}
+	\begin{proof}
+		$x\in H$とすると，$e=x\cdot x^{-1}\in H$.
+		\[x\in H\,\Rightarrow\,x^{-1}=x^{-1}\cdot e\in H\]
+		\[x,y\in H\,\Rightarrow\,x,y^{-1}\in H\,\Rightarrow\,xy\in H\]
+		$H$は空でない部分群．
+	\end{proof}
+	\subsection{準同型写像}
+		準同形写像: 群の二項演算を保つ変換"代数的構造を保つ写像"\\
+		cf.ベクトル空間における\underline{線形写像}
 \end{document}
