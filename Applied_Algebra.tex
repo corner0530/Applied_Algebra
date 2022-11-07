@@ -92,6 +92,7 @@
 \newtheorem{ex*}[dfn*]{例題}
 \newtheorem{example*}[dfn*]{例}
 \newtheorem{remark*}[dfn*]{Remark}
+\newtheorem{note*}[dfn*]{Note}
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
@@ -120,10 +121,12 @@
 \makeatother
 
 \newcommand{\redunderline}[1]{{\color{red} \underline{{\color{black} #1}}}}
-\newcommand{\bbZ}{\mathbb{Z}}
-\newcommand{\bbQ}{\mathbb{Q}}
-\newcommand{\bbR}{\mathbb{R}}
-\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\bbQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\bbR}{\ensuremath{\mathbb{R}}}
+\newcommand{\bbC}{\ensuremath{\mathbb{C}}}
+\newcommand{\Hom}{\ensuremath{\text{Hom}}\,}
+\newcommand{\Ker}{\ensuremath{\text{Ker}}\,}
 
 % tlmgr update --self --all でアップデートすること
 
@@ -404,25 +407,178 @@
 				    & =\qty{{\color{red} e},{\color{blue} \qty(2,3)},{\color{blue} \qty(1,3)},{\color{blue} \qty(1,2)},{\color{red} \qty(1,3,2)=\qty(2,3)\qty(1,2)},{\color{red} \qty(1,2,3)=\qty(1,2)\qty(2,3)}}         \\
 				A_3 & =\qty{e,\qty(2,3)\qty(1,2),\qty(1,2)\qty(2,3)}
 			\end{align*}
-\section{部分群}
-	\begin{dfn}
-		群$G$の空でない部分集合$H$が群$G$の演算で群となるとき，$H$を$G$の\redunderline{部分群(subgroup)}と呼び，$H\leqq G$と書くことがある．
-	\end{dfn}
-	\begin{remark*}
-		群$G$の自明な部分群に，$G$の単位元のみからなる群と，$G$自身の2つある．
-	\end{remark*}
-	\begin{prop}
-		群$G$の空でない部分集合$H$が
-		\[x,y\in H\,\Rightarrow\,x\cdot y^{-1}\in H\]
-		をみたすとき，$H$は$G$の部分群となる．$H$は単位元を含み，$G$の演算で群をなす．
-	\end{prop}
-	\begin{proof}
-		$x\in H$とすると，$e=x\cdot x^{-1}\in H$.
-		\[x\in H\,\Rightarrow\,x^{-1}=x^{-1}\cdot e\in H\]
-		\[x,y\in H\,\Rightarrow\,x,y^{-1}\in H\,\Rightarrow\,xy\in H\]
-		$H$は空でない部分群．
-	\end{proof}
-	\subsection{準同型写像}
-		準同形写像: 群の二項演算を保つ変換"代数的構造を保つ写像"\\
-		cf.ベクトル空間における\underline{線形写像}
+	\subsection{部分群}
+		\begin{dfn}
+			群$G$の空でない部分集合$H$が群$G$の演算で群となるとき，$H$を$G$の\redunderline{部分群(subgroup)}と呼び，$H\leqq G$と書くことがある．
+		\end{dfn}
+		\begin{remark*}
+			群$G$の自明な部分群に，$G$の単位元のみからなる群と，$G$自身の2つある．
+		\end{remark*}
+		\begin{prop}
+			群$G$の空でない部分集合$H$が
+			\[x,y\in H\,\Rightarrow\,x\cdot y^{-1}\in H\]
+			をみたすとき，$H$は$G$の部分群となる．$H$は単位元を含み，$G$の演算で群をなす．
+		\end{prop}
+		\begin{proof}
+			$x\in H$とすると，$e=x\cdot x^{-1}\in H$.
+			\[x\in H\,\Rightarrow\,x^{-1}=x^{-1}\cdot e\in H\]
+			\[x,y\in H\,\Rightarrow\,x,y^{-1}\in H\,\Rightarrow\,xy\in H\]
+			$H$は空でない部分群．
+		\end{proof}
+\section{準同型写像}
+	準同形写像: 群の二項演算の代数的構造を保つ写像
+	\subsubsection*{群の例}
+		\begin{enumerate}
+			\item[(1)] $G=\bbZ,\quad a\circ b=a+b+1,\quad\qty(G,\circ)$は群をなす．この群の単位元および$a$の逆元を求めよ
+				\[a\circ e=e\circ a=a\Leftrightarrow a+e+1=e+a+1=a\Leftrightarrow e=-1\]
+				\[a\circ a^{-1}=a^{-1}\circ a=e\Leftrightarrow a+a^{-1}+1=a^{-1}+a+1=-1\Leftrightarrow a^{-1}=-a-2\]
+			\item[(2)] $G=\bbR\backslash\qty{-1},\quad a\circ b=a+b+ab,\quad\qty(G,\circ)$は群をなす．この群の単位元および$a$の逆元を求めよ
+				\[e=0,\quad a^{-1}=-\frac{a}{a+1}\]
+			\item[(3)] $G=\bbR\backslash\qty{0},\quad a\circ b=2ab,\quad\qty(G,\circ)$は群をなす．この群の単位元および$a$の逆元を求めよ
+				\[e=\frac{1}{2},\quad a^{-1}=\frac{1}{4a}\]
+		\end{enumerate}
+		これらの例では，より簡単な群と関係づけることができる．以下，準同型，同型を導入する．
+		\begin{dfn}
+			2つの群$G,G^\prime$に対して，写像$f:G\to G^\prime$が
+			\[\redunderline{f\qty(x\,{\color{blue}\circ}\,y)=f\qty(x)\,{\color{blue}\cdot}\,f\qty(y)\quad\qty(x,y\in G)}\]
+			を満たすとき，$f$を\redunderline{準同型写像}または\redunderline{準同型(homomorphism)}という．また，$G$から$G^\prime$への準同型写像全体を$\Hom\qty(G,G^\prime)$とかく．
+		\end{dfn}
+		\begin{remark*}
+			$G,G^\prime$として，$\qty(G,\circ),\qty(G^\prime,\cdot)$を意味している．
+		\end{remark*}
+		\begin{itemize}
+			\item $G$上の二項演算$\circ$を$G^\prime$上の二項演算$\cdot$へ移す．
+				\[f\qty(x\circ y)=f\qty(x)\cdot f\qty(y)=x^\prime\cdot y^\prime\quad\text{ここで}x^\prime,y^\prime\in G^\prime\]
+			\item 群$G$の単位元$e$は，群$G^\prime$の単位元$e^\prime$に移される．
+				\begin{align*}
+					                & f\qty(e)\cdot f\qty(e)=f\qty(e\circ e)=f\qty(e)                 \\
+					\Leftrightarrow & f\qty(e)^{-1}\cdot f\qty(e)\cdot f\qty(e)=f\qty(e)^{-1}f\qty(e) \\
+					\Leftrightarrow & \,e^\prime\cdot f\qty(e)=f\qty(e)=e^\prime
+				\end{align*}
+			\item 群$G$の逆元は，群$G^\prime$の逆元に移される．
+				\begin{align*}
+					                & f\qty(a)\cdot f\qty(a^{-1})=\qty(a\circ a^{-1})=f\qty(e)=e^\prime \\
+					\Leftrightarrow & f\qty(a^{-1})=f\qty(a)^{-1}
+				\end{align*}
+				\begin{align*}
+					\begin{array}{ccc}
+						\qty(x,y)\in G^2                        & \stackrel{\circ}{\longmapsto} & x\circ y\in G                      \\
+						\downarrow f                            &                               & \downarrow f                       \\
+						\qty(f\qty(x),f\qty(y))\in G^{\prime 2} & \longmapsto                   & f\qty(x)\cdot f\qty(y)\in G^\prime
+					\end{array}
+				\end{align*}
+		\end{itemize}
+		\begin{dfn}
+			準同型$f$が全単射のとき，$f$を\redunderline{同型写像}または\redunderline{同型(isomorphism)}という．同型写像$f:G\to G^\prime$が存在すれば\redunderline{$G$と$G^\prime$は同型}であるといい．$G\simeq G^\prime$または$G\stackrel{\sim}{\longrightarrow}G^\prime$などとかく．
+		\end{dfn}
+		\begin{example*}
+			同型を用いると，先の例(1),(2),(3)は\dots
+
+			(1)の群は，通常の加法に関する$\bbZ$のなす群と同型．$f\qty(a)=a+1$とする．
+			\[f\qty(a\circ b)=f\qty(a+b+1)=a+b+2=\qty(a+1)+\qty(b+1)=f\qty(a)+f\qty(b)\]
+
+			(2)と(3)の群は，通常の乗法群としての$\bbR^\times=\bbR\backslash\qty{0}$と同型
+			\begin{itemize}
+				\item[(2)] $f^\prime\qty(a)=a+1$
+				\item[(3)] $f^\prime\qty(a)=2a$
+			\end{itemize}
+			{\color{red} 準同型，全単射であることは容易に確かめられる．}
+		\end{example*}
+	\subsubsection*{準同型の例}
+		1次分数変換
+		\[G=\qty{f\qty(x)=\frac{ax+b}{cx+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0}\]
+		$GL\qty(2,\bbC)$\footnote{$\qty|A|=ad-bc\neq 0$}の元$A=\mqty[
+				a & b \\
+				c & d
+			]$に対して，$G$の元$f_A\qty(x)$を$f_A\qty(x)=\frac{ax+b}{cx+d}$によって定める．
+		$GL\qty(2,\bbC)$の元と$G$の元を対応\footnote{$F:GL\qty(2,\bbC)\to G$}付けている．
+		\[f_{\scriptsize\mqty[
+						1 & 0 \\
+						0 & 1
+					]}\qty(x)=\frac{x+0}{0+1}=x,\quad f_A^{-1}\qty(f_A\qty(x))=x\]
+		\[f_A^{-1}\qty(x)=\frac{1}{ad-bc}\frac{dx-b}{-cx+a}=f_{A^{-1}}\qty(x)\]
+		ここで$A^{-1}=\frac{1}{ad-bc}\mqty[
+				d  & -b \\
+				-c & a
+			]$であることに注意．
+
+		このとき，任意の$A=\mqty[
+				a & b \\
+				c & d
+			],\quad P=\mqty[
+				p & q \\
+				r & s
+			]\in GL\qty(2,\bbC)$に対して，
+		\begin{align*}
+			\begin{array}{ccc}
+				\qty(A,P)     & \longmapsto & A\cdot P  \in GL\qty(2,\bbC) \\
+				F\downarrow   &             & F\downarrow                  \\
+				\qty(f_A,f_P) & \longmapsto & f_A\circ f_P=f_{AP}
+			\end{array}
+		\end{align*}
+		{\color{red} 対応$F$は$GL\qty(2,\bbC)\to G$の準同型を与えている．}
+		\begin{remark*}
+			$G$は写像の合成に関して群．
+		\end{remark*}
+		$GL\qty(2,\bbC)$は行列の積に関して群，単位元は$\mqty[1&0\\0&1]$，$A$の逆行列$A^{-1}$が$A$の逆元．
+		ただし，この対応$F$は，全単射となっておらず同型ではない．$\Rightarrow$準同型と同型のズレを測るのが「核」である．
+		\begin{dfn}
+			準同型$f:G\to G^\prime$に対して，
+			\[\Ker f=\qty{x\in G\mid f\qty(x)=e^\prime}\]
+			を準同型写像$f$の\redunderline{核(kernel)}という．
+		\end{dfn}
+		\begin{dfn}
+			準同型$f:G\to G^\prime$に対して，
+			\[\Im f=\qty{f\qty(x)\mid x\in G}\]
+			を準同型写像の\redunderline{像(image)}という．
+		\end{dfn}
+		\begin{example*}
+			\begin{align*}
+				\begin{array}{ccc}
+					f:GL\qty(2,\bbC)      & \longrightarrow & G=\qty{\phi\qty(z)=\frac{az+b}{cz+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0} \\
+					\rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$}                                                \\
+					\mqty[
+					a                     & b                                                                                      \\
+					c                     & d
+					]                     & \longmapsto     & \phi_A\qty(z)=\frac{az+b}{cz+d}
+				\end{array}
+			\end{align*}
+			は準同型．核
+			\begin{align*}
+				\Ker f & =\qty{A\in GL\qty(2,\bbC)\mid\phi_A\qty(z)}     \\
+				       & =\qty{\mqty[a                               & 0 \\0&a]\mid a\in\bbC\backslash\qty{0}}
+			\end{align*}
+			つまり，分子と分母に定数倍の不定性が存在することを示している．
+		\end{example*}
+		\begin{prop}
+			核が単位元のみからなることが，群の準同型が1対1となるための必要十分条件．
+		\end{prop}
+		\begin{proof}
+			(必要条件は明らか)
+
+			十分性を準同型$f:G\to G^\prime$の場合に示す．
+
+			$f\qty(x)=f\qty(y)$とすると，準同型性から
+			\[f\qty(x\circ y^{-1})=f\qty(x)\cdot f\qty(y)^{-1}=e\]
+			よって核が単位元のみとすると
+			\[x\circ y^{-1}=e\Leftrightarrow x=y\]
+		\end{proof}
+		\begin{prop}
+			$f\in\Hom\qty(G,G^\prime),H\leqq G,H^\prime\leqq G^\prime$とする．
+			\begin{itemize}
+				\item $f\qty(H)\leqq G^\prime$
+				\item $f^{-1}\qty(H^\prime)\leqq G$
+			\end{itemize}
+			\begin{proof}
+				(レポート)
+			\end{proof}
+		\end{prop}
+		\begin{cor}
+			自明な群$\qty{e^\prime}\subset G^\prime$の逆像である準同期写像$f$の核$\Ker f$は$G$の部分群となる．
+		\end{cor}
+		\begin{note*}
+			ベクトル空間の間の準同型のことを，通常，線形写像と呼ぶ．
+
+			線形写像$\varphi:V\to W$に対して，$\Ker\varphi$は，$V$の部分ベクトル空間．$\Im\varphi$は，$W$の部分ベクトル空間．
+		\end{note*}
 \end{document}
