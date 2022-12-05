@@ -72,7 +72,7 @@
 \newtheorem{cor}[dfn]{系}
 \newtheorem{prop}[dfn]{命題}
 \newtheorem{lem}[dfn]{補題}
-\newtheorem{ex}[dfn]{例題}
+\newtheorem{ex}[dfn]{例}
 
 \newtheoremstyle{mystyle2}% スタイル名
   {}% 上部スペース
@@ -803,36 +803,148 @@
 		$\Rightarrow$対応する軌道分解によって，群$G$は部分群による同値類に分解(類別)できる．
 
 		以下$H\leqq G$とする．
-		\begin{itemize}
-			\item 部分群$H$の群$G$への\redunderline{右からの乗法移動}による$g\in G$の軌道
-				\[H\qty(g)=\qty{\rho\qty(g,h)\mid h\in H}=\qty{g\cdot h\mid h\in H}=gH\]
-				による軌道分解$G=\bigsqcup_{a\in\Lambda}aH$から誘導される同値関係，同値類，剰余(商)集合が得られる．
-		\end{itemize}
-		\begin{prop}[$H$軌道から誘導される$G$上の同値関係]
-			$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
-			\[a\sim b\Leftrightarrow a^{-1}b\in H\]
-			は同値関係．$\stackrel{\text{L}}{\sim}$と表すこともある．
-		\end{prop}
-		\begin{proof}
-			$a\sim a$ : $a^{-1}a=e\in H.$
+		\paragraph{部分群$H$の群$G$への\redunderline{右からの乗法移動}による$g\in G$の軌道}
+			\[H\qty(g)=\qty{\rho\qty(g,h)\mid h\in H}=\qty{g\cdot h\mid h\in H}=gH\]
+			による軌道分解$G=\bigsqcup_{a\in\Lambda}aH$から誘導される同値関係，同値類，剰余(商)集合が得られる．
 
-			$a\sim b\Leftrightarrow b\sim a$ : $a^{-1}b\in H\Leftrightarrow\qty(a^{-1}b)^{-1}=b^{-1}a\in H$
+			\begin{prop}[$H$軌道から誘導される$G$上の同値関係]
+				$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
+				\[a\sim b\Leftrightarrow a^{-1}b\in H\]
+				は同値関係．$\stackrel{\text{L}}{\sim}$と表すこともある．
+			\end{prop}
+			\begin{proof}
+				$a\sim a$ : $a^{-1}a=e\in H.$
 
-			$a\sim b$かつ$b\sim c\Rightarrow a\sim c$ : $a^{-1}b,b^{-1}c\in H$とすると，
-			\[a^{-1}c=\qty(a^{-1}b)\cdot \qty(b^{-1}c)\in H\]
-		\end{proof}
-		\begin{note*}
-			同値関係$\stackrel{\text{L}}{\sim}$による$a$の同値類$aH$
-			\[C_H\qty(a)=\qty{b\in G\mid a\stackrel{\text{L}}{\sim}b}=\qty{b\in G\mid a^{-1}b\in H}\]
-			と表すこともある．
-		\end{note*}
-		このとき，$a\sim b$ならば，$\exists h\in H\text{\quad s.t.\quad}a^{-1}b=h\Leftrightarrow b=ah$
-		\begin{dfn}
-			$H\leqq G$．$G$の部分集合$gH=\qty{gh\mid h\in H}$を$g$の\redunderline{左剰余類}(left coset)とよび，同値関係$\stackrel{\text{L}}{\sim}$による$g$の同値類を表す．
-		\end{dfn}
-		\begin{dfn}[剰余集合・商集合]
-			(左)剰余類$aH$全体のなす集合\redunderline{(左)剰余集合}または\redunderline{商集合}と呼ぶ．群$G$の部分群$H$による左剰余集合を$G/H$で表す．
+				$a\sim b\Leftrightarrow b\sim a$ : $a^{-1}b\in H\Leftrightarrow\qty(a^{-1}b)^{-1}=b^{-1}a\in H$
 
-			また，各類から1つずつ代表元を取ってきた代表元全体の集合$\Lambda$を$G$の$H$に関する\redunderline{左完全代表系}という．
-		\end{dfn}
+				$a\sim b$かつ$b\sim c\Rightarrow a\sim c$ : $a^{-1}b,b^{-1}c\in H$とすると，
+				\[a^{-1}c=\qty(a^{-1}b)\cdot \qty(b^{-1}c)\in H\]
+			\end{proof}
+			\begin{note*}
+				同値関係$\stackrel{\text{L}}{\sim}$による$a$の同値類$aH$
+				\[C_H\qty(a)=\qty{b\in G\mid a\stackrel{\text{L}}{\sim}b}=\qty{b\in G\mid a^{-1}b\in H}\]
+				と表すこともある．
+			\end{note*}
+			このとき，$a\sim b$ならば，$\exists h\in H\text{\quad s.t.\quad}a^{-1}b=h\Leftrightarrow b=ah$
+			\begin{dfn}
+				$H\leqq G$．$G$の部分集合$gH=\qty{gh\mid h\in H}$を$g$の\redunderline{左剰余類}(left coset)とよび，同値関係$\stackrel{\text{L}}{\sim}$による$g$の同値類を表す．
+			\end{dfn}
+			\begin{dfn}[剰余集合・商集合]
+				(左)剰余類$aH$全体のなす集合\redunderline{(左)剰余集合}または\redunderline{商集合}と呼ぶ．群$G$の部分群$H$による左剰余集合を$G/H$で表す．
+
+				また，各類から1つずつ代表元を取ってきた代表元全体の集合$\Lambda$を$G$の$H$に関する\redunderline{左完全代表系}という．
+			\end{dfn}
+			このとき，相異なる左剰余類の個数を$H$の$G$による\redunderline{指数}(index)といい，$\qty(G:H)$で表す．指数が$\infty$となる場合もある．定義より
+			\[\qty(G:H)=\qty|G/H|\]
+			である．
+
+			部分群$H$による群$G$の左剰余類への分解(coset decomposition)(左類別ともいう)．
+			\[G=\bigsqcup_{a\in\Lambda}aH\]
+			このとき，左完全代表形$\Lambda=\qty{a^\prime,b^\prime,\cdots}$とすると
+			\begin{align*}
+				G/H           & =\qty{a^\prime H,b^\prime H,\cdots } \\
+				\qty|\Lambda| & =\qty|G/H|=\qty(G:H)
+			\end{align*}
+		\paragraph{部分群の群$G$への\redunderline{左からの乗法移動}による$g\in G$の$H$軌道}
+			\[H\qty(g)=\qty{\lambda\qty(h,g)\mid h\in H}=\qty{h\cdot g\mid h\in H}=Hg\]
+			による軌道分解(右類別ともいう)
+			\[G=\bigsqcup_{a\in\Lambda^\prime}Ha\]
+			から誘導される同値関係・同値類・剰余(商)集合が得られる．
+			\begin{prop}[左乗法移動から得られる$H$軌道が誘導する$G$上の同値関係]
+				$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
+				\[a\sim b\Leftrightarrow ba^{-1}\in H\]
+				は同値関係となる．以降$\stackrel{\text{R}}{\sim}$と表す．
+			\end{prop}
+			この同値関係$\stackrel{\text{R}}{\sim}$による剰余類
+			\[C^\prime_H\qty(a)=\qty{x\in G\mid x\stackrel{\text{R}}{\sim}a}\]
+			を$G$の$H$による\redunderline{右剰余類}という．$Ha$と表すことも多い
+			\begin{example*}
+				3次対称群$\mathcal{G}_3$に対して，部分群$H_1\qty(\simeq C_2), H_2\qty(\simeq C_3)$を次で定める．
+				\begin{align*}
+					H_1           & =\qty{e,\qty(1\ 2)},                                                       \\
+					H_2           & =\qty{e, \qty(1\ 2\ 3), \qty(1\ 3\ 2)},                                    \\
+					\mathcal{G}_3 & =\qty{e, \qty(1\ 2), \qty(1\ 3), \qty(2\ 3), \qty(1\ 2\ 3), \qty(1\ 3\ 2)}
+				\end{align*}
+				において，
+				\begin{align*}
+					eH_1          & =\qty{e, \qty(1\ 2)},                                \\
+					\qty(1\ 2)H_1 & =\qty{\qty(1\ 2)e=\qty(1\ 2),\qty(1\ 2)\qty(1\ 2)=e}
+				\end{align*}
+				よって
+				\[eH_1=\qty(1\ 2)H_1\]
+				左剰余集合$\mathcal{G}_3/H_1=\qty{eH_1,\qty(1\ 3)H_1}$
+				\begin{align*}
+					\qty(1\ 3)H_1              & =\qty{\qty(1\ 3)e=\qty(1\ 3),\qty(1\ 3)\qty(1\ 2)=\qty(1\ 2\ 3)}=\qty(1\ 2\ 3)H_1            \\
+					\qty(2\ 3)H_1              & =\qty{\qty(2\ 3)e=\qty(2\ 3),\qty(2\ 3)\qty(1\ 2)=\qty(1\ 3\ 2)}=\qty(1\ 3\ 2)H_1            \\
+					\mathcal{G}_3/H_1          & =\qty{e,\qty(1\ 2)}\sqcup\qty{\qty(1\ 3), \qty(1\ 2\ 3)}\sqcup\qty{\qty(2\ 3),\qty(1\ 3\ 2)} \\
+					H_1\backslash\mathcal{G}_3 & =\qty{H_1e=H_1\qty(1\ 2),H_1\qty(1\ 3)=H_1\qty(1\ 3\ 2),H_1\qty(2\ 3)=H_1\qty(1\ 2\ 3)}      \\
+					H_1\qty(1\ 3)              & =\qty{e\qty(1\ 3)=\qty(1\ 3),\qty(1\ 2)\qty(1\ 3)}=\qty(1\ 3\ 2)=H_1\qty(1\ 3\ 2)            \\
+					                           & =\qty{e, \qty(1\ 2)}\sqcup\qty{\qty(1\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(2\ 3),\qty(1\ 2\ 3)}
+				\end{align*}
+				{\color{red} ここで
+				\[\mathcal{G}_3/H_1\neq H_1\backslash\mathcal{G}_3\]
+				である．}
+
+				\underline{$H_2$による左剰余類の集合}
+				\begin{align*}
+					\mathcal{G}_3/H_2          & =\qty{eH_2,\qty(1\ 2)H_2},                                                                                  \\
+					eH_2                       & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)},                                                                       \\
+					\qty(1\ 2)H_2              & =\qty{\qty(1\ 2),\qty(1\ 2)\qty(1\ 2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(1\ 3\ 2)=\qty(1\ 3)}                     \\
+					H_2\backslash\mathcal{G}_3 & =\qty{H_2e,H_2\qty(1\ 2)}                                                                                   \\
+					H_2e                       & =H_2,                                                                                                       \\
+					H_2\qty(1\ 2)              & =\qty{e\qty(1\ 2),\qty(1\ 2\ 3)\qty(1\ 2)=\qty(1\ 3),\qty(1\ 3\ 2)\qty(1\ 2)=\qty(2\ 3)},                   \\
+					\mathcal{G}_3/H_2          & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(1\ 3),\qty(2\ 3)}=H_2\backslash\mathcal{G}_3
+				\end{align*}
+				{\color{red} ここで
+				\[\mathcal{G}_3/H_2= H_2\backslash\mathcal{G}_3\]
+				である．}
+			\end{example*}
+\section{正規部分群と剰余群}
+	\begin{prop}
+		$H$を$G$の部分群とする．$G$の$H$による左類別と右類別が類別として一致するための必要十分条件は任意の$a\in G$に対して
+		\[aHa^{-1}=H\]
+		が成立すること．
+	\end{prop}
+	\begin{dfn}[正規部分群]
+		$N\leqq G, G$の任意の元$g$に対して，$gNg^{-1}=N$とする．このとき，$N$を$G$の\redunderline{正規部分群}(normal subgroup)という．記号として，$N\triangleleft G$または$G\triangleright N$と書くことにする．
+	\end{dfn}
+	\begin{prop}
+		$H\leqq G$，任意の$g\in G$に対して$gHg^{-1}\subset H$ならば，$H\triangleleft G$．
+	\end{prop}
+	\begin{proof}
+		$\forall g\in G$に対し，$gHg^{-1}\subset H$ならば，
+		\[H\subset g^{-1}Hg=g^{-1}H\qty(g^{-1})^{-1}\]
+		であり，$g^{-1}$も$G$の任意の元を表すので，
+		\[gHg^{-1}\subset H\Rightarrow H\subset gHg^{-1}\]
+		である．よって
+		\[gHg^{-1}=H\]
+	\end{proof}
+	\begin{screen} % TODO: この枠は赤色
+		$N$を群$G$の正規部分群とすると，$N$による剰余(商)集合に群構造を導入することができる．
+	\end{screen}
+	\begin{prop}
+		$N\triangleleft G$．このとき，剰余集合$G/N$は自然に群をなす．すなわち，$G/N$上の群演算を
+		\[xN\cdot yN=\qty(xy)N\]
+		によって定義することができる．
+	\end{prop}
+	\begin{proof}
+		well-defined であることを確かめる(\redunderline{演算の定義が剰余類の代表元の選び方によらない}ことを示す必要がある)．つまり，
+		\[xN=x^\prime N,yN=y^\prime N\Rightarrow xyN=x^\prime y^\prime N\]
+		を示す必要がある．このとき，$x=x^\prime h, y=y^\prime h^\prime$を満たす$h,h^\prime\in N$が存在する．よって
+		\[xy=x^\prime hy^\prime h^\prime=x^\prime y^\prime\qty({y^{\prime}}^{-1}hy^\prime)h^\prime\in x^\prime y^\prime N\]
+		ここで${y^\prime}^{-1}hy^\prime\in {y^\prime}^{-1}Ny^\prime=N$．
+
+		(その他の群としての性質についても省略)
+	\end{proof}
+	\begin{dfn}
+		$N\triangleleft G$．このとき，剰余集合$G/N$を剰余群(residue class group)または商群(quotient group)という．
+	\end{dfn}
+	\begin{remark*}
+		$N\triangleleft G$とする．剰余群$G/N$の単位元は$C_N\qty(e)=eN$．剰余群$G/N$の元$C_N\qty(a)=aN$の逆元は$C_N\qty(a^{-1})=a^{-1}N$
+	\end{remark*}
+	\begin{dfn}[単純群]
+		正規部分群が(単位群と自分自身以外に)1つもない群を単純群という．\\
+		cf. 有限単純群の分類(巡回，交代，リー型，散在)モンスター群の位数$\approx 8\times 10^{53}\gg 6\times 10^{23}$(アボガドロ数
+		)．
+	\end{dfn}
 \end{document}
