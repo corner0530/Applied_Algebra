@@ -128,10 +128,18 @@
 \newcommand{\bbQ}{\ensuremath{\mathbb{Q}}}
 \newcommand{\bbR}{\ensuremath{\mathbb{R}}}
 \newcommand{\bbC}{\ensuremath{\mathbb{C}}}
+\newcommand{\frakS}{\ensuremath{\mathfrak{S}}}
+\newcommand{\frakA}{\ensuremath{\mathfrak{A}}}
+\newcommand{\calH}{\ensuremath{\mathcal{H}}}
 \newcommand{\Hom}{\ensuremath{\text{Hom}}\,}
 \newcommand{\Ker}{\ensuremath{\text{Ker}}\,}
 \newcommand{\End}{\ensuremath{\text{End}}\,}
 \newcommand{\Aut}{\ensuremath{\text{Aut}}\,}
+\newcommand{\sgn}{\ensuremath{\text{sgn}}\,}
+\newcommand{\GL}{\ensuremath{\text{GL}}}
+\newcommand{\PGL}{\ensuremath{\text{PGL}}}
+\newcommand{\SL}{\ensuremath{\text{SL}}}
+\newcommand{\PSL}{\ensuremath{\text{PSL}}}
 \newcommand{\suchthat}{\ensuremath{\text{\quad s.t.\quad}}}
 
 % tlmgr update --self --all でアップデートすること
@@ -341,10 +349,10 @@
 				\end{example*}
 			\item (行列群) $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
 				\begin{itemize}
-					\item 一般線形群\[GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
-					\item 特殊線形群\[SL_n\qty(\bbC)=\qty{g\in GL_n\qty(\bbC)\mid\det g=1}\]
-					\item 直交群\[O_n=\qty{g\in GL_n\qty(\bbR)\mid\,^t\!g\cdot g=1}\]
-					\item ユニタリー群\[U_n=\qty{g\in GL_n\qty(\bbC)\mid\overline{^t\!g}\cdot g=1}\]
+					\item 一般線形群\[\GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
+					\item 特殊線形群\[\SL_n\qty(\bbC)=\qty{g\in \GL_n\qty(\bbC)\mid\det g=1}\]
+					\item 直交群\[O_n=\qty{g\in \GL_n\qty(\bbR)\mid\,^t\!g\cdot g=1}\]
+					\item ユニタリー群\[U_n=\qty{g\in \GL_n\qty(\bbC)\mid\overline{^t\!g}\cdot g=1}\]
 				\end{itemize}
 		\end{itemize}
 	\subsection{いろいろな代数系}
@@ -387,7 +395,7 @@
 		\begin{prop}
 			任意の集合$X$に対し，$X$から$X$への写像の集合$M\qty(X)$はモノイドをなす．全単射のなす部分集合$S\qty(X)=M\qty(X)^\times$が単位元となる．$S\qty(X)$を$X$の\redunderline{対称群(symmetric group)}
 
-			特に$X$が有限集合のとき$\qty(\sharp X=n<\infty)$，$S\qty(X)$を$n$次対称群といい，$S\qty(X)=S_n$あるいは$\mathcal{S}_n$とかく．$S_n$を$n$次置換群(permutation group)と呼ぶ場合もある．$S_n$の位数は$\qty|S_n|=n!$
+			特に$X$が有限集合のとき$\qty(\sharp X=n<\infty)$，$S\qty(X)$を$n$次対称群といい，$S\qty(X)=S_n$あるいは$\frakS_n$とかく．$S_n$を$n$次置換群(permutation group)と呼ぶ場合もある．$S_n$の位数は$\qty|S_n|=n!$
 		\end{prop}
 		\begin{remark*}
 			特に$X=\qty{1,2,\cdots,n}$のとき，$S_n=S\qty(X)$の元$\sigma$を1つ選べば，重複なしに$n$個の数字を並べたもの，つまり，$1,2,\cdots,n$の順列の1つが定まる．
@@ -496,11 +504,11 @@
 	\subsubsection*{準同型の例}
 		1次分数変換
 		\[G=\qty{f\qty(x)=\frac{ax+b}{cx+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0}\]
-		$GL\qty(2,\bbC)$\footnote{$\qty|A|=ad-bc\neq 0$}の元$A=\mqty[
+		$\GL\qty(2,\bbC)$\footnote{$\qty|A|=ad-bc\neq 0$}の元$A=\mqty[
 				a & b \\
 				c & d
 			]$に対して，$G$の元$f_A\qty(x)$を$f_A\qty(x)=\frac{ax+b}{cx+d}$によって定める．
-		$GL\qty(2,\bbC)$の元と$G$の元を対応\footnote{$F:GL\qty(2,\bbC)\to G$}付けている．
+		$\GL\qty(2,\bbC)$の元と$G$の元を対応\footnote{$F:\GL\qty(2,\bbC)\to G$}付けている．
 		\[f_{\scriptsize\mqty[
 						1 & 0 \\
 						0 & 1
@@ -517,19 +525,19 @@
 			],\quad P=\mqty[
 				p & q \\
 				r & s
-			]\in GL\qty(2,\bbC)$に対して，
+			]\in \GL\qty(2,\bbC)$に対して，
 		\begin{align*}
 			\begin{array}{ccc}
-				\qty(A,P)     & \longmapsto & A\cdot P  \in GL\qty(2,\bbC) \\
-				F\downarrow   &             & F\downarrow                  \\
+				\qty(A,P)     & \longmapsto & A\cdot P  \in \GL\qty(2,\bbC) \\
+				F\downarrow   &             & F\downarrow                   \\
 				\qty(f_A,f_P) & \longmapsto & f_A\circ f_P=f_{AP}
 			\end{array}
 		\end{align*}
-		{\color{red} 対応$F$は$GL\qty(2,\bbC)\to G$の準同型を与えている．}
+		{\color{red} 対応$F$は$\GL\qty(2,\bbC)\to G$の準同型を与えている．}
 		\begin{remark*}
 			$G$は写像の合成に関して群．
 		\end{remark*}
-		$GL\qty(2,\bbC)$は行列の積に関して群，単位元は$\mqty[1&0\\0&1]$，$A$の逆行列$A^{-1}$が$A$の逆元．
+		$\GL\qty(2,\bbC)$は行列の積に関して群，単位元は$\mqty[1&0\\0&1]$，$A$の逆行列$A^{-1}$が$A$の逆元．
 		ただし，この対応$F$は，全単射となっておらず同型ではない．$\Rightarrow$準同型と同型のズレを測るのが「核」である．
 		\begin{dfn}
 			準同型$f:G\to G^\prime$に対して，
@@ -544,7 +552,7 @@
 		\begin{example*}
 			\begin{align*}
 				\begin{array}{ccc}
-					f:GL\qty(2,\bbC)      & \longrightarrow & G=\qty{\phi\qty(z)=\frac{az+b}{cz+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0} \\
+					f:\GL\qty(2,\bbC)     & \longrightarrow & G=\qty{\phi\qty(z)=\frac{az+b}{cz+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0} \\
 					\rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$}                                                \\
 					\mqty[
 					a                     & b                                                                                      \\
@@ -554,8 +562,8 @@
 			\end{align*}
 			は準同型．核
 			\begin{align*}
-				\Ker f & =\qty{A\in GL\qty(2,\bbC)\mid\phi_A\qty(z)}     \\
-				       & =\qty{\mqty[a                               & 0 \\0&a]\mid a\in\bbC\backslash\qty{0}}
+				\Ker f & =\qty{A\in \GL\qty(2,\bbC)\mid\phi_A\qty(z)}     \\
+				       & =\qty{\mqty[a                                & 0 \\0&a]\mid a\in\bbC\backslash\qty{0}}
 			\end{align*}
 			つまり，分子と分母に定数倍の不定性が存在することを示している．
 		\end{example*}
@@ -608,9 +616,9 @@
 			で定義する．これは$G$上の自己同型を与える．
 		\end{prop}
 		\begin{abbr*}
-			\underline{準同型性}:
-			\[A_a\qty(g)A_a\qty(h)=aga^{-1}aha^{-1}=agha^{-1}=A_a\qty(gh)\]
-			\underline{全単射}:(略)
+			\subparagraph{準同型性}
+				\[A_a\qty(g)A_a\qty(h)=aga^{-1}aha^{-1}=agha^{-1}=A_a\qty(gh)\]
+			\subparagraph{全単射}(略)
 		\end{abbr*}
 \section{群作用と軌道分解}
 	\subsection{作用について}
@@ -642,7 +650,7 @@
 			自明な作用:\,全ての$g\in G,\,x\in X$に対し，$\lambda\qty(g,x)=x$とする作用
 		\end{note*}
 		\begin{note*}
-			対称群$\mathcal{G}_n$はその定義から，$X=\qty{1,2,\cdots,n}$上に自然に置換として作用している．本講義では通常は左作用としている．
+			対称群$\frakS_n$はその定義から，$X=\qty{1,2,\cdots,n}$上に自然に置換として作用している．本講義では通常は左作用としている．
 		\end{note*}
 		\begin{remark*}
 			$\rho\qty(x,g)$を$\qty(x)\rho_g,\,x^g$あるいは$x\cdot g,\,xg$などと省略する．
@@ -686,9 +694,9 @@
 			群$G$が集合$X$に\redunderline{左から作用}しているとき，$X$上の複素数値関数全体を$F\qty(X)$と置き，$g\in G$の$F\qty(X)$への作用を，関数$f\in F\qty(X)$を関数$x\mapsto f\qty(g\cdot x)\quad\qty(\forall x\in X)$に写す写像を定める．これは{\color{red} 右作用}になる．これを$G$の$X$への作用から引き起こされる$X$上の関数への作用という．
 		\end{prop}
 		\begin{example*}
-			$\mathcal{H}=\qty{z\in\bbC\mid\Im z>0}$，左作用$\mu:SL_2\qty(\bbR)\times\mathcal{H}\to\mathcal{H}$
+			$\calH=\qty{z\in\bbC\mid\Im z>0}$，左作用$\mu:\SL_2\qty(\bbR)\times\calH\to\calH$
 			\[\qty(g=\mqty(a&b\\c&d),z)\mapsto\mu\qty(g,z)=\frac{az+b}{cz+d}\quad\qty(ad-bc=1)\]
-			複素上半平面$\mathcal{H}$の上の正則関数$f\qty(z)$全体の集合$H\qty(\mathcal{H})$への作用$f\qty(g\cdot z)$は右作用となる．
+			複素上半平面$\calH$の上の正則関数$f\qty(z)$全体の集合$H\qty(\calH)$への作用$f\qty(g\cdot z)$は右作用となる．
 
 			このとき，
 			\begin{align*}
@@ -696,7 +704,7 @@
 				              & =\mu\qty(\mqty(a^\prime                                                                & b^\prime \\c^\prime&d^\prime),\frac{az+b}{cz+d})\\
 				              & =\frac{a^\prime\qty(az+b)/\qty(cz+d)+b^\prime}{c^\prime\qty(az+b)/\qty(cz+d)+d^\prime}
 			\end{align*}
-			例えば，$g=\mqty(1&1\\0&1),h=\mqty(1&0\\1&1)\in SL_2\qty(\bbR)$
+			例えば，$g=\mqty(1&1\\0&1),h=\mqty(1&0\\1&1)\in \SL_2\qty(\bbR)$
 			\[gh=\mqty(2&1\\1&1),\quad hg=\mqty(1&1\\1&2)\]
 			\begin{align*}
 				f\qty(z) & \stackrel{g}{\to}F\qty(z)=f\qty(g\cdot z)=f\qty(z+1)                                                                                                    \\
@@ -860,11 +868,11 @@
 			\[C^\prime_H\qty(a)=\qty{x\in G\mid x\stackrel{\text{R}}{\sim}a}\]
 			を$G$の$H$による\redunderline{右剰余類}という．$Ha$と表すことも多い
 			\begin{example*}
-				3次対称群$\mathcal{G}_3$に対して，部分群$H_1\qty(\simeq C_2), H_2\qty(\simeq C_3)$を次で定める．
+				3次対称群$\frakS_3$に対して，部分群$H_1\qty(\simeq C_2), H_2\qty(\simeq C_3)$を次で定める．
 				\begin{align*}
-					H_1           & =\qty{e,\qty(1\ 2)},                                                       \\
-					H_2           & =\qty{e, \qty(1\ 2\ 3), \qty(1\ 3\ 2)},                                    \\
-					\mathcal{G}_3 & =\qty{e, \qty(1\ 2), \qty(1\ 3), \qty(2\ 3), \qty(1\ 2\ 3), \qty(1\ 3\ 2)}
+					H_1      & =\qty{e,\qty(1\ 2)},                                                       \\
+					H_2      & =\qty{e, \qty(1\ 2\ 3), \qty(1\ 3\ 2)},                                    \\
+					\frakS_3 & =\qty{e, \qty(1\ 2), \qty(1\ 3), \qty(2\ 3), \qty(1\ 2\ 3), \qty(1\ 3\ 2)}
 				\end{align*}
 				において，
 				\begin{align*}
@@ -873,31 +881,31 @@
 				\end{align*}
 				よって
 				\[eH_1=\qty(1\ 2)H_1\]
-				左剰余集合$\mathcal{G}_3/H_1=\qty{eH_1,\qty(1\ 3)H_1}$
+				左剰余集合$\frakS_3/H_1=\qty{eH_1,\qty(1\ 3)H_1}$
 				\begin{align*}
-					\qty(1\ 3)H_1              & =\qty{\qty(1\ 3)e=\qty(1\ 3),\qty(1\ 3)\qty(1\ 2)=\qty(1\ 2\ 3)}=\qty(1\ 2\ 3)H_1            \\
-					\qty(2\ 3)H_1              & =\qty{\qty(2\ 3)e=\qty(2\ 3),\qty(2\ 3)\qty(1\ 2)=\qty(1\ 3\ 2)}=\qty(1\ 3\ 2)H_1            \\
-					\mathcal{G}_3/H_1          & =\qty{e,\qty(1\ 2)}\sqcup\qty{\qty(1\ 3), \qty(1\ 2\ 3)}\sqcup\qty{\qty(2\ 3),\qty(1\ 3\ 2)} \\
-					H_1\backslash\mathcal{G}_3 & =\qty{H_1e=H_1\qty(1\ 2),H_1\qty(1\ 3)=H_1\qty(1\ 3\ 2),H_1\qty(2\ 3)=H_1\qty(1\ 2\ 3)}      \\
-					H_1\qty(1\ 3)              & =\qty{e\qty(1\ 3)=\qty(1\ 3),\qty(1\ 2)\qty(1\ 3)}=\qty(1\ 3\ 2)=H_1\qty(1\ 3\ 2)            \\
-					                           & =\qty{e, \qty(1\ 2)}\sqcup\qty{\qty(1\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(2\ 3),\qty(1\ 2\ 3)}
+					\qty(1\ 3)H_1         & =\qty{\qty(1\ 3)e=\qty(1\ 3),\qty(1\ 3)\qty(1\ 2)=\qty(1\ 2\ 3)}=\qty(1\ 2\ 3)H_1            \\
+					\qty(2\ 3)H_1         & =\qty{\qty(2\ 3)e=\qty(2\ 3),\qty(2\ 3)\qty(1\ 2)=\qty(1\ 3\ 2)}=\qty(1\ 3\ 2)H_1            \\
+					\frakS_3/H_1          & =\qty{e,\qty(1\ 2)}\sqcup\qty{\qty(1\ 3), \qty(1\ 2\ 3)}\sqcup\qty{\qty(2\ 3),\qty(1\ 3\ 2)} \\
+					H_1\backslash\frakS_3 & =\qty{H_1e=H_1\qty(1\ 2),H_1\qty(1\ 3)=H_1\qty(1\ 3\ 2),H_1\qty(2\ 3)=H_1\qty(1\ 2\ 3)}      \\
+					H_1\qty(1\ 3)         & =\qty{e\qty(1\ 3)=\qty(1\ 3),\qty(1\ 2)\qty(1\ 3)}=\qty(1\ 3\ 2)=H_1\qty(1\ 3\ 2)            \\
+					                      & =\qty{e, \qty(1\ 2)}\sqcup\qty{\qty(1\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(2\ 3),\qty(1\ 2\ 3)}
 				\end{align*}
 				{\color{red} ここで
-				\[\mathcal{G}_3/H_1\neq H_1\backslash\mathcal{G}_3\]
+				\[\frakS_3/H_1\neq H_1\backslash\frakS_3\]
 				である．}
 
 				\underline{$H_2$による左剰余類の集合}
 				\begin{align*}
-					\mathcal{G}_3/H_2          & =\qty{eH_2,\qty(1\ 2)H_2},                                                                                  \\
-					eH_2                       & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)},                                                                       \\
-					\qty(1\ 2)H_2              & =\qty{\qty(1\ 2),\qty(1\ 2)\qty(1\ 2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(1\ 3\ 2)=\qty(1\ 3)}                     \\
-					H_2\backslash\mathcal{G}_3 & =\qty{H_2e,H_2\qty(1\ 2)}                                                                                   \\
-					H_2e                       & =H_2,                                                                                                       \\
-					H_2\qty(1\ 2)              & =\qty{e\qty(1\ 2),\qty(1\ 2\ 3)\qty(1\ 2)=\qty(1\ 3),\qty(1\ 3\ 2)\qty(1\ 2)=\qty(2\ 3)},                   \\
-					\mathcal{G}_3/H_2          & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(1\ 3),\qty(2\ 3)}=H_2\backslash\mathcal{G}_3
+					\frakS_3/H_2          & =\qty{eH_2,\qty(1\ 2)H_2},                                                                             \\
+					eH_2                  & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)},                                                                  \\
+					\qty(1\ 2)H_2         & =\qty{\qty(1\ 2),\qty(1\ 2)\qty(1\ 2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(1\ 3\ 2)=\qty(1\ 3)}                \\
+					H_2\backslash\frakS_3 & =\qty{H_2e,H_2\qty(1\ 2)}                                                                              \\
+					H_2e                  & =H_2,                                                                                                  \\
+					H_2\qty(1\ 2)         & =\qty{e\qty(1\ 2),\qty(1\ 2\ 3)\qty(1\ 2)=\qty(1\ 3),\qty(1\ 3\ 2)\qty(1\ 2)=\qty(2\ 3)},              \\
+					\frakS_3/H_2          & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(1\ 3),\qty(2\ 3)}=H_2\backslash\frakS_3
 				\end{align*}
 				{\color{red} ここで
-				\[\mathcal{G}_3/H_2= H_2\backslash\mathcal{G}_3\]
+				\[\frakS_3/H_2= H_2\backslash\frakS_3\]
 				である．}
 			\end{example*}
 \section{正規部分群と剰余群}
@@ -948,13 +956,13 @@
 		cf. 有限単純群の分類(巡回，交代，リー型，散在)モンスター群の位数$\approx 8\times 10^{53}\gg 6\times 10^{23}$(アボガドロ数)．
 	\end{dfn}
 	\begin{example*}
-		$n$次交代群$\mathcal{A}_n$は$n$次対称群$\mathcal{G}_n$の正規部分群となる．
+		$n$次交代群$\frakA_n$は$n$次対称群$\frakS_n$の正規部分群となる．
 	\end{example*}
 	\begin{dfn}
 		群$G$の中心$Z\qty(G):G$の全ての元と可換な元全体の集合．
 	\end{dfn}
 	\begin{remark*}
-		$Z\qty(G)$は，$G$の正規部分群となる．このとき，射影一般線形群$PGL_2\qty(\bbR)\coloneqq GL\qty(2;\bbR)/Z\qty(GL\qty(2;\bbR))$，射影特殊線形群$PSL_2\qty(\bbR)\coloneqq SL\qty(2;\bbR)/Z\qty(SL\qty(2;\bbR))$
+		$Z\qty(G)$は，$G$の正規部分群となる．このとき，射影一般線形群$\PGL_2\qty(\bbR)\coloneqq \GL\qty(2;\bbR)/Z\qty(\GL\qty(2;\bbR))$，射影特殊線形群$\PSL_2\qty(\bbR)\coloneqq \SL\qty(2;\bbR)/Z\qty(\SL\qty(2;\bbR))$
 	\end{remark*}
 	\subsection{ラグランジュの定理}
 		\begin{prop}[左剰余類に関する定理]
@@ -1011,8 +1019,8 @@
 				\item 単位元は単独で類をなす．
 				\item 可換群は，各元が単独で共役類．
 			\end{itemize}
-			\begin{example*}[$\mathcal{G}_3$の共役類]
-				\[\mathcal{G}_3=\qty{e,c,c^{-1},\sigma_1,\sigma_2,\sigma_3}\]
+			\begin{example*}[$\frakS_3$の共役類]
+				\[\frakS_3=\qty{e,c,c^{-1},\sigma_1,\sigma_2,\sigma_3}\]
 				ここで$c=\qty{1\ 2\ 3},\sigma_1=\qty(1\ 2),\sigma_2=\qty(1\ 3),\sigma_3=\qty(2\ 3)$
 				\begin{align*}
 					\qty[e]        & =\qty{e}                          \\
@@ -1047,9 +1055,9 @@
 	\end{prop}
 	\begin{proof}
 		$f\in\Hom\qty(G,G^\prime)$とする．
-		\paragraph{部分群であること}
+		\subparagraph{部分群であること}
 			$\Ker f$には少なくとも$G$の単位元が属している．$a,b\in \Ker f$に対して，$f\qty(ab^{-1})=f\qty(a)f\qty(b)^{-1}=e_{G^\prime}\cdot e_{G^\prime}^{-1}=e_{G^\prime}\Rightarrow ab^{-1}\in\Ker f$が成立．よって$\Ker f$は$G$の部分群．
-		\paragraph{正規であること}
+		\subparagraph{正規であること}
 			任意の$g\in G$に対して$a\in\Ker f$ならば，
 			\[f\qty(gag^{-1})=f\qty(g)\cdot f\qty(a)\cdot f\qty(g)^{-1}=f\qty(g)\cdot e_{G^\prime}\cdot f\qty(g)^{-1}=e_{G^\prime}\]
 			より$gag^{-1}\in\Ker f$が成り立つ．
@@ -1057,7 +1065,7 @@
 	\begin{thm}[準同型定理]
 		$f\in\Hom\qty(G,G^\prime)$，$f$の像$\Im f$のなす$G^\prime$の部分群について，
 		\[\bar{f}:G/\Ker f\to\Im f;g\Ker f\mapsto f\qty(g)\]
-		による，群の同型\redunderline{$G/\Ker f\simeq\Im\qty(f)$}が成り立つ．この$\bar{f}$を\redunderline{$f$から誘導される(引き起こされる)同型写像}という．
+		による，群の同型\redunderline{$G/\Ker f\simeq\Im\qty(f)$}が成り立つ\footnote{$\kappa$:準同型，$\Ker f$:$G$の正規部分群}．この$\bar{f}$を\redunderline{$f$から誘導される(引き起こされる)同型写像}という．
 	\end{thm}
 	\begin{align*}
 		\begin{array}{ccccc}
@@ -1066,4 +1074,123 @@
 			  &                & G/\Ker f                      &                                                           &
 		\end{array}
 	\end{align*}
+	\begin{align*}
+		\begin{array}{ccc}
+			\bar{f}:G/\Ker f      & \longrightarrow & \Im f                 \\
+			\rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+			g\Ker f               & \longmapsto     & f\qty(g)
+		\end{array}
+	\end{align*}
+	\begin{proof}
+		\subparagraph{写像の定義が代表元によらないこと}$g^\prime\in g\Ker f$より，
+			\[g^\prime=gn\quad\qty(n\in\Ker f)\]
+			\[f\qty(g^\prime)=f\qty(gn)=f\qty(g)\cdot f\qty(n)=f\qty(g)\]
+		\subparagraph{準同型}
+			\begin{align*}
+				\bar{f}\qty(g\Ker f\cdot g^\prime\Ker f) & =\bar{f}\qty(\qty(gg^\prime)\Ker f)                   \\
+				                                         & =f\qty(gg^\prime)=f\qty(g)\cdot f\qty(g^\prime)       \\
+				                                         & =\bar{f}\qty(g\Ker f)\cdot\bar{f}\qty(g^\prime\Ker f)
+			\end{align*}
+		\subparagraph{単射} $\bar{f}\qty(g\Ker f)=\bar{f}\qty(g^\prime\Ker f)$つまり，$f\qty(g)=f\qty(g^\prime)$とすると，$f\qty(g^{-1}\cdot g^\prime)=f\qty(g)^{-1}\cdot f\qty(g^\prime)=e_{G^\prime}$となり，$g^{-1}\cdot g^\prime\in\Ker f$である．よって$g^\prime\in g\Ker f$から，$g\Ker f=g^\prime\Ker f$が得られる．
+		\subparagraph{全射} 任意の$\tilde{g}\in\Im f$から$\bar{f}\qty(g\Ker f)=\tilde{g}$を満たす$g\Ker f\in G/\Ker f$が存在することを示す．$\Im f$の定義より，$\forall\tilde{g}\in\Im f$に対して$f\qty(g)=\tilde{g}$を満たす$g\in G$が存在する．この$g$の属する剰余集合$g\Ker f$を取れば，$\bar{f}\qty(g\Ker f)=f\qty(g)=\tilde{g}$である．
+	\end{proof}
+	\begin{cor}
+		特に$G$が有限群のとき，
+		\[\qty|\Im f|=\qty|G|/\qty|\Ker f|\]
+		が成り立つ．
+	\end{cor}
+	\begin{note*}
+		線形代数の線形写像に関する次元定理に相当する．
+	\end{note*}
+	\begin{example*}[対称群$\frakS_n$と交代群$\frakA_n$]
+		$\frakS_n$から積を演算とする$\bbR^\times\coloneqq\bbR\backslash\qty{0}$への写像
+		\[\sgn:\frakS_n\to\bbR^\times;\sigma\mapsto\sgn\sigma=\begin{cases}
+				+1 & \sigma:\text{偶置換} \\
+				-1 & \text{それ以外}
+			\end{cases}\]
+		は準同型写像であり，$\Ker\sgn=\frakA_n,\Im\sgn=\qty{+1,-1}$である．
+		\[\bar{f}:\frakS_n/\frakA_n\to\qty{\pm 1};\sigma\frakA_n\mapsto\sgn\sigma\]
+		例えば，$\sigma_1=\qty(1, 2)$とすると
+		\[\frakS_n/\frakA_n=\qty{e\frakA_n,\sigma_1\frakA_n}\]
+		となり，
+		\[\bar{f}\qty(e\frakA_n)=1,\bar{f}\qty(\sigma_1\frakA_n)=-1\]
+		これは，$\qty{\pm 1}$への同型写像．
+	\end{example*}
+	\begin{example*}
+		$\GL\qty(n;\bbC)$から$\bbC^\times\coloneqq\bbC\backslash\qty{0}$への写像$\det:A\mapsto\det A$は準同型であり，
+		\begin{align*}
+			\Ker\det & =\SL\qty(n;\bbC)=\qty{g\in \GL\qty(n,\bbC)\mid\det g=1} \\
+			\Im\det  & =\bbC^\times=\bbC\backslash\qty{0}
+		\end{align*}
+		である．
+		\[\GL\qty(n;\bbC)/\SL\qty(n;\bbC)\simeq\bbC^\times\]
+	\end{example*}
+\section{群の乗法作用の軌道について}
+	$t$は$G$集合$T$に属する．
+	\begin{align*}
+		G_t      & = \qty{g\in G\mid gt = t}        & : & t\text{の固定部分群}      \\
+		G\qty(t) & = \qty{g\cdot t\in T\mid g\in G} & : & t\text{の}G\text{軌道}
+	\end{align*}
+	\begin{prop}
+		$T$を$G$集合とする．
+		\begin{enumerate}
+			\item $a\in G,t\in T$に対し，$G_{a\cdot t}=a\cdot G_t\cdot a^{-1}$
+			\item $a\in G,t\in T$に対し，$\qty|G_t|=\qty|G_{a\cdot t}|$
+		\end{enumerate}
+	\end{prop}
+	\begin{proof}
+		\begin{enumerate}
+			\item $g\in G_{a\cdot t}$とすると$gat=at\Leftrightarrow a^{-1}gat=t\Leftrightarrow a^{-1}ga\in G_t\Leftrightarrow g\in aG_ta^{-1}.$
+			\item $\qty|G_{a\cdot t}|=\qty|aG_ta^{-1}|=\qty|G_t|$
+		\end{enumerate}
+	\end{proof}
+	\begin{thm}[軌道構造定理]
+		$G$集合$T$において$t_0\in T$を1つ選んで固定．$G_{t_0}$と$G\qty(t_0)$に対して
+		\[\bar{f}:G/G_{t_0}\to G\qty(t_0);aG_{t_0}\mapsto a\cdot t_0\]
+		このとき，$\bar{f}$は全単射である．すなわち，固定部分群$G_{t_0}$に関する$G$の左剰余類と軌道$G\qty(t_0)$の点とは一対一に対応する．
+	\end{thm}
+	\begin{proof}
+		\subparagraph{well-definedであること}
+			$\forall b\in aG_{t_0}$とする．このとき，$\exists g\in G_{t_0}\suchthat b=ag\Rightarrow b\cdot t_0=\qty(ag)\cdot t_0=a\cdot\qty(g\cdot t_0)=a\cdot t_0$
+		\subparagraph{全射}
+			$G\qty(t_0)$の元$a\cdot t_0\,\qty(a\in G)$に対して$G/G_{t_0}$の元$aG_{t_0}$を取ればよい．
+		\subparagraph{単射}
+			$G/G_{t_0}$の元$aG_{t_0},bG_{t_0}$に対し，
+			\begin{align*}
+				\bar{f}\qty(aG_{t_0})=\bar{f}\qty(bG_{t_0}) & \Leftrightarrow a\cdot t_0=b\cdot t_0                  \\
+				                                            & \Leftrightarrow \qty(a^{-1}b)t_0=t_0                   \\
+				                                            & \Leftrightarrow a^{-1}b\in G_{t_0}                     \\
+				                                            & \Leftrightarrow\exists g\in G_{t_0}\suchthat g=a^{-1}b
+			\end{align*}
+			このとき$bG_{t_0}=agG_{t_0}=aG_{t_0}$が成り立つ．
+	\end{proof}
+	\begin{cor}\label{cor:6-3}
+		$G$を有限群，$T$を$G$集合とする．$t\in T$に対して，$t$の軌道$G\qty(t)$内の点の個数
+		\[\qty|G\qty(t)|=\qty(G;G_t)=\frac{\qty|G|}{\qty|G_t|}\]
+	\end{cor}
+	次に軌道がいくつあるのかを数えるのが次の定理(数え上げ問題)．
+	\begin{thm}[コーシー・フロベニウス]
+		$G$集合$T$が$m$個の軌道に分解されるとする．
+		\[T=T_1\sqcup T_2\sqcup\cdots\sqcup T_m,\quad T_j\cap T_k=\emptyset\,\qty(j\neq k)\]
+		$g\in G$による固定元の集合を$T^g$で表す．
+		\[T^g=\qty{t\in T\mid g\cdot t=t}\]
+		このとき，軌道の個数$m$は
+		\[m=\frac{1}{\qty|G|}\sum_{g\in G}\qty|T^g|\]
+		と表される．すなわち，軌道の個数は，固定元の個数の平均値．
+	\end{thm}
+	\begin{proof}
+		積集合$\qty(G,T)=\qty{\qty(g,t)\mid g\in G,t\in T}$を考える．$\qty(G,T)$の部分集合$S$を$S=\qty{\qty(g,t)\mid g\in G,t\in T,\redunderline{gt=t}}$で定義するとき，$S$は次の2通りに分解することができる．
+		\begin{align*}
+			S & =\bigcup_{g\in G}\qty{\qty(g,t)\mid t\in T^g} &  & \qty(g\in G\text{ごとに固定元をまとめる})   \\
+			  & =\bigcup_{t\in T}\qty{\qty(g,t)\mid g\in G_t} &  & \qty(t\in T\text{ごとに固定部分群をまとめる})
+		\end{align*}
+		このとき，
+		\[\qty|S|=\sum_{g\in G}\qty|T^g|=\sum_{t\in T}\qty|G_t|\]
+		ここで右辺の和を軌道ごとの和に書き直すと
+		\[\sum_{t\in T}\qty|G_t|=\sum_{j=1}^m\sum_{t\in T_j}\qty|G_t|\]
+		となる．同じ軌道に属する$t$に対して$\qty|G_t|$の値は一定であり，$T_j$の代表元を$t_j$とすると$T_j=G\qty(t_j)$である．さらに系\ref{cor:6-3}の結果を用いると
+		\[\sum_{t\in T_j}\qty|G_t|=\qty|G\qty(t_j)|\cdot\qty|G_{t_j}|=\frac{\qty|G|}{\qty|G_{t_j}|}\qty|G_{t_j}|=\qty|G|\]
+		以上より
+		\[\sum_{g\in G}\qty|T^g|=\sum_{t\in T}\qty|G_t|=m\qty|G|\]
+	\end{proof}
 \end{document}
