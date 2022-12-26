@@ -17,6 +17,7 @@
 \usepackage{framed} % 改ページ可能な表
 \usepackage{tikz} % 図を書く
 \usepackage{tikz-3dplot} % tikz で 3D
+\usetikzlibrary{calc}
 \usepackage{braket} % ブラケット記法
 \usepackage{physics} % 数式を簡単に書く
 \usepackage{listings,jvlisting} % ソースコードとか
@@ -124,6 +125,7 @@
 
 \newcommand{\redunderline}[1]{{\color{red} \underline{{\color{black} #1}}}}
 \newcommand{\blueunderline}[1]{{\color{blue} \underline{{\color{black} #1}}}}
+\newcommand{\bbN}{\ensuremath{\mathbb{N}}}
 \newcommand{\bbZ}{\ensuremath{\mathbb{Z}}}
 \newcommand{\bbQ}{\ensuremath{\mathbb{Q}}}
 \newcommand{\bbR}{\ensuremath{\mathbb{R}}}
@@ -1193,4 +1195,92 @@
 		以上より
 		\[\sum_{g\in G}\qty|T^g|=\sum_{t\in T}\qty|G_t|=m\qty|G|\]
 	\end{proof}
+	\subsection{数え上げ問題への応用}
+		\begin{ex*}
+			正四面体の4つの面を$n$色で塗り分ける場合の数を$C\qty(n)$とする．このとき$C\qty(n)$を$n$の式で表せ．ただし，色を重複して使ってよいものとする．また，適当な回転で一致するものは1通りとして数える．
+		\end{ex*}
+		まず，$n=1$のときは4つの面全て1色で塗るしかない
+		\[C\qty(1)=1\]
+		次に$n=2$のとき
+		\[C\qty(2)=5\]
+		4つの面の色をそれぞれ\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4}によって表すことにすると
+		\[\qty(\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4})\in\qty{\qty(1,1,1,1),\qty(2,2,2,2),\qty(1,1,1,2),\qty(1,1,2,2),\qty(1,2,2,2)}\]
+		$n=3$のとき
+		\[C\qty(3)=15\]
+		正四面体群の作用を考える．正四面体の頂点を$A_1,A_2,A_3,A_4$とする．正四面体の頂点を$O$とし，各辺の中点を図\ref{fig:tetrahedron}のように$L,M,N,L^\prime,M^\prime,N^\prime$とする．
+		%TODO:正四面体の図
+		\begin{figure}[h]
+			\centering
+			\tdplotsetmaincoords{60}{45}
+			\begin{tikzpicture}[tdplot_main_coords]
+				\coordinate[label=above:$A_1$] (A1) at (0,{2/sqrt(3)},{4*sqrt(2/3)});
+				\coordinate[label=left:$A_2$] (A2) at (-2,0,0);
+				\coordinate[label=right:$A_3$] (A3) at (2,0,0);
+				\coordinate[label=right:$A_4$] (A4) at (0,{2*sqrt(3)},0);
+				\coordinate[label=left:$O$] (O) at (0,{2/sqrt(3)},0);
+				\coordinate (L) at ($0.5*(A1)+0.5*(A2)$);
+				\coordinate (M) at ($0.5*(A1)+0.5*(A4)$);
+				\coordinate (N) at ($0.5*(A1)+0.5*(A3)$);
+				\coordinate (Lp) at ($0.5*(A3)+0.5*(A4)$);
+				\coordinate (Mp) at ($0.5*(A2)+0.5*(A3)$);
+				\coordinate (Np) at ($0.5*(A2)+0.5*(A4)$);
+				\draw (A1)--(A2)--(A3)--cycle;
+				\draw (A1)--(A4);
+				\draw[dashed] (A2)--(A4);
+				\draw (A3)--(A4);
+				\draw[red] (L) node[left] {$L$};
+				\draw[red] (M) node[right] {$M$};
+				\draw[red] (N) node[right] {$N$};
+				\draw[red] (Lp) node[right] {$L^\prime$};
+				\draw[red] (Mp) node[below] {$M^\prime$};
+				\draw[red] (Np) node[above] {$N^\prime$};
+				\fill[black] (O) circle(0.05);
+				\fill[red] (L) circle(0.05);
+				\fill[red] (M) circle(0.05);
+				\fill[red] (N) circle(0.05);
+				\fill[red] (Lp) circle(0.05);
+				\fill[red] (Mp) circle(0.05);
+				\fill[red] (Np) circle(0.05);
+			\end{tikzpicture}
+			\caption{正四面体}
+			\label{fig:tetrahedron}
+		\end{figure}
+		このとき，正四面体群$P\qty(4)$は次の12種類の回転からなる群．
+		\begin{align*}
+			\sigma_i        & : OA_i\text{を軸とする}\frac{2}{3}\pi\text{回転}\,\qty(i=1,2,3,4) \\
+			\sigma_i^\prime & : OA_i\text{を軸とする}\frac{4}{3}\pi\text{回転}\,\qty(i=1,2,3,4) \\
+			\tau_L          & : LL^\prime\text{を軸とする}\pi\text{回転}                        \\
+			\tau_M          & : MM^\prime\text{を軸とする}\pi\text{回転}                        \\
+			\tau_N          & : NN^\prime\text{を軸とする}\pi\text{回転}                        \\
+			I               & : \text{恒等写像}
+		\end{align*}
+		それぞれの面に$n$通りの塗り方があるので回転による同一視がない場合，$n^4$通りの塗り方がある．
+		\[\qty(\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4})\in\qty(k_1,k_2,k_3,k_4)\quad\qty(k_j=1,2,\cdots,n;j=1,2,3,4)\]
+		集合$T$を$T=\qty{\qty(k_1,k_2,k_3,k_4)\mid k_1,k_2,k_3,k_4\in\qty{1,2,\cdots,n}}$によって定め，$G=P\qty(4)$の$T$への応用を考えればよい．このとき軌道の個数は
+		\begin{align*}
+			m & =\frac{1}{\qty|G|}\sum_{g\in G}\qty|T^g|                                                                                                   \\
+			  & =\frac{1}{12}\qty(\qty|T^I|+\qty|T^{\sigma_1}|+\cdots+\qty|T^{\sigma_1^\prime}|+\cdots+\qty|T^{\tau_L}|+\qty|T^{\tau_M}|+\qty|T^{\tau_N}|) \\
+			  & =\frac{1}{12}\qty(n^4+n^2+\cdots+n^2+\cdots+n^2+n^2+n^2)                                                                                   \\
+			  & =\frac{1}{12}\qty(n^4+11\times n^2)
+		\end{align*}
+\section{群の表現}
+	行列を用いて群を理解する．
+	$G$を群，$V$を数体$K$\footnote{$\bbR$とか$\bbC$など}上の線形空間とする．$G$から$V$上の一般線形群$\GL\qty(V)$への準同型写像
+	\[\rho:G\to G\qty(V)\]
+	のことを$G$の$V$における\redunderline{表現(representation)}という．$V$を$\rho$の\redunderline{表現空間}と呼び，$\qty(\rho,V)$あるいは$V$を表現ということもある．$V$の次元が有限/$d\in\bbN$/無限のとき，$\rho$を有限/$d$/無限次元表現という．\\
+	$\Rightarrow$群$G$の線形空間$V$における表現$\rho$は，$G$の$V$への線形な作用に他ならない．特に有限次元表現の場合，群$G$の各元$g$に対して$K$上に値を取る行列要素からなる正則行列$\rho\qty(g)$が与えられ，それらの行列の間に
+	\[\rho\qty(gh)=\rho\qty(g)\cdot\rho\qty(h)\quad\qty(g,h\in G)\]
+	が成り立つ．このとき，各行列$\rho\qty(g)$を表現行列といい，表現行列の次数\footnote{以降$d$とする．}は$g\in G$に依らず一定である．
+
+	\begin{itemize}
+		\item 単位元$e$の表現行列$\rho\qty(e)$\\$\rho\qty(g)=\rho\qty(ge)=\qty(\rho)\cdot\rho\qty(e)$および$\rho\qty(g)$の正則性から$\rho\qty(e)$は$d$次単位行列$I$
+		\item $g\in G$,逆元$g^{-1}$の表現行列$\rho\qty(g^{-1})$\\$\rho\qty(g)\cdot\qty(g^{-1})=\rho\qty(gg^{-1})=\rho\qty(e)=I$から$\rho\qty(g^{-1})$は$\rho\qty(g)$の逆行列
+	\end{itemize}
+	群が$g_1,\cdots,g_k\in G$によって生成される場合，生成元に対する表現行列$\rho\qty(g_1),\cdots,\rho\qty(g_k)$からすべての表現行列$\rho\qty(g)\,\qty(g\in G)$は定まる．
+	\subparagraph{\redunderline{ユニタリ表現}} 各$g\in G$に対して，$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$をユニタリ表現という．$K=\bbC$の場合，一般に$\rho$を\redunderline{ユニタリ表現}としても一般性を失うことはない．また$K=\bbR$の場合，各$g\in G$に対して$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$を\redunderline{直交表現}という．
+	\subparagraph{\redunderline{恒等表現}} 全ての元に単位行列を対応させた表現
+	\subparagraph{\redunderline{忠実な表現(faithful)}} 各$g_i$に対する$\rho\qty(g_i)$が全て相異なる行列で与えられているとき
+		\begin{remark*}
+			表現において，異なる$g,h\in G$に対して，表現行列$\rho\qty(g)$と$\rho\qty(h)$が異なるとは限らない．
+		\end{remark*}
 \end{document}
