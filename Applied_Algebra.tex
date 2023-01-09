@@ -318,47 +318,45 @@
 		\centerline{元は各行，各列においてそれぞれ1回のみ現れる．(全単射)}
 		について確かめることができる．特に，対角線に対して対称な場合，可換群，非対称な場合，非可換群．
 	\subsection{群の例}
-		\begin{itemize}
-			\item 巡回群$C_n$
-				\begin{dfn}
-					一つの元のべきで群の全ての元が表示できるとき，この群を\redunderline{巡回群(cyclic group)}という．位数$n$の巡回群を$C_n$と書く．
-				\end{dfn}
-				$C_1=\qty{e},C_2=\qty{e,c}=\braket{c}{c^2=e}, C_3=\qty{e,c,c^2}=\braket{c}{c^3=e},C_4,\cdots,C_n=\qty{e,c,\cdots,c^{n-1}}=\braket{c}{c^n=e},\cdots,C_\infty$において指数法則$c^mc^n=c^{m+n}$が成り立ち，加法群$\bbZ$と同一視することができる．$C_\infty=\qty{e,c,c^{-1},c^2,c^{-2},\cdots}$
-			\item 二面体群$D_n$
-				\begin{dfn}
-					位数$2n$の二面体群(dihedral group)$D_n$
-					\begin{align*}
-						D_n       & =\qty{e,a,a^2,\cdots,a^{n-1},b,ab,a^2b,\cdots,a^{n-1}b} \\
-						          & =\braket{a,b}{e=a^n=b^2=abab}                           \\
-						\qty|D_n| & =2n.
-					\end{align*}
-					二面体群の表記の1つに，任意の元が2つの元$a,b$のいくつかの積で表示するものがある．このとき，$D_n$は集合$\qty{a,b}\subset D_n$によって生成されるといい，$\qty{a,b}$を\redunderline{生成系}，生成系の元を\redunderline{生成元}という．
+		\paragraph{巡回群$C_n$}
+			\begin{dfn}
+				一つの元のべきで群の全ての元が表示できるとき，この群を\redunderline{巡回群(cyclic group)}という．位数$n$の巡回群を$C_n$と書く．
+			\end{dfn}
+			$C_1=\qty{e},C_2=\qty{e,c}=\braket{c}{c^2=e}, C_3=\qty{e,c,c^2}=\braket{c}{c^3=e},C_4,\cdots,C_n=\qty{e,c,\cdots,c^{n-1}}=\braket{c}{c^n=e},\cdots,C_\infty$において指数法則$c^mc^n=c^{m+n}$が成り立ち，加法群$\bbZ$と同一視することができる．$C_\infty=\qty{e,c,c^{-1},c^2,c^{-2},\cdots}$
+		\paragraph{二面体群$D_n$}
+			\begin{dfn}
+				位数$2n$の二面体群(dihedral group)$D_n$
+				\begin{align*}
+					D_n       & =\qty{e,a,a^2,\cdots,a^{n-1},b,ab,a^2b,\cdots,a^{n-1}b} \\
+					          & =\braket{a,b}{e=a^n=b^2=abab}                           \\
+					\qty|D_n| & =2n.
+				\end{align*}
+				二面体群の表記の1つに，任意の元が2つの元$a,b$のいくつかの積で表示するものがある．このとき，$D_n$は集合$\qty{a,b}\subset D_n$によって生成されるといい，$\qty{a,b}$を\redunderline{生成系}，生成系の元を\redunderline{生成元}という．
 
-					また，生成元の間の任意の関係式が還元される関係式のことを\redunderline{基本関係式}という．\footnote{$D_n$では，$e=a^n=b^2=abab$}
-				\end{dfn}
-				\begin{itemize}
-					\item 群積表で構成した群において，
-						\[G_1=C_1,G_2=C_2,G_3=C_3,G_4^{\qty(1)}=C_4\]
-					\item 巡回群でない最小位数の群$D_2=\qty(G_4^{\qty(2)})$
-					\item 位数最小の非可換な群$D_3$
-				\end{itemize}
-				\begin{dfn}
-					一般の群$G$において，元$x\in G$が生成する巡回群の位数を\redunderline{元$x$の位数}という\footnote{cf.群の位数}．$x^n=e$となる最小の$n>0$が$x$の位数(ない場合は，元$x$の位数は$\infty$として扱う)．
-				\end{dfn}
-				\begin{example*}
-					\[C_4=\qty{e,c,c^2,c^3}=\braket{c}{c^4=e}\]
-					$c$の位数は4，$c^2$の位数は2，$\cdots$
-				\end{example*}
-			\item (行列群) $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
-				\begin{itemize}
-					\item 一般線形群\[\GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
-					\item 特殊線形群\[\SL_n\qty(\bbC)=\qty{g\in \GL_n\qty(\bbC)\mid\det g=1}\]
-					\item 直交群\[O_n=\qty{g\in \GL_n\qty(\bbR)\mid\,^t\!g\cdot g=1}\]
-					\item ユニタリー群\[U_n=\qty{g\in \GL_n\qty(\bbC)\mid\overline{^t\!g}\cdot g=1}\]
-				\end{itemize}
-		\end{itemize}
+				また，生成元の間の任意の関係式が還元される関係式のことを\redunderline{基本関係式}という．\footnote{$D_n$では，$e=a^n=b^2=abab$}
+			\end{dfn}
+			\begin{itemize}
+				\item 群積表で構成した群において，
+					\[G_1=C_1,G_2=C_2,G_3=C_3,G_4^{\qty(1)}=C_4\]
+				\item 巡回群でない最小位数の群$D_2=\qty(G_4^{\qty(2)})$
+				\item 位数最小の非可換な群$D_3$
+			\end{itemize}
+			\begin{dfn}
+				一般の群$G$において，元$x\in G$が生成する巡回群の位数を\redunderline{元$x$の位数}という\footnote{cf.群の位数}．$x^n=e$となる最小の$n>0$が$x$の位数(ない場合は，元$x$の位数は$\infty$として扱う)．
+			\end{dfn}
+			\begin{example*}
+				\[C_4=\qty{e,c,c^2,c^3}=\braket{c}{c^4=e}\]
+				$c$の位数は4，$c^2$の位数は2，$\cdots$
+			\end{example*}
+		\paragraph{(行列群)} $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
+			\begin{itemize}
+				\item 一般線形群\[\GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
+				\item 特殊線形群\[\SL_n\qty(\bbC)=\qty{g\in \GL_n\qty(\bbC)\mid\det g=1}\]
+				\item 直交群\[O_n=\qty{g\in \GL_n\qty(\bbR)\mid\,^t\!g\cdot g=1}\]
+				\item ユニタリー群\[U_n=\qty{g\in \GL_n\qty(\bbC)\mid\overline{^t\!g}\cdot g=1}\]
+			\end{itemize}
 	\subsection{いろいろな代数系}
-		群以外にさまざまな"代数"が考えられる．
+		群以外にさまざまな``代数''が考えられる．
 		\begin{dfn}
 			集合$M$上に二項演算$\mu:M\times M\to M$が定義されているとする．
 			\begin{itemize}
@@ -371,7 +369,7 @@
 					を満たす$x^\prime\in M$が存在するモノイドを\redunderline{群}という．
 			\end{itemize}
 		\end{dfn}
-		さらに，環，体などの複雑な"代数系"もある．
+		さらに，環，体などの複雑な``代数系''もある．
 		\begin{example*}[半群の例]%TODO: 直す
 			$\qty(\bbR,\max)$: $x,y\in\bbR$に対して
 			\[x\circ y=\max\qty(x,y)\]
@@ -380,7 +378,7 @@
 			さらに形式的な単位元となる$-\infty$を考慮に入れる場合，$\qty(\bbR\cup\qty{-\infty},\max)$はモノイドとなる．逆元は存在しない($\cdots\max\qty(x,x^\prime)=-\infty$となる$x^\prime$が存在しない)
 		\end{example*}
 		\begin{dfn}
-			モノイド$M$の元で逆元$x^\prime$が存在するものを\redunderline{単元(unit)}といい$M^\times$を$M$の単元のなす部分集合とする．このとき，$M^\prime$は群をなし，\redunderline{単元群(unit group)}と呼ばれる．
+			モノイド$M$の元で逆元$x^\prime$が存在するものを\redunderline{単元(unit)}といい$M^\times$を$M$の単元のなす部分集合とする．このとき，$M^\times$は群をなし，\redunderline{単元群(unit group)}と呼ばれる．
 		\end{dfn}
 		\begin{example*}
 			$K\in\qty{\bbQ,\bbR,\bbC}$に対して，$K^\times=K\backslash\qty{0}$は積に関して単元群．
@@ -395,7 +393,7 @@
 		\end{enumerate}
 		以上より，次の命題を得る．
 		\begin{prop}
-			任意の集合$X$に対し，$X$から$X$への写像の集合$M\qty(X)$はモノイドをなす．全単射のなす部分集合$S\qty(X)=M\qty(X)^\times$が単位元となる．$S\qty(X)$を$X$の\redunderline{対称群(symmetric group)}
+			任意の集合$X$に対し，$X$から$X$への写像の集合$M\qty(X)$はモノイドをなす．全単射のなす部分集合$S\qty(X)=M\qty(X)^\times$が単位元となる．$S\qty(X)$を$X$の\redunderline{対称群(symmetric group)}という．
 
 			特に$X$が有限集合のとき$\qty(\sharp X=n<\infty)$，$S\qty(X)$を$n$次対称群といい，$S\qty(X)=S_n$あるいは$\frakS_n$とかく．$S_n$を$n$次置換群(permutation group)と呼ぶ場合もある．$S_n$の位数は$\qty|S_n|=n!$
 		\end{prop}
@@ -505,7 +503,7 @@
 		\end{example*}
 	\subsubsection*{準同型の例}
 		1次分数変換
-		\[G=\qty{f\qty(x)=\frac{ax+b}{cx+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0}\]
+		\[G=\qty{f\qty(x)=\frac{ax+b}{cx+d}\mid a,b,c,d\in\bbC,ad-bc\neq 0}\]
 		$\GL\qty(2,\bbC)$\footnote{$\qty|A|=ad-bc\neq 0$}の元$A=\mqty[
 				a & b \\
 				c & d
@@ -600,7 +598,7 @@
 
 			線形写像$\varphi:V\to W$に対して，$\Ker\varphi$は，$V$の部分ベクトル空間．$\Im\varphi$は，$W$の部分ベクトル空間．
 		\end{note*}
-		一般の準同型$f:G\to G^\prime$は，$G$の元をいくつかずつまとめて，より"粗い"群を作って$G^\prime$に埋め込む．準同型$f$が元の群をどれだけ"粗く"するかは，$f$の像の1点，特に単位元の逆像のみで決まる．
+		一般の準同型$f:G\to G^\prime$は，$G$の元をいくつかずつまとめて，より``粗い''群を作って$G^\prime$に埋め込む．準同型$f$が元の群をどれだけ``粗く''するかは，$f$の像の1点，特に単位元の逆像のみで決まる．
 		\begin{dfn}
 			$G$を群とする．$G$から$G$への準同型写像を$G$上の\redunderline{自己準同型(endomorphism)}という．$G$上の自己準同型写像の全体$\End\qty(G)$はモノイドをなす．さらに同型写像である時は，$G$上の\redunderline{自己同型(automorphism)}という．$G$上の自己同型全体からなる集合$\Aut\qty(G)$を\redunderline{自己同型群}という．
 		\end{dfn}
@@ -790,7 +788,7 @@
 			\[P\qty(6)_{A_1}=\qty{\text{恒等変換},\text{立方体の重心と頂点}A_1\text{を通る対角線周りの}\frac{2}{3}\pi\text{回転},\frac{4}{3}\pi\text{回転}}\]
 		\end{example*}
 		\begin{itemize}
-			\item 集合$X$への群$G$の作用が推移的である時，集合$X$と集合$G$は以下の意味で"ほぼ同じ"とみなすことができる．
+			\item 集合$X$への群$G$の作用が推移的である時，集合$X$と集合$G$は以下の意味で``ほぼ同じ''とみなすことができる．
 		\end{itemize}
 		\begin{prop}
 			$G$を群，$X$を$G$-集合．$x_0\in X$に対し，
@@ -799,7 +797,7 @@
 			\[G\text{の$X$への作用が推移的}\Leftrightarrow f\text{が全射},\,f\qty(G)=X\]
 		\end{prop}
 		\begin{remark*}
-			このとき，$f$は単射であるとは限らない．しかし，群$G$を固定部分群で"割る"ことで全単射を作ることができる．(cf.準同型定理など\dots)
+			このとき，$f$は単射であるとは限らない．しかし，群$G$を固定部分群で``割る''ことで全単射を作ることができる．(cf.準同型定理など\dots)
 
 			「群$G$を部分群で割る」→$G$の同値類のひとつである\blueunderline{剰余類}の導入
 		\end{remark*}
