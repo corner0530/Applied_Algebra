@@ -75,6 +75,7 @@
 \newtheorem{prop}[dfn]{命題}
 \newtheorem{lem}[dfn]{補題}
 \newtheorem{ex}[dfn]{例}
+\newtheorem{exe}[dfn]{例題}
 
 \newtheoremstyle{mystyle2}% スタイル名
   {}% 上部スペース
@@ -222,10 +223,10 @@
 			が成立する(同値関係の性質から直ちに示される)
 		\end{screen}
 
-		\begin{example*}
+		\begin{ex}
 			$S$:ある学校の学生全体の集合．$a,b\in S$の間の関係「クラスメートである」は同値関係．
 			この関係を$\sim^\prime$で表すと，$a\sim^\prime b$は「$a$は$b$とクラスメートである」の意．このとき$C_a=\qty{x\in S\mid x\sim a}$は「$a$さんのクラスメート($a$さんを含む)の全体」$\leftrightarrow$ $a$さんの属するクラス
-		\end{example*}
+		\end{ex}
 
 \section{群}
 	\begin{dfn}[二項演算]
@@ -278,9 +279,9 @@
 		\begin{cor}[組み替え定理]
 			位数$n$の群$G$に任意の元$x\in G$をかけて得られる集合を$G^\prime=xG$とする．$G=\qty{y_k\mid k=1,2,\cdots,n}$と$G^\prime=\qty{xy_k\mid k=1,2,\cdots,n}$の間には全単射の写像が存在し，$G$と$G^\prime$は対等である．
 		\end{cor}
-		\begin{example*}
+		\begin{ex}
 			$\bbZ,\bbQ,\bbR,\bbC$: 通常の足し算を群演算として加法群．単位元$0$，$x$の逆元は$-x$．$K\in\qty{\bbQ,\bbR,\bbC}$に対して，$K^\times=K\backslash\qty{0}$:通常の掛け算を群演算とした乗法群．単位元$1$，$x$の逆元は$\frac{1}{x}=x^{-1}$．
-		\end{example*}
+		\end{ex}
 		まず，位数の小さな群について考える．「有限集合$G$に対して，$\qty(G,\circ)$が群となるよう二項演算$\circ:G\times G\to G$を与える」
 		\begin{itemize}
 			\item 位数1の群$G_1=\qty{e}$の群積表 \begin{table}[h]
@@ -345,10 +346,10 @@
 			\begin{dfn}
 				一般の群$G$において，元$x\in G$が生成する巡回群の位数を\redunderline{元$x$の位数}という\footnote{cf.群の位数}．$x^n=e$となる最小の$n>0$が$x$の位数(ない場合は，元$x$の位数は$\infty$として扱う)．
 			\end{dfn}
-			\begin{example*}
+			\begin{ex}
 				\[C_4=\qty{e,c,c^2,c^3}=\braket{c}{c^4=e}\]
 				$c$の位数は4，$c^2$の位数は2，$\cdots$
-			\end{example*}
+			\end{ex}
 		\paragraph{(行列群)} $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
 			\begin{itemize}
 				\item 一般線形群\[\GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
@@ -371,19 +372,19 @@
 			\end{itemize}
 		\end{dfn}
 		さらに，環，体などの複雑な``代数系''もある．
-		\begin{example*}[半群の例]
+		\begin{ex}[半群の例]
 			$\qty(\bbR,\max)$: $x,y\in\bbR$に対して
 			\[x\circ y=\max\qty(x,y)\]
 			このとき，$\qty(\bbR,\max)$は半群．
 			\[\max\qty(\max\qty(x,y),z)=\max(x,\max\qty(y,z))\]
 			さらに形式的な単位元となる$-\infty$を考慮に入れる場合，$\qty(\bbR\cup\qty{-\infty},\max)$はモノイドとなる．逆元は存在しない($\because\max\qty(x,x^\prime)=-\infty$となる$x^\prime$が存在しない)
-		\end{example*}
+		\end{ex}
 		\begin{dfn}
 			モノイド$M$の元で逆元$x^\prime$が存在するものを\redunderline{単元(unit)}といい$M^\times$を$M$の単元のなす部分集合とする．このとき，$M^\times$は群をなし，\redunderline{単元群(unit group)}と呼ばれる．
 		\end{dfn}
-		\begin{example*}
+		\begin{ex}
 			$K\in\qty{\bbQ,\bbR,\bbC}$に対して，$K^\times=K\backslash\qty{0}$は積に関して単元群．
-		\end{example*}
+		\end{ex}
 	\subsection{写像の合成と群}
 		集合$X$から$X$自身への写像全体のなす集合を$M\qty(X)$とかく．$x\in X$および$f,g\in M\qty(X)$に対し，写像の合成$f\cdot g\qty(x)=f\qty(g\qty(x))$を$f\cdot g\in M\qty(X)$とかく．このとき
 		\begin{enumerate}
@@ -489,7 +490,7 @@
 		\begin{dfn}
 			準同型$f$が全単射のとき，$f$を\redunderline{同型写像}または\redunderline{同型(isomorphism)}という．同型写像$f:G\to G^\prime$が存在すれば\redunderline{$G$と$G^\prime$は同型}であるといい．$G\simeq G^\prime$または$G\stackrel{\sim}{\longrightarrow}G^\prime$などとかく．
 		\end{dfn}
-		\begin{example*}
+		\begin{ex}
 			同型を用いると，先の例(1),(2),(3)は\dots
 
 			(1)の群は，通常の加法に関する$\bbZ$のなす群と同型．$f\qty(a)=a+1$とする．
@@ -501,7 +502,7 @@
 				\item[(3)] $f^\prime\qty(a)=2a$
 			\end{itemize}
 			{\color{red} 準同型，全単射であることは容易に確かめられる．}
-		\end{example*}
+		\end{ex}
 	\subsubsection*{準同型の例}
 		1次分数変換
 		\[G=\qty{f\qty(x)=\frac{ax+b}{cx+d}\mid a,b,c,d\in\bbC,ad-bc\neq 0}\]
@@ -550,7 +551,7 @@
 			\[\Im f=\qty{f\qty(x)\mid x\in G}\]
 			を準同型写像の\redunderline{像(image)}という．
 		\end{dfn}
-		\begin{example*}
+		\begin{ex}
 			\begin{align*}
 				\begin{array}{ccc}
 					f:\GL\qty(2,\bbC)     & \longrightarrow & G=\qty{\phi\qty(z)=\frac{az+b}{cz+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0} \\
@@ -567,7 +568,7 @@
 				       & =\qty{\mqty[a                                & 0 \\0&a]\mid a\in\bbC\backslash\qty{0}}
 			\end{align*}
 			つまり，分子と分母に定数倍の不定性が存在することを示している．
-		\end{example*}
+		\end{ex}
 		\begin{prop}
 			核が単位元のみからなることが，群の準同型が1対1となるための必要十分条件．
 		\end{prop}
@@ -603,13 +604,13 @@
 		\begin{dfn}
 			$G$を群とする．$G$から$G$への準同型写像を$G$上の\redunderline{自己準同型(endomorphism)}という．$G$上の自己準同型写像の全体$\End\qty(G)$はモノイドをなす．さらに同型写像である時は，$G$上の\redunderline{自己同型(automorphism)}という．$G$上の自己同型全体からなる集合$\Aut\qty(G)$を\redunderline{自己同型群}という．
 		\end{dfn}
-		\begin{example*}[全単射だが同型でない例]
+		\begin{ex}[全単射だが同型でない例]
 			\begin{align*}
 				G      & :\,\text{位数}n\text{の有限群} \\
 				\phi_a & :\,G\to G;\,g\mapsto ag
 			\end{align*}
 			ここで$a\in G$とする．\footnote{準同型でないことがわかる}
-		\end{example*}
+		\end{ex}
 	\subsubsection*{自己同型の重要な例}
 		\begin{prop}
 			群$G$の元$a\in G$を選ぶ．$a\in G$による\redunderline{共役変換}と呼ばれる写像
@@ -668,7 +669,7 @@
 				                     & =\rho\qty(\rho\qty(x,g),h)
 			\end{align*}
 		\end{proof}
-		\begin{example*}
+		\begin{ex}
 			正三角形への作用について，% 書き直す?
 			\begin{itemize}
 				\item[変換1] $\rho_a$:反時計周りに$\frac{2}{3}\pi$回転\\$\rho_h$:重心を通る垂直軸で折り返し変換
@@ -690,11 +691,11 @@
 				                                                           & =\triangle\qty(213)
 			\end{align*}
 			ここで$x\mapsto f\qty(g^{-1}\circ x)$とすると{\color{red} 左作用}となる．
-		\end{example*}
+		\end{ex}
 		\begin{prop}[$G$集合$X$上の関数への作用]
 			群$G$が集合$X$に\redunderline{左から作用}しているとき，$X$上の複素数値関数全体を$F\qty(X)$と置き，$g\in G$の$F\qty(X)$への作用を，関数$f\in F\qty(X)$を関数$x\mapsto f\qty(g\cdot x)\quad\qty(\forall x\in X)$に写す写像を定める．これは{\color{red} 右作用}になる．これを$G$の$X$への作用から引き起こされる$X$上の関数への作用という．
 		\end{prop}
-		\begin{example*}
+		\begin{ex}
 			$\calH=\qty{z\in\bbC\mid\Im z>0}$，左作用$\mu:\SL_2\qty(\bbR)\times\calH\to\calH$
 			\[\qty(g=\mqty(a&b\\c&d),z)\mapsto\mu\qty(g,z)=\frac{az+b}{cz+d}\quad\qty(ad-bc=1)\]
 			複素上半平面$\calH$の上の正則関数$f\qty(z)$全体の集合$H\qty(\calH)$への作用$f\qty(g\cdot z)$は右作用となる．
@@ -711,7 +712,7 @@
 				f\qty(z) & \stackrel{g}{\to}F\qty(z)=f\qty(g\cdot z)=f\qty(z+1)                                                                                                    \\
 				         & \stackrel{h}{\to}F\qty(h\cdot z)=F\qty(\frac{z}{z+1})=f\qty(\frac{z}{z+1}+1)=f\qty(\frac{2z+1}{z+1})=f\qty(\qty(gh)\cdot z)=f\qty(h\cdot\qty(g\cdot z))
 			\end{align*}
-		\end{example*}
+		\end{ex}
 	\subsection{集合$X$の軌道分解}
 		\begin{dfn}
 			(二項演算が定義されている)集合$S$の集合$X$への左からの作用とは，次の条件より写像
@@ -749,7 +750,7 @@
 			$\Leftrightarrow\forall x,y\in X$に対し，$\exists g\in G\suchthat x=g\cdot y$\\
 			$\Leftrightarrow\forall x_0\in X$に対し，$G\cdot x_0=G\qty(x_0)=X$
 		\end{note*}
-		\begin{example*}[軌道分解の例]
+		\begin{ex}[軌道分解の例]
 			4次の巡回群$C_4$の正六面体に作用
 			\begin{align*}
 				C_4\cdot 1 & =\qty{1,2,3,4} \\
@@ -779,15 +780,15 @@
 				\end{tikzpicture}
 				\caption{正六面体}
 			\end{figure}
-		\end{example*}
+		\end{ex}
 		\begin{dfn}[固定部分群]
 			群$G$が集合$X$に作用しているとき，$X$の1点$x$を動かさない$g\in G$の全体は，$G$の部分群となる．これを$x$の\redunderline{固定部分群}(stabilizer of $x$)といい，$G_x$とかく．
 			\[G_x=\qty{g\in G\mid g\cdot x}\qty(\leqq G)\]
 		\end{dfn}
-		\begin{example*}
+		\begin{ex}
 			正六面体群$P\qty(6)$において頂点$A_1$を固定する部分群は位数3の巡回部分群．
 			\[P\qty(6)_{A_1}=\qty{\text{恒等変換},\text{立方体の重心と頂点}A_1\text{を通る対角線周りの}\frac{2}{3}\pi\text{回転},\frac{4}{3}\pi\text{回転}}\]
-		\end{example*}
+		\end{ex}
 		\begin{itemize}
 			\item 集合$X$への群$G$の作用が推移的である時，集合$X$と集合$G$は以下の意味で``ほぼ同じ''とみなすことができる．
 		\end{itemize}
@@ -868,7 +869,7 @@
 			この同値関係$\stackrel{\text{R}}{\sim}$による剰余類
 			\[C^\prime_H\qty(a)=\qty{x\in G\mid x\stackrel{\text{R}}{\sim}a}\]
 			を$G$の$H$による\redunderline{右剰余類}という．$Ha$と表すことも多い
-			\begin{example*}
+			\begin{ex}
 				3次対称群$\frakS_3$に対して，部分群$H_1\qty(\simeq C_2), H_2\qty(\simeq C_3)$を次で定める．
 				\begin{align*}
 					H_1      & =\qty{e,\qty(1\ 2)},                                                       \\
@@ -908,7 +909,7 @@
 				{\color{red} ここで
 				\[\frakS_3/H_2= H_2\backslash\frakS_3\]
 				である．}
-			\end{example*}
+			\end{ex}
 \section{正規部分群と剰余群}
 	\begin{prop}
 		$H$を$G$の部分群とする．$G$の$H$による左類別と右類別が類別として一致するための必要十分条件は任意の$a\in G$に対して
@@ -956,9 +957,9 @@
 		正規部分群が(単位群と自分自身以外に)1つもない群を単純群という．\\
 		cf. 有限単純群の分類(巡回，交代，リー型，散在)モンスター群の位数$\approx 8\times 10^{53}\gg 6\times 10^{23}$(アボガドロ数)．
 	\end{dfn}
-	\begin{example*}
+	\begin{ex}
 		$n$次交代群$\frakA_n$は$n$次対称群$\frakS_n$の正規部分群となる．
-	\end{example*}
+	\end{ex}
 	\begin{dfn}
 		群$G$の中心$Z\qty(G):G$の全ての元と可換な元全体の集合．
 	\end{dfn}
@@ -1020,7 +1021,7 @@
 				\item 単位元は単独で類をなす．
 				\item 可換群は，各元が単独で共役類．
 			\end{itemize}
-			\begin{example*}[$\frakS_3$の共役類]
+			\begin{ex}[$\frakS_3$の共役類]
 				\[\frakS_3=\qty{e,c,c^{-1},\sigma_1,\sigma_2,\sigma_3}\]
 				ここで$c=\qty{1\ 2\ 3},\sigma_1=\qty(1\ 2),\sigma_2=\qty(1\ 3),\sigma_3=\qty(2\ 3)$
 				\begin{align*}
@@ -1040,7 +1041,7 @@
 						$\sigma_3$       & $e$  & $c^{-1}$  & $c$       & $\sigma_2$  & $\sigma_1$  & $\sigma_3$
 					\end{tabular}
 				\end{table}
-			\end{example*}
+			\end{ex}
 \section{準同型定理}
 	\redunderline{準同型写像}は，1対1の写像とも，上への写像とも限らない．しかし，その中から\redunderline{同型写像}を取り出すことができる．
 	\begin{prop}
@@ -1103,7 +1104,7 @@
 	\begin{note*}
 		線形代数の線形写像に関する次元定理に相当する．
 	\end{note*}
-	\begin{example*}[対称群$\frakS_n$と交代群$\frakA_n$]
+	\begin{ex}[対称群$\frakS_n$と交代群$\frakA_n$]
 		$\frakS_n$から積を演算とする$\bbR^\times\coloneqq\bbR\backslash\qty{0}$への写像
 		\[\sgn:\frakS_n\to\bbR^\times;\sigma\mapsto\sgn\sigma=\begin{cases}
 				+1 & \sigma:\text{偶置換} \\
@@ -1116,8 +1117,8 @@
 		となり，
 		\[\bar{f}\qty(e\frakA_n)=1,\bar{f}\qty(\sigma_1\frakA_n)=-1\]
 		これは，$\qty{\pm 1}$への同型写像．
-	\end{example*}
-	\begin{example*}
+	\end{ex}
+	\begin{ex}
 		$\GL\qty(n;\bbC)$から$\bbC^\times\coloneqq\bbC\backslash\qty{0}$への写像$\det:A\mapsto\det A$は準同型であり，
 		\begin{align*}
 			\Ker\det & =\SL\qty(n;\bbC)=\qty{g\in \GL\qty(n,\bbC)\mid\det g=1} \\
@@ -1125,7 +1126,7 @@
 		\end{align*}
 		である．
 		\[\GL\qty(n;\bbC)/\SL\qty(n;\bbC)\simeq\bbC^\times\]
-	\end{example*}
+	\end{ex}
 \section{群の乗法作用の軌道について}
 	$t$は$G$集合$T$に属する．
 	\begin{align*}
@@ -1195,9 +1196,9 @@
 		\[\sum_{g\in G}\qty|T^g|=\sum_{t\in T}\qty|G_t|=m\qty|G|\]
 	\end{proof}
 	\subsection{数え上げ問題への応用}
-		\begin{ex*}
+		\begin{exe}
 			正四面体の4つの面を$n$色で塗り分ける場合の数を$C\qty(n)$とする．このとき$C\qty(n)$を$n$の式で表せ．ただし，色を重複して使ってよいものとする．また，適当な回転で一致するものは1通りとして数える．
-		\end{ex*}
+		\end{exe}
 		まず，$n=1$のときは4つの面全て1色で塗るしかない
 		\[C\qty(1)=1\]
 		次に$n=2$のとき
@@ -1281,10 +1282,10 @@
 		\begin{remark*}
 			表現において，異なる$g,h\in G$に対して，表現行列$\rho\qty(g)$と$\rho\qty(h)$が異なるとは限らない．
 		\end{remark*}
-		\begin{example*}[$\rho_\text{ex1}$:$G$の単位表現]
+		\begin{ex}[$\rho_\text{ex1}$:$G$の単位表現]
 			$G$を任意の群とする．すべての$g\in G$に対して$\rho\qty(g)=1$を定める．
-		\end{example*}
-		\begin{example*}[$\rho_\text{ex2}$:巡回群$C_2=\braket{a}{a^2=1}$の忠実な1次元表現]
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex2}$:巡回群$C_2=\braket{a}{a^2=1}$の忠実な1次元表現]
 			\[\rho\qty(e)=1,\rho\qty(a)=-1\]
 			このとき，表現であることは以下により確かめられる．
 			\begin{align*}
@@ -1293,8 +1294,8 @@
 				\rho\qty(a)\cdot\rho\qty(e) & =\qty(-1)\times 1=-1=\rho\qty(a)                  &  & \qty(a\cdot e=a)   \\
 				\rho\qty(a)\cdot\rho\qty(a) & =\qty(-1)\times\qty(-1)          = 1 =\rho\qty(e) &  & \qty(a\cdot a=a^2)
 			\end{align*}
-		\end{example*}
-		\begin{example*}[$\rho_\text{ex3}$:$D_3=\braket{a,b}{a^3=b^2=abab=e}$の2次元忠実表現]
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex3}$:$D_3=\braket{a,b}{a^3=b^2=abab=e}$の2次元忠実表現]
 			$c=\cos\frac{2}{3}\pi=-\frac{1}{2},s=\sin\frac{2}{3}\pi=\frac{\sqrt{3}}{2}$として，
 			\begin{align*}
 				\rho\qty(e)    & =\mqty(1                          & 0  \\0&1),\\
@@ -1304,15 +1305,15 @@
 				\rho\qty(a^2)  & =\rho\qty(a)\rho\qty(a)=\mqty(c   & s  \\-s&c),\\
 				\rho\qty(a^2b) & =\rho\qty(a^2)\rho\qty(b)=\mqty(c & -s \\-s&-c)
 			\end{align*}
-		\end{example*}
-		\begin{example*}[$\rho_\text{ex4}$:$G$の置換表現]
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex4}$:$G$の置換表現]
 			群$G$が有限集合$P=\qty{1,2,\cdots,n}$に作用しているとき，$P$上の置換$\pi\qty(g)$が定まり，
 			\[\pi\qty(gh)=\pi\qty(g)\cdot\pi\qty(h)\quad\qty(g,h\in G)\]
 			が成り立つ．さらに各$g\in G$に対して定まる置換$\pi\qty(g)$を表す$n$次置換行列を$\rho\qty(g)$とする．
 			\[\rho\qty(g)=\qty(\delta_{i,\pi\qty(g)\qty[j]})_{1\leq i,j\leq n}\quad\qty(g\in G)\]
 			が得られる．\footnote{各行各列に1が1つで残りは0}この$\rho$を$G$の\redunderline{置換表現}という．また$G$の異なる元が$P$上の異なる置換を引き起こすとき，対応する置換表現は忠実．
-		\end{example*}
-		\begin{example*}[$\rho_\text{ex5}$:$D_3$の正三角形への作用かつ置換表現]\label{ex:rho_ex5}
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex5}$:$D_3$の正三角形への作用かつ置換表現]\label{ex:rho_ex5}
 			正三角形の3つの頂点を$\qty(1,0,0),\qty(0,1,0),\qty(0,0,1)$によって与え，それぞれ1，2，3とラベル付けする．$D_3$の正三角形の頂点集合$P=\qty{1,2,3}$への作用を
 			\begin{align*}
 				a\cdot 1=2,\ a\cdot 2=3,\ a\cdot 3=1 \\
@@ -1337,8 +1338,8 @@
 				\rho\qty(a^2b) & =\mqty(0                        & 0 & 1 \\0&1&0\\1&0&0)
 			\end{align*}
 			\subparagraph{注}ここで表現は必ず存在するが，得られた表現が必ずしも``最も簡単''な表現になっているとは限らない．
-		\end{example*}
-		\begin{example*}[$\rho_\text{ex6}$:$G$の(左)正則表現]
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex6}$:$G$の(左)正則表現]
 			$G$を位数$n$の有限群とし，その元に順番をつけて$\qty{g_1=e,g_2,\cdots,g_n}$と並べ，集合$P=\qty{1,2,\cdots,n}$と同一視する．このとき$G$の任意の元$g$は，次の$P$上の置換を誘導する．
 			\begin{align*}
 				\begin{array}{ccccl}
@@ -1363,11 +1364,11 @@
 						1 & \qty(g=e)     \\
 						0 & \qty(g\neq e)
 					\end{cases}\]
-		\end{example*}
+		\end{ex}
 		\begin{remark*}
 			列を$\qty(g_1,g_2,\cdots g_\qty|G|)$，行を$\qty(g_1^{-1},g_2^{-1},\cdots,g_\qty|G|^{-1})$とする群積表を作り，表中の$g$を1，その他を0として得られる行列は$\rho^\qty(R)\qty(g)$
 		\end{remark*}
-		\begin{example*}[$D_3$の正則表現$\qty(e,a,a^2,b,ab,ba)\leftrightarrow\qty(1,2,3,4,5,6)$]
+		\begin{ex}[$D_3$の正則表現$\qty(e,a,a^2,b,ab,ba)\leftrightarrow\qty(1,2,3,4,5,6)$]
 			\begin{align*}
 				\begin{array}{l}
 					a\cdot e=a   \\
@@ -1398,7 +1399,7 @@
 					g_6=ba            & ba    & b     & ab      & a^2   & a      & e
 				\end{array}
 			\end{align*}
-		\end{example*}
+		\end{ex}
 	\paragraph{$D_3$の表現のブロック対角化と既約表現}
 		以下，例\ref{ex:rho_ex5}の$\rho_\text{ex5}$の表現について考える．この表現は正三角形の重心を動かさない．
 
