@@ -320,12 +320,12 @@
 		\centerline{元は各行，各列においてそれぞれ1回のみ現れる．(全単射)}
 		について確かめることができる．特に，対角線に対して対称な場合，可換群，非対称な場合，非可換群．
 	\subsection{群の例}
-		\paragraph{巡回群$C_n$}
+		\subsubsection{巡回群$C_n$}
 			\begin{dfn}
 				一つの元のべきで群の全ての元が表示できるとき，この群を\redunderline{巡回群(cyclic group)}という．位数$n$の巡回群を$C_n$と書く．
 			\end{dfn}
 			$C_1=\qty{e},C_2=\qty{e,c}=\braket{c}{c^2=e}, C_3=\qty{e,c,c^2}=\braket{c}{c^3=e},C_4,\cdots,C_n=\qty{e,c,\cdots,c^{n-1}}=\braket{c}{c^n=e},\cdots,C_\infty$において指数法則$c^mc^n=c^{m+n}$が成り立ち，加法群$\bbZ$と同一視することができる．$C_\infty=\qty{e,c,c^{-1},c^2,c^{-2},\cdots}$
-		\paragraph{二面体群$D_n$}
+		\subsubsection{二面体群$D_n$}
 			\begin{dfn}
 				位数$2n$の二面体群(dihedral group)$D_n$
 				\begin{align*}
@@ -350,7 +350,7 @@
 				\[C_4=\qty{e,c,c^2,c^3}=\braket{c}{c^4=e}\]
 				$c$の位数は4，$c^2$の位数は2，$\cdots$
 			\end{ex}
-		\paragraph{(行列群)} $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
+		\subsubsection{(行列群)} $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
 			\begin{itemize}
 				\item 一般線形群\[\GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
 				\item 特殊線形群\[\SL_n\qty(\bbC)=\qty{g\in \GL_n\qty(\bbC)\mid\det g=1}\]
@@ -618,9 +618,10 @@
 			で定義する．これは$G$上の自己同型を与える．
 		\end{prop}
 		\begin{abbr*}
-			\subparagraph{準同型性}
-				\[A_a\qty(g)A_a\qty(h)=aga^{-1}aha^{-1}=agha^{-1}=A_a\qty(gh)\]
-			\subparagraph{全単射}(略)
+			\begin{itemize}
+				\item 準同型性\\\[A_a\qty(g)A_a\qty(h)=aga^{-1}aha^{-1}=agha^{-1}=A_a\qty(gh)\]
+				\item 全単射\ (略)
+			\end{itemize}
 		\end{abbr*}
 \section{群作用と軌道分解}
 	\subsection{作用について}
@@ -814,7 +815,7 @@
 		$\Rightarrow$対応する軌道分解によって，群$G$は部分群による同値類に分解(類別)できる．
 
 		以下$H\leqq G$とする．
-		\paragraph{部分群$H$の群$G$への\redunderline{右からの乗法移動}による$g\in G$の軌道}
+		\subsubsection{部分群$H$の群$G$への\redunderline{右からの乗法移動}による$g\in G$の軌道}
 			\[H\qty(g)=\qty{\rho\qty(g,h)\mid h\in H}=\qty{g\cdot h\mid h\in H}=gH\]
 			による軌道分解$G=\bigsqcup_{a\in\Lambda}aH$から誘導される同値関係，同値類，剰余(商)集合が得られる．
 
@@ -856,7 +857,7 @@
 				G/H           & =\qty{a^\prime H,b^\prime H,\cdots } \\
 				\qty|\Lambda| & =\qty|G/H|=\qty(G:H)
 			\end{align*}
-		\paragraph{部分群の群$G$への\redunderline{左からの乗法移動}による$g\in G$の$H$軌道}
+		\subsubsection{部分群の群$G$への\redunderline{左からの乗法移動}による$g\in G$の$H$軌道}
 			\[H\qty(g)=\qty{\lambda\qty(h,g)\mid h\in H}=\qty{h\cdot g\mid h\in H}=Hg\]
 			による軌道分解(右類別ともいう)
 			\[G=\bigsqcup_{a\in\Lambda^\prime}Ha\]
@@ -1021,7 +1022,7 @@
 		\begin{dfn}[共役．共役部分群]
 			部分集合$H_1,H_2\subset G$に対して$H_1=gH_2g^{-1}$なる元が存在するとき，$H_1$と$H_2$は共役であるという．特に，$H_1$が群$G$の部分群のとき，$H_2$は$H_1$の共役な部分群であるという．
 		\end{dfn}
-		\paragraph{共役類の性質}
+		\subsubsection{共役類の性質}
 			\begin{itemize}
 				\item 単位元は単独で類をなす．
 				\item 可換群は，各元が単独で共役類．
@@ -1076,7 +1077,7 @@
 	\begin{thm}[準同型定理]
 		$f\in\Hom\qty(G,G^\prime)$，$f$の像$\Im f$のなす$G^\prime$の部分群について，
 		\[\bar{f}:G/\Ker f\to\Im f;g\Ker f\mapsto f\qty(g)\]
-		による，群の同型\redunderline{$G/\Ker f\simeq\Im\qty(f)$}が成り立つ\footnote{$\kappa$:準同型，$\Ker f$:$G$の正規部分群}．この$\bar{f}$を\redunderline{$f$から誘導される(引き起こされる)同型写像}という．
+		による，群の同型\redunderline{$G/\Ker f\simeq\Im f$}が成り立つ\footnote{$\kappa$:準同型，$\Ker f$:$G$の正規部分群}．この$\bar{f}$を\redunderline{$f$から誘導される(引き起こされる)同型写像}という．
 	\end{thm}
 	\begin{align*}
 		\begin{array}{ccccc}
@@ -1187,7 +1188,7 @@
 		\[\qty|G\qty(t)|=\qty(G:G_t)=\frac{\qty|G|}{\qty|G_t|}\]
 	\end{cor}
 	次に軌道がいくつあるのかを数えるのが次の定理(数え上げ問題)．
-	\begin{thm}[コーシー・フロベニウス]
+	\begin{thm}[コーシー・フロベニウスの定理]
 		$G$集合$T$が$m$個の軌道に分解されるとする．
 		\[T=T_1\sqcup T_2\sqcup\cdots\sqcup T_m,\quad T_j\cap T_k=\emptyset\,\qty(j\neq k)\]
 		$g\in G$による固定元の集合を$T^g$で表す．
@@ -1223,7 +1224,7 @@
 		\[\qty(\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4})\in\qty{\qty(1,1,1,1),\qty(2,2,2,2),\qty(1,1,1,2),\qty(1,1,2,2),\qty(1,2,2,2)}\]
 		$n=3$のとき
 		\[C\qty(3)=15\]
-		正四面体群の作用を考える．正四面体の頂点を$A_1,A_2,A_3,A_4$とする．正四面体の頂点を$O$とし，各辺の中点を図\ref{fig:tetrahedron}のように$L,M,N,L^\prime,M^\prime,N^\prime$とする．
+		正四面体群の作用を考える．正四面体の頂点を$A_1,A_2,A_3,A_4$とする．正四面体の重心を$O$とし，各辺の中点を図\ref{fig:tetrahedron}のように$L,M,N,L^\prime,M^\prime,N^\prime$とする．
 		\begin{figure}[h]
 			\centering
 			\tdplotsetmaincoords{60}{45}
@@ -1232,7 +1233,7 @@
 				\coordinate[label=left:$A_2$] (A2) at (-2,0,0);
 				\coordinate[label=right:$A_3$] (A3) at (2,0,0);
 				\coordinate[label=right:$A_4$] (A4) at (0,{2*sqrt(3)},0);
-				\coordinate[label=left:$O$] (O) at (0,{2/sqrt(3)},0);
+				\coordinate[label=above:$O$] (O) at (0,{2/sqrt(3)},{sqrt(2/3)});
 				\coordinate (L) at ($0.5*(A1)+0.5*(A2)$);
 				\coordinate (M) at ($0.5*(A1)+0.5*(A4)$);
 				\coordinate (N) at ($0.5*(A1)+0.5*(A3)$);
@@ -1248,7 +1249,7 @@
 				\draw[red] (N) node[right] {$N$};
 				\draw[red] (Lp) node[right] {$L^\prime$};
 				\draw[red] (Mp) node[below] {$M^\prime$};
-				\draw[red] (Np) node[above] {$N^\prime$};
+				\draw[red] (Np) node[below] {$N^\prime$};
 				\fill[black] (O) circle(0.05);
 				\fill[red] (L) circle(0.05);
 				\fill[red] (M) circle(0.05);
@@ -1292,9 +1293,9 @@
 		\item $g\in G$,逆元$g^{-1}$の表現行列$\rho\qty(g^{-1})$\\$\rho\qty(g)\cdot\qty(g^{-1})=\rho\qty(gg^{-1})=\rho\qty(e)=I$から$\rho\qty(g^{-1})$は$\rho\qty(g)$の逆行列
 	\end{itemize}
 	群が$g_1,\cdots,g_k\in G$によって生成される場合，生成元に対する表現行列$\rho\qty(g_1),\cdots,\rho\qty(g_k)$からすべての表現行列$\rho\qty(g)\,\qty(g\in G)$は定まる．
-	\subparagraph{\redunderline{ユニタリ表現}} 各$g\in G$に対して，$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$をユニタリ表現という．$K=\bbC$の場合，一般に$\rho$を\redunderline{ユニタリ表現}としても一般性を失うことはない．また$K=\bbR$の場合，各$g\in G$に対して$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$を\redunderline{直交表現}という．
-	\subparagraph{\redunderline{恒等表現}} 全ての元に単位行列を対応させた表現
-	\subparagraph{\redunderline{忠実な表現(faithful)}} 各$g_i$に対する$\rho\qty(g_i)$が全て相異なる行列で与えられているとき
+	\paragraph{\redunderline{ユニタリ表現}} 各$g\in G$に対して，$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$をユニタリ表現という．$K=\bbC$の場合，一般に$\rho$を\redunderline{ユニタリ表現}としても一般性を失うことはない．また$K=\bbR$の場合，各$g\in G$に対して$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$を\redunderline{直交表現}という．
+	\paragraph{\redunderline{恒等表現}} 全ての元に単位行列を対応させた表現
+	\paragraph{\redunderline{忠実な表現(faithful)}} 各$g_i$に対する$\rho\qty(g_i)$が全て相異なる行列で与えられているとき
 		\begin{remark*}
 			表現において，異なる$g,h\in G$に対して，表現行列$\rho\qty(g)$と$\rho\qty(h)$が異なるとは限らない．
 		\end{remark*}
@@ -1353,7 +1354,9 @@
 				\rho\qty(ab)   & =\mqty(0                        & 1 & 0 \\1&0&0\\0&0&1),\\
 				\rho\qty(a^2b) & =\mqty(0                        & 0 & 1 \\0&1&0\\1&0&0)
 			\end{align*}
-			\subparagraph{注}ここで表現は必ず存在するが，得られた表現が必ずしも``最も簡単''な表現になっているとは限らない．
+			\begin{note*}
+				ここで表現は必ず存在するが，得られた表現が必ずしも``最も簡単''な表現になっているとは限らない．
+			\end{note*}
 		\end{ex}
 		\begin{ex}[$\rho_\text{ex6}$:$G$の(左)正則表現]
 			$G$を位数$n$の有限群とし，その元に順番をつけて$\qty{g_1=e,g_2,\cdots,g_n}$と並べ，集合$P=\qty{1,2,\cdots,n}$と同一視する．このとき$G$の任意の元$g$は，次の$P$上の置換を誘導する．
