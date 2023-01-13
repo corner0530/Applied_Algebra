@@ -207,16 +207,16 @@
 		\end{dfn}
 
 		\begin{dfn}[商集合]
-			同値関係$\sim$による同値類の集合を$S$の$\sim$による商集合(quotient set)といい$S/\sim$で表す
-			\[S/\sim\,=\qty{C_a\mid a\in S}\]
+			同値関係$\sim$による同値類の集合を$S$の$\sim$による商集合(quotient set)といい$S/{\sim}$で表す
+			\[S/{\sim}\,=\qty{C_a\mid a\in S}\]
 		\end{dfn}
 
 		\begin{dfn}[同値類別]
 			同値関係による集合の分割．同値関係$\sim$による同値類別
 			\[S=\bigsqcup_{a\in R\subset S}C_a\]
 			ここで$S$の部分集合$R$は全ての同値類の代表元の集合であり，完全代表系である．
-			このとき，自然な全射$\pi:S\to S/\sim;x\mapsto C_x$が存在する．
-			さらに全単射写像$R\to S/\sim$も存在する．
+			このとき，自然な全射$\pi:S\to S/{\sim};x\mapsto C_x$が存在する．
+			さらに全単射写像$R\to S/{\sim}$も存在する．
 		\end{dfn}
 		\begin{screen}
 			\[C_a\cap C_b\neq\emptyset\Rightarrow C_a=C_b\]
@@ -409,7 +409,7 @@
 			\[\sigma=\mqty(2&3&1\\1&2&3)=\mqty(1&3&2\\3&2&1)=\mqty(1&2&3\\3&1&2)\]
 		\end{remark*}
 		\begin{dfn}[交代群]
-			$S_n$の元の中で偶数個の互換の積で表すことができる元の全体を$A_n$で表す．\footnote{ここで互換とは，2つの数字(文字)の入れ替え $i\leftrightarrow j$を表し，$\qty(i,j)$と表記する．}
+			$S_n$の元の中で偶数個の互換の積で表すことができる元の全体を$A_n$あるいは$\frakA_n$で表す．\footnote{ここで互換とは，2つの数字(文字)の入れ替え $i\leftrightarrow j$を表し，$\qty(i,j)$と表記する．}
 			この$S_n$の部分集合$A_n$は，$S_n$の演算で群となり，\redunderline{$n$次交代群(alternating group)}と呼ばれる．
 		\end{dfn}
 		\begin{prop}
@@ -549,12 +549,12 @@
 		\begin{dfn}
 			準同型$f:G\to G^\prime$に対して，
 			\[\Im f=\qty{f\qty(x)\mid x\in G}\]
-			を準同型写像の\redunderline{像(image)}という．
+			を準同型写像$f$の\redunderline{像(image)}という．
 		\end{dfn}
 		\begin{ex}
 			\begin{align*}
 				\begin{array}{ccc}
-					f:\GL\qty(2,\bbC)     & \longrightarrow & G=\qty{\phi\qty(z)=\frac{az+b}{cz+d}\mid a,b,c,d\in\bbC,ad=bc\neq 0} \\
+					f:\GL\qty(2,\bbC)     & \longrightarrow & G=\qty{\phi\qty(z)=\frac{az+b}{cz+d}\mid a,b,c,d\in\bbC,ad-bc\neq 0} \\
 					\rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$}                                                \\
 					\mqty[
 					a                     & b                                                                                      \\
@@ -658,11 +658,11 @@
 			$\rho\qty(x,g)$を$\qty(x)\rho_g,\,x^g$あるいは$x\cdot g,\,xg$などと省略する．
 		\end{remark*}
 		\begin{prop}
-			群$G$が集合$X$に$\qty(g,x)\mapsto g\cdot s$によって\redunderline{左から作用}しているとき，$\rho\qty(x,g)=x^g=g^{-1}\cdot x$とおくと，これは$G$の右作用となる．逆も同様，$G$の$X$への左作用と$G$の$X$への右作用は1対1となる．
+			群$G$が集合$X$に$\qty(g,x)\mapsto g\cdot x$によって\redunderline{左から作用}しているとき，$\rho\qty(x,g)=x^g=g^{-1}\cdot x$とおくと，これは$G$の右作用となる．逆も同様，$G$の$X$への左作用と$G$の$X$への右作用は1対1となる．
 		\end{prop}
 		\begin{proof}
 			$\qty(G,\circ)$に対し，
-			\[\qty(g\circ h,h)\mapsto\qty(g\circ h)\cdot x=g\cdot\qty(h\cdot x)\]
+			\[\qty(g\circ h,x)\mapsto\qty(g\circ h)\cdot x=g\cdot\qty(h\cdot x)\]
 			このとき
 			\begin{align*}
 				\rho\qty(x,g\circ h) & =\qty(g\circ h)^{-1}\cdot x=\qty(h^{-1}\circ g^{-1})\cdot x=h^{-1}\cdot\qty(g^{-1}\cdot x) \\
@@ -741,8 +741,8 @@
 		\end{prop}
 		ここで$x\stackrel{G}{\sim}y$は同値関係なので同値類に関する類別を考えることができる．これを\redunderline{軌道分解}という．
 		\begin{dfn}
-			$s\stackrel{G}{\sim}y$に関して$X$を同値類に分割したものを，$X$の$G$による\redunderline{軌道分解}といい$X/\sim G$で表す．
-			\[X/\sim G=\qty{G\qty(t)\mid t\in\Lambda},\suchthat X=\bigsqcup_{t\in\Lambda}G\qty(t)\]
+			$x\stackrel{G}{\sim}y$に関して$X$を同値類に分割したものを，$X$の$G$による\redunderline{軌道分解}といい$X/{\sim} G$で表す．
+			\[X/{\sim} G=\qty{G\qty(t)\mid t\in\Lambda},\suchthat X=\bigsqcup_{t\in\Lambda}G\qty(t)\]
 			ここで$\Lambda$は完全代表系，集合$X$の群$G$による軌道分解を$G\backslash X$で表すことも多い．また，軌道が唯一つになるとき，作用が\redunderline{推移的}(transitive)であるという．
 		\end{dfn}
 		\begin{note*}
@@ -883,28 +883,33 @@
 				\end{align*}
 				よって
 				\[eH_1=\qty(1\ 2)H_1\]
-				左剰余集合$\frakS_3/H_1=\qty{eH_1,\qty(1\ 3)H_1}$
+				$H_1$による左剰余集合$\frakS_3/H_1=\qty{eH_1,\qty(1\ 3)H_1,\qty(2\ 3)H_1}$
 				\begin{align*}
-					\qty(1\ 3)H_1         & =\qty{\qty(1\ 3)e=\qty(1\ 3),\qty(1\ 3)\qty(1\ 2)=\qty(1\ 2\ 3)}=\qty(1\ 2\ 3)H_1            \\
-					\qty(2\ 3)H_1         & =\qty{\qty(2\ 3)e=\qty(2\ 3),\qty(2\ 3)\qty(1\ 2)=\qty(1\ 3\ 2)}=\qty(1\ 3\ 2)H_1            \\
-					\frakS_3/H_1          & =\qty{e,\qty(1\ 2)}\sqcup\qty{\qty(1\ 3), \qty(1\ 2\ 3)}\sqcup\qty{\qty(2\ 3),\qty(1\ 3\ 2)} \\
-					H_1\backslash\frakS_3 & =\qty{H_1e=H_1\qty(1\ 2),H_1\qty(1\ 3)=H_1\qty(1\ 3\ 2),H_1\qty(2\ 3)=H_1\qty(1\ 2\ 3)}      \\
-					H_1\qty(1\ 3)         & =\qty{e\qty(1\ 3)=\qty(1\ 3),\qty(1\ 2)\qty(1\ 3)}=\qty(1\ 3\ 2)=H_1\qty(1\ 3\ 2)            \\
-					                      & =\qty{e, \qty(1\ 2)}\sqcup\qty{\qty(1\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(2\ 3),\qty(1\ 2\ 3)}
+					\qty(1\ 3)H_1 & =\qty{\qty(1\ 3)e=\qty(1\ 3),\qty(1\ 3)\qty(1\ 2)=\qty(1\ 2\ 3)}=\qty(1\ 2\ 3)H_1            \\
+					\qty(2\ 3)H_1 & =\qty{\qty(2\ 3)e=\qty(2\ 3),\qty(2\ 3)\qty(1\ 2)=\qty(1\ 3\ 2)}=\qty(1\ 3\ 2)H_1            \\
+					\frakS_3/H_1  & =\qty{e,\qty(1\ 2)}\sqcup\qty{\qty(1\ 3), \qty(1\ 2\ 3)}\sqcup\qty{\qty(2\ 3),\qty(1\ 3\ 2)}
+				\end{align*}
+				$H_1$による右剰余集合$H_1\backslash\frakS_3=\qty{H_1e,H_1\qty(1\ 3),H_1\qty(2\ 3)}$
+				\begin{align*}
+					H_1\qty(1\ 3)         & =\qty{e\qty(1\ 3)=\qty(1\ 3),\qty(1\ 2)\qty(1\ 3)=\qty(1\ 3\ 2)}=H_1\qty(1\ 3\ 2)            \\
+					H_1\qty(2\ 3)         & =\qty{e\qty(2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(2\ 3)=\qty(1\ 2\ 3)}=H_1\qty(1\ 2\ 3)            \\
+					H_1\backslash\frakS_3 & =\qty{e, \qty(1\ 2)}\sqcup\qty{\qty(1\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(2\ 3),\qty(1\ 2\ 3)}
 				\end{align*}
 				{\color{red} ここで
 				\[\frakS_3/H_1\neq H_1\backslash\frakS_3\]
 				である．}
 
-				\underline{$H_2$による左剰余類の集合}
+				$H_2$による左剰余集合$\frakS_3/H_2=\qty{eH_2,\qty(1\ 2)H_2}$
 				\begin{align*}
-					\frakS_3/H_2          & =\qty{eH_2,\qty(1\ 2)H_2},                                                                             \\
-					eH_2                  & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)},                                                                  \\
-					\qty(1\ 2)H_2         & =\qty{\qty(1\ 2),\qty(1\ 2)\qty(1\ 2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(1\ 3\ 2)=\qty(1\ 3)}                \\
-					H_2\backslash\frakS_3 & =\qty{H_2e,H_2\qty(1\ 2)}                                                                              \\
-					H_2e                  & =H_2,                                                                                                  \\
-					H_2\qty(1\ 2)         & =\qty{e\qty(1\ 2),\qty(1\ 2\ 3)\qty(1\ 2)=\qty(1\ 3),\qty(1\ 3\ 2)\qty(1\ 2)=\qty(2\ 3)},              \\
-					\frakS_3/H_2          & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(1\ 3),\qty(2\ 3)}=H_2\backslash\frakS_3
+					eH_2          & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}                                                                \\
+					\qty(1\ 2)H_2 & =\qty{\qty(1\ 2)e=\qty(1\ 2),\qty(1\ 2)\qty(1\ 2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(1\ 3\ 2)=\qty(1\ 3)} \\
+					\frakS_3/H_2  & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(2\ 3),\qty(1\ 3)}                    \\
+				\end{align*}
+				\noindent $H_2$による右剰余集合$H_2\backslash\frakS_3=\qty{H_2e,H_2\qty(1\ 2)}$
+				\begin{align*}
+					H_2e                  & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}                                                                \\
+					H_2\qty(1\ 2)         & =\qty{e\qty(1\ 2)=\qty(1\ 2),\qty(1\ 2\ 3)\qty(1\ 2)=\qty(1\ 3),\qty(1\ 3\ 2)\qty(1\ 2)=\qty(2\ 3)} \\
+					H_2\backslash\frakS_3 & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(1\ 3),\qty(2\ 3)}                    \\
 				\end{align*}
 				{\color{red} ここで
 				\[\frakS_3/H_2= H_2\backslash\frakS_3\]
@@ -970,7 +975,7 @@
 		\begin{prop}[左剰余類に関する定理]
 			$H\leqq G,a,b\in G$に対して
 			\begin{itemize}
-				\item $a\sim b\Leftrightarrow aH=bH\Leftrightarrow aH\cap bH=\emptyset$
+				\item $a\sim b\Leftrightarrow aH=bH\Leftrightarrow aH\cap bH\neq\emptyset$
 				\item $a\not\sim b\Leftrightarrow aH\cap bH=\emptyset$
 				\item $a\in G$に対して，写像$\varphi_a:H\to aH;h\mapsto ah$
 			\end{itemize}
@@ -1057,12 +1062,16 @@
 	\end{prop}
 	\begin{proof}
 		$f\in\Hom\qty(G,G^\prime)$とする．
-		\subparagraph{部分群であること}
-			$\Ker f$には少なくとも$G$の単位元が属している．$a,b\in \Ker f$に対して，$f\qty(ab^{-1})=f\qty(a)f\qty(b)^{-1}=e_{G^\prime}\cdot e_{G^\prime}^{-1}=e_{G^\prime}\Rightarrow ab^{-1}\in\Ker f$が成立．よって$\Ker f$は$G$の部分群．
-		\subparagraph{正規であること}
-			任意の$g\in G$に対して$a\in\Ker f$ならば，
-			\[f\qty(gag^{-1})=f\qty(g)\cdot f\qty(a)\cdot f\qty(g)^{-1}=f\qty(g)\cdot e_{G^\prime}\cdot f\qty(g)^{-1}=e_{G^\prime}\]
-			より$gag^{-1}\in\Ker f$が成り立つ．
+		\begin{itemize}
+			\item 部分群であること\\$\Ker f$には少なくとも$G$の単位元が属している．$a,b\in \Ker f$に対して，\begin{align*}
+						            & f\qty(ab^{-1})=f\qty(a)f\qty(b)^{-1}=e_{G^\prime}\cdot e_{G^\prime}^{-1}=e_{G^\prime} \\
+						\Rightarrow & ab^{-1}\in\Ker f
+					\end{align*}
+					が成立．よって$\Ker f$は$G$の部分群．
+			\item 正規であること\\任意の$g\in G$に対して$a\in\Ker f$ならば，
+				\[f\qty(gag^{-1})=f\qty(g)\cdot f\qty(a)\cdot f\qty(g)^{-1}=f\qty(g)\cdot e_{G^\prime}\cdot f\qty(g)^{-1}=e_{G^\prime}\]
+				より$gag^{-1}\in\Ker f$が成り立つ．
+		\end{itemize}
 	\end{proof}
 	\begin{thm}[準同型定理]
 		$f\in\Hom\qty(G,G^\prime)$，$f$の像$\Im f$のなす$G^\prime$の部分群について，
@@ -1077,24 +1086,32 @@
 		\end{array}
 	\end{align*}
 	\begin{align*}
-		\begin{array}{ccc}
-			\bar{f}:G/\Ker f      & \longrightarrow & \Im f                 \\
-			\rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
-			g\Ker f               & \longmapsto     & f\qty(g)
+		\begin{array}{rccc}
+			\bar{f}: & G/\Ker f              & \longrightarrow & \Im f                 \\
+			         & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+			         & g\Ker f               & \longmapsto     & f\qty(g)
 		\end{array}
 	\end{align*}
 	\begin{proof}
-		\subparagraph{写像の定義が代表元によらないこと}$g^\prime\in g\Ker f$より，
-			\[g^\prime=gn\quad\qty(n\in\Ker f)\]
-			\[f\qty(g^\prime)=f\qty(gn)=f\qty(g)\cdot f\qty(n)=f\qty(g)\]
-		\subparagraph{準同型}
-			\begin{align*}
-				\bar{f}\qty(g\Ker f\cdot g^\prime\Ker f) & =\bar{f}\qty(\qty(gg^\prime)\Ker f)                   \\
-				                                         & =f\qty(gg^\prime)=f\qty(g)\cdot f\qty(g^\prime)       \\
-				                                         & =\bar{f}\qty(g\Ker f)\cdot\bar{f}\qty(g^\prime\Ker f)
-			\end{align*}
-		\subparagraph{単射} $\bar{f}\qty(g\Ker f)=\bar{f}\qty(g^\prime\Ker f)$つまり，$f\qty(g)=f\qty(g^\prime)$とすると，$f\qty(g^{-1}\cdot g^\prime)=f\qty(g)^{-1}\cdot f\qty(g^\prime)=e_{G^\prime}$となり，$g^{-1}\cdot g^\prime\in\Ker f$である．よって$g^\prime\in g\Ker f$から，$g\Ker f=g^\prime\Ker f$が得られる．
-		\subparagraph{全射} 任意の$\tilde{g}\in\Im f$から$\bar{f}\qty(g\Ker f)=\tilde{g}$を満たす$g\Ker f\in G/\Ker f$が存在することを示す．$\Im f$の定義より，$\forall\tilde{g}\in\Im f$に対して$f\qty(g)=\tilde{g}$を満たす$g\in G$が存在する．この$g$の属する剰余集合$g\Ker f$を取れば，$\bar{f}\qty(g\Ker f)=f\qty(g)=\tilde{g}$である．
+		\begin{itemize}
+			\item 写像の定義が代表元によらないこと\\$g^\prime\in g\Ker f$より，
+				\begin{align*}
+					g^\prime        & =gn\quad\qty(n\in\Ker f)                   \\
+					f\qty(g^\prime) & =f\qty(gn)=f\qty(g)\cdot f\qty(n)=f\qty(g)
+				\end{align*}
+			\item 準同型
+				\begin{align*}
+					\bar{f}\qty(g\Ker f\cdot g^\prime\Ker f) & =\bar{f}\qty(\qty(gg^\prime)\Ker f)                   \\
+					                                         & =f\qty(gg^\prime)=f\qty(g)\cdot f\qty(g^\prime)       \\
+					                                         & =\bar{f}\qty(g\Ker f)\cdot\bar{f}\qty(g^\prime\Ker f)
+				\end{align*}
+			\item 単射\\$\bar{f}\qty(g\Ker f)=\bar{f}\qty(g^\prime\Ker f)$，つまり，$f\qty(g)=f\qty(g^\prime)$とすると，
+					\[f\qty(g^{-1}\cdot g^\prime)=f\qty(g)^{-1}\cdot f\qty(g^\prime)=e_{G^\prime}\]
+					となり，$g^{-1}\cdot g^\prime\in\Ker f$である．よって$g^\prime\in g\Ker f$から，
+				\[g\Ker f=g^\prime\Ker f\]
+				が得られる．
+			\item 全射\\任意の$\tilde{g}\in\Im f$から$\bar{f}\qty(g\Ker f)=\tilde{g}$を満たす$g\Ker f\in G/\Ker f$が存在することを示す．$\Im f$の定義より，$\forall\tilde{g}\in\Im f$に対して$f\qty(g)=\tilde{g}$を満たす$g\in G$が存在する．この$g$の属する剰余集合$g\Ker f$を取れば，$\bar{f}\qty(g\Ker f)=f\qty(g)=\tilde{g}$である．
+		\end{itemize}
 	\end{proof}
 	\begin{cor}
 		特に$G$が有限群のとき，
@@ -1152,23 +1169,22 @@
 		このとき，$\bar{f}$は全単射である．すなわち，固定部分群$G_{t_0}$に関する$G$の左剰余類と軌道$G\qty(t_0)$の点とは一対一に対応する．
 	\end{thm}
 	\begin{proof}
-		\subparagraph{well-definedであること}
-			$\forall b\in aG_{t_0}$とする．このとき，$\exists g\in G_{t_0}\suchthat b=ag\Rightarrow b\cdot t_0=\qty(ag)\cdot t_0=a\cdot\qty(g\cdot t_0)=a\cdot t_0$
-		\subparagraph{全射}
-			$G\qty(t_0)$の元$a\cdot t_0\,\qty(a\in G)$に対して$G/G_{t_0}$の元$aG_{t_0}$を取ればよい．
-		\subparagraph{単射}
-			$G/G_{t_0}$の元$aG_{t_0},bG_{t_0}$に対し，
-			\begin{align*}
-				\bar{f}\qty(aG_{t_0})=\bar{f}\qty(bG_{t_0}) & \Leftrightarrow a\cdot t_0=b\cdot t_0                  \\
-				                                            & \Leftrightarrow \qty(a^{-1}b)t_0=t_0                   \\
-				                                            & \Leftrightarrow a^{-1}b\in G_{t_0}                     \\
-				                                            & \Leftrightarrow\exists g\in G_{t_0}\suchthat g=a^{-1}b
-			\end{align*}
-			このとき$bG_{t_0}=agG_{t_0}=aG_{t_0}$が成り立つ．
+		\begin{itemize}
+			\item well-definedであること\\$\forall b\in aG_{t_0}$とする．このとき，$\exists g\in G_{t_0}\suchthat b=ag\Rightarrow b\cdot t_0=\qty(ag)\cdot t_0=a\cdot\qty(g\cdot t_0)=a\cdot t_0$
+			\item 全射\\$G\qty(t_0)$の元$a\cdot t_0\,\qty(a\in G)$に対して$G/G_{t_0}$の元$aG_{t_0}$を取ればよい．
+			\item 単射\\$G/G_{t_0}$の元$aG_{t_0},bG_{t_0}$に対し，
+					\begin{align*}
+						\bar{f}\qty(aG_{t_0})=\bar{f}\qty(bG_{t_0}) & \Leftrightarrow a\cdot t_0=b\cdot t_0                  \\
+						                                            & \Leftrightarrow \qty(a^{-1}b)t_0=t_0                   \\
+						                                            & \Leftrightarrow a^{-1}b\in G_{t_0}                     \\
+						                                            & \Leftrightarrow\exists g\in G_{t_0}\suchthat g=a^{-1}b
+					\end{align*}
+					このとき$bG_{t_0}=agG_{t_0}=aG_{t_0}$が成り立つ．
+		\end{itemize}
 	\end{proof}
 	\begin{cor}\label{cor:6-3}
 		$G$を有限群，$T$を$G$集合とする．$t\in T$に対して，$t$の軌道$G\qty(t)$内の点の個数
-		\[\qty|G\qty(t)|=\qty(G;G_t)=\frac{\qty|G|}{\qty|G_t|}\]
+		\[\qty|G\qty(t)|=\qty(G:G_t)=\frac{\qty|G|}{\qty|G_t|}\]
 	\end{cor}
 	次に軌道がいくつあるのかを数えるのが次の定理(数え上げ問題)．
 	\begin{thm}[コーシー・フロベニウス]
