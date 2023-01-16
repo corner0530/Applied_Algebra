@@ -8,8 +8,8 @@
 	\subsubsection*{群の例}
 		\begin{enumerate}
 			\item[(1)] $G=\bbZ,\quad a\circ b=a+b+1,\quad\qty(G,\circ)$は群をなす．この群の単位元および$a$の逆元を求めよ
-				\[a\circ e=e\circ a=a\Leftrightarrow a+e+1=e+a+1=a\Leftrightarrow e=-1\]
-				\[a\circ a^{-1}=a^{-1}\circ a=e\Leftrightarrow a+a^{-1}+1=a^{-1}+a+1=-1\Leftrightarrow a^{-1}=-a-2\]
+				\[a\circ e=e\circ a=a\iff a+e+1=e+a+1=a\iff e=-1\]
+				\[a\circ a^{-1}=a^{-1}\circ a=e\iff a+a^{-1}+1=a^{-1}+a+1=-1\iff a^{-1}=-a-2\]
 			\item[(2)] $G=\bbR\backslash\qty{-1},\quad a\circ b=a+b+ab,\quad\qty(G,\circ)$は群をなす．この群の単位元および$a$の逆元を求めよ
 				\[e=0,\quad a^{-1}=-\frac{a}{a+1}\]
 			\item[(3)] $G=\bbR\backslash\qty{0},\quad a\circ b=2ab,\quad\qty(G,\circ)$は群をなす．この群の単位元および$a$の逆元を求めよ
@@ -29,14 +29,14 @@
 				\[f\qty(x\circ y)=f\qty(x)\cdot f\qty(y)=x^\prime\cdot y^\prime\quad\text{ここで}x^\prime,y^\prime\in G^\prime\]
 			\item 群$G$の単位元$e$は，群$G^\prime$の単位元$e^\prime$に移される．
 				\begin{align*}
-					                & f\qty(e)\cdot f\qty(e)=f\qty(e\circ e)=f\qty(e)                 \\
-					\Leftrightarrow & f\qty(e)^{-1}\cdot f\qty(e)\cdot f\qty(e)=f\qty(e)^{-1}f\qty(e) \\
-					\Leftrightarrow & \,e^\prime\cdot f\qty(e)=f\qty(e)=e^\prime
+					     & f\qty(e)\cdot f\qty(e)=f\qty(e\circ e)=f\qty(e)                 \\
+					\iff & f\qty(e)^{-1}\cdot f\qty(e)\cdot f\qty(e)=f\qty(e)^{-1}f\qty(e) \\
+					\iff & \,e^\prime\cdot f\qty(e)=f\qty(e)=e^\prime
 				\end{align*}
 			\item 群$G$の逆元は，群$G^\prime$の逆元に移される．
 				\begin{align*}
-					                & f\qty(a)\cdot f\qty(a^{-1})=\qty(a\circ a^{-1})=f\qty(e)=e^\prime \\
-					\Leftrightarrow & f\qty(a^{-1})=f\qty(a)^{-1}
+					     & f\qty(a)\cdot f\qty(a^{-1})=\qty(a\circ a^{-1})=f\qty(e)=e^\prime \\
+					\iff & f\qty(a^{-1})=f\qty(a)^{-1}
 				\end{align*}
 				\begin{align*}
 					\begin{array}{ccc}
@@ -139,7 +139,7 @@
 			$f\qty(x)=f\qty(y)$とすると，準同型性から
 			\[f\qty(x\circ y^{-1})=f\qty(x)\cdot f\qty(y)^{-1}=e\]
 			よって核が単位元のみとすると
-			\[x\circ y^{-1}=e\Leftrightarrow x=y\]
+			\[x\circ y^{-1}=e\iff x=y\]
 		\end{proof}
 		\begin{prop}
 			$f\in\Hom\qty(G,G^\prime),H\leqq G,H^\prime\leqq G^\prime$とする．

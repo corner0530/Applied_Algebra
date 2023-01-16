@@ -110,14 +110,14 @@
 			で定義する．
 		\end{dfn}
 		\begin{prop}
-			$\qty(G,\circ)$を群とし，$\cdot :G\times X\to X$を$G$の群としての$X$への左からの作用とする．このとき，\redunderline{二項関係$x\stackrel{G}{\sim}y$を$x\in G\cdot y$}で定義すると，同値関係\footnote{cf.同値関係:集合$X$上の同値関係$\sim$\,$\Leftrightarrow\forall a,b,c\in X$に対し，\begin{itemize}
+			$\qty(G,\circ)$を群とし，$\cdot :G\times X\to X$を$G$の群としての$X$への左からの作用とする．このとき，\redunderline{二項関係$x\stackrel{G}{\sim}y$を$x\in G\cdot y$}で定義すると，同値関係\footnote{cf.同値関係:集合$X$上の同値関係$\sim\iff\forall a,b,c\in X$に対し，\begin{itemize}
 					\item $a\sim a$
 					\item $a\sim b\Rightarrow b\sim a$
 					\item $a\sim b$かつ$b\sim c\Rightarrow a\sim c$
 				\end{itemize}}になる．
 			\begin{align*}
-				x\stackrel{G}{\sim}y & \Leftrightarrow\exists g\in G\suchthat x=g\cdot y \\
-				                     & \Leftrightarrow G\qty(x)=G\qty(y)
+				x\stackrel{G}{\sim}y & \iff\exists g\in G\suchthat x=g\cdot y \\
+				                     & \iff G\qty(x)=G\qty(y)
 			\end{align*}
 		\end{prop}
 		ここで$x\stackrel{G}{\sim}y$は同値関係なので同値類に関する類別を考えることができる．これを\redunderline{軌道分解}という．
@@ -128,8 +128,8 @@
 		\end{dfn}
 		\begin{note*}
 			$G$の$X$への作用が推移的\\
-			$\Leftrightarrow\forall x,y\in X$に対し，$\exists g\in G\suchthat x=g\cdot y$\\
-			$\Leftrightarrow\forall x_0\in X$に対し，$G\cdot x_0=G\qty(x_0)=X$
+			$\iff\forall x,y\in X$に対し，$\exists g\in G\suchthat x=g\cdot y$\\
+			$\iff\forall x_0\in X$に対し，$G\cdot x_0=G\qty(x_0)=X$
 		\end{note*}
 		\begin{ex}[軌道分解の例]
 			4次の巡回群$C_4$の正六面体に作用
@@ -177,7 +177,7 @@
 			$G$を群，$X$を$G$-集合．$x_0\in X$に対し，
 			\[f:G\to X;\,g\mapsto g\cdot x_0\]
 			を定める．このとき，
-			\[G\text{の$X$への作用が推移的}\Leftrightarrow f\text{が全射},\,f\qty(G)=X\]
+			\[G\text{の$X$への作用が推移的}\iff f\text{が全射},\,f\qty(G)=X\]
 		\end{prop}
 		\begin{remark*}
 			このとき，$f$は単射であるとは限らない．しかし，群$G$を固定部分群で``割る''ことで全単射を作ることができる．(cf.準同型定理など\dots)
@@ -201,13 +201,13 @@
 
 			\begin{prop}[$H$軌道から誘導される$G$上の同値関係]
 				$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
-				\[a\sim b\Leftrightarrow a^{-1}b\in H\]
+				\[a\sim b\iff a^{-1}b\in H\]
 				は同値関係．$\stackrel{\text{L}}{\sim}$と表すこともある．
 			\end{prop}
 			\begin{proof}
 				$a\sim a$ : $a^{-1}a=e\in H.$
 
-				$a\sim b\Leftrightarrow b\sim a$ : $a^{-1}b\in H\Leftrightarrow\qty(a^{-1}b)^{-1}=b^{-1}a\in H$
+				$a\sim b\iff b\sim a$ : $a^{-1}b\in H\iff\qty(a^{-1}b)^{-1}=b^{-1}a\in H$
 
 				$a\sim b$かつ$b\sim c\Rightarrow a\sim c$ : $a^{-1}b,b^{-1}c\in H$とすると，
 				\[a^{-1}c=\qty(a^{-1}b)\cdot \qty(b^{-1}c)\in H\]
@@ -217,7 +217,7 @@
 				\[C_H\qty(a)=\qty{b\in G\mid a\stackrel{\text{L}}{\sim}b}=\qty{b\in G\mid a^{-1}b\in H}\]
 				と表すこともある．
 			\end{note*}
-			このとき，$a\sim b$ならば，$\exists h\in H\suchthat a^{-1}b=h\Leftrightarrow b=ah$
+			このとき，$a\sim b$ならば，$\exists h\in H\suchthat a^{-1}b=h\iff b=ah$
 			\begin{dfn}
 				$H\leqq G$．$G$の部分集合$gH=\qty{gh\mid h\in H}$を$g$の\redunderline{左剰余類}(left coset)とよび，同値関係$\stackrel{\text{L}}{\sim}$による$g$の同値類を表す．
 			\end{dfn}
@@ -244,7 +244,7 @@
 			から誘導される同値関係・同値類・剰余(商)集合が得られる．
 			\begin{prop}[左乗法移動から得られる$H$軌道が誘導する$G$上の同値関係]
 				$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
-				\[a\sim b\Leftrightarrow ba^{-1}\in H\]
+				\[a\sim b\iff ba^{-1}\in H\]
 				は同値関係となる．以降$\stackrel{\text{R}}{\sim}$と表す．
 			\end{prop}
 			この同値関係$\stackrel{\text{R}}{\sim}$による剰余類
