@@ -1,0 +1,138 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{正規部分群と剰余群}
+	\begin{prop}
+		$H$を$G$の部分群とする．$G$の$H$による左類別と右類別が類別として一致するための必要十分条件は任意の$a\in G$に対して
+		\[aHa^{-1}=H\]
+		が成立すること．
+	\end{prop}
+	\begin{dfn}[正規部分群]
+		$N\leqq G, G$の任意の元$g$に対して，$gNg^{-1}=N$とする．このとき，$N$を$G$の\redunderline{正規部分群}(normal subgroup)という．記号として，$N\triangleleft G$または$G\triangleright N$と書くことにする．
+	\end{dfn}
+	\begin{prop}
+		$H\leqq G$，任意の$g\in G$に対して$gHg^{-1}\subset H$ならば，$H\triangleleft G$．
+	\end{prop}
+	\begin{proof}
+		$\forall g\in G$に対し，$gHg^{-1}\subset H$ならば，
+		\[H\subset g^{-1}Hg=g^{-1}H\qty(g^{-1})^{-1}\]
+		であり，$g^{-1}$も$G$の任意の元を表すので，
+		\[gHg^{-1}\subset H\Rightarrow H\subset gHg^{-1}\]
+		である．よって
+		\[gHg^{-1}=H\]
+	\end{proof}
+	\begin{screen}
+		$N$を群$G$の正規部分群とすると，$N$による剰余(商)集合に群構造を導入することができる．
+	\end{screen}
+	\begin{prop}
+		$N\triangleleft G$．このとき，剰余集合$G/N$は自然に群をなす．すなわち，$G/N$上の群演算を
+		\[xN\cdot yN=\qty(xy)N\]
+		によって定義することができる．
+	\end{prop}
+	\begin{proof}
+		well-defined であることを確かめる(\redunderline{演算の定義が剰余類の代表元の選び方によらない}ことを示す必要がある)．つまり，
+		\[xN=x^\prime N,yN=y^\prime N\Rightarrow xyN=x^\prime y^\prime N\]
+		を示す必要がある．このとき，$x=x^\prime h, y=y^\prime h^\prime$を満たす$h,h^\prime\in N$が存在する．よって
+		\[xy=x^\prime hy^\prime h^\prime=x^\prime y^\prime\qty({y^{\prime}}^{-1}hy^\prime)h^\prime\in x^\prime y^\prime N\]
+		ここで${y^\prime}^{-1}hy^\prime\in {y^\prime}^{-1}Ny^\prime=N$．
+
+		(その他の群としての性質についても省略)
+	\end{proof}
+	\begin{dfn}
+		$N\triangleleft G$．このとき，剰余集合$G/N$を剰余群(residue class group)または商群(quotient group)という．
+	\end{dfn}
+	\begin{remark*}
+		$N\triangleleft G$とする．剰余群$G/N$の単位元は$C_N\qty(e)=eN$．剰余群$G/N$の元$C_N\qty(a)=aN$の逆元は$C_N\qty(a^{-1})=a^{-1}N$
+	\end{remark*}
+	\begin{dfn}[単純群]
+		正規部分群が(単位群と自分自身以外に)1つもない群を単純群という．\\
+		cf. 有限単純群の分類(巡回，交代，リー型，散在)モンスター群の位数$\approx 8\times 10^{53}\gg 6\times 10^{23}$(アボガドロ数)．
+	\end{dfn}
+	\begin{ex}
+		$n$次交代群$\frakA_n$は$n$次対称群$\frakS_n$の正規部分群となる．
+	\end{ex}
+	\begin{dfn}
+		群$G$の中心$Z\qty(G):G$の全ての元と可換な元全体の集合．
+	\end{dfn}
+	\begin{remark*}
+		$Z\qty(G)$は，$G$の正規部分群となる．このとき，射影一般線形群$\PGL_2\qty(\bbR)\coloneqq \GL\qty(2;\bbR)/Z\qty(\GL\qty(2;\bbR))$，射影特殊線形群$\PSL_2\qty(\bbR)\coloneqq \SL\qty(2;\bbR)/Z\qty(\SL\qty(2;\bbR))$
+	\end{remark*}
+	\subsection{ラグランジュの定理}
+		\begin{prop}[左剰余類に関する定理]
+			$H\leqq G,a,b\in G$に対して
+			\begin{itemize}
+				\item $a\sim b\Leftrightarrow aH=bH\Leftrightarrow aH\cap bH\neq\emptyset$
+				\item $a\not\sim b\Leftrightarrow aH\cap bH=\emptyset$
+				\item $a\in G$に対して，写像$\varphi_a:H\to aH;h\mapsto ah$
+			\end{itemize}
+			このとき，$\varphi_a$は全単射である(cf.組み替え定理)．
+		\end{prop}
+		このとき$g\in G$において，$gH$や$Hg$などの部分集合は，$H$の一対一写像による像なので，元の個数は一定で，すべての$H$の位数と一致する．
+
+		さらに，$G=\bigsqcup_{g\in\Lambda}gH$より，$H$の位数を$H$の$G$における剰余類の総数$\qty(G:H)$を用いて$G$の位数は次で表せる．
+		\begin{thm}[ラグランジュの定理]
+			有限群$G$の部分群を$H$とすれば，
+			\[\qty|G|=\qty(G:H)\qty|H|\]
+			が成り立つ．よって，部分群$H$の位数$\qty|H|$，指数$\qty(G:H)$はどちらも$\qty|G|$の約数である．
+		\end{thm}
+		\begin{cor}
+			有限群$G$の元を$a$とすれば，$a$の位数は$\qty|G|$の約数である．従って$a^\qty|G|=e$．(逆は成り立たない)
+		\end{cor}
+		\begin{proof}
+			位数$m$の元$g$は群$G$の中に$m$次の巡回群を生成する．
+		\end{proof}
+		\begin{cor}
+			有限群$G$において，位数$\qty|G|$が素数ならば，$G$は巡回群である．
+		\end{cor}
+	\subsection{群$G$への共役類分解}
+		\begin{screen}
+			$G$自身への(左からの)共役作用について考える．
+			\[G\times G\to G;\qty(g,x)\mapsto gxg^{-1}\]
+		\end{screen}
+		群$G$による$a\in G$への共役作用による軌道$\qty[a]$
+		\[\qty[a]\coloneqq G\qty(a)=\qty{gag^{-1}\mid g\in G}\]
+		とその軌道分解
+		\[G=\bigsqcup_{a\in\Lambda}\qty[a]\]
+		から誘導される同値関係と同値類
+		\begin{dfn}[共役な元，共役類]
+			群$G$上の同値関係である共役$\stackrel{\text{conj}}{\sim}$
+			\[x\stackrel{\text{conj}}{\sim}y\Leftrightarrow\exists g\in G\suchthat gxg^{-1}=y\]
+			この同値関係$\stackrel{\text{conj}}{\sim}$による$a\in G$の同値類$\qty[a]$を\redunderline{共役類(conjugacy class)}という．$a$の共役類$\qty[a]=\qty{gag^{-1}\mid g\in G}$．
+		\end{dfn}
+		\begin{dfn}[共役変換]
+			$g\in G$による共役変換
+			\[A_g:G\to G;a\mapsto gag^{-1}\]
+			$\Rightarrow$群自己同型写像．
+		\end{dfn}
+		\begin{dfn}[共役．共役部分群]
+			部分集合$H_1,H_2\subset G$に対して$H_1=gH_2g^{-1}$なる元が存在するとき，$H_1$と$H_2$は共役であるという．特に，$H_1$が群$G$の部分群のとき，$H_2$は$H_1$の共役な部分群であるという．
+		\end{dfn}
+		\subsubsection{共役類の性質}
+			\begin{itemize}
+				\item 単位元は単独で類をなす．
+				\item 可換群は，各元が単独で共役類．
+			\end{itemize}
+			\begin{ex}[$\frakS_3$の共役類]
+				\[\frakS_3=\qty{e,c,c^{-1},\sigma_1,\sigma_2,\sigma_3}\]
+				ここで$c=\qty{1\ 2\ 3},\sigma_1=\qty(1\ 2),\sigma_2=\qty(1\ 3),\sigma_3=\qty(2\ 3)$
+				\begin{align*}
+					\qty[e]        & =\qty{e}                          \\
+					\qty[c]        & =\qty{c,c^{-1}}                   \\
+					\qty[\sigma_1] & =\qty{\sigma_1,\sigma_2,\sigma_3}
+				\end{align*}
+				\begin{table}[h]
+					\centering
+					\begin{tabular}{c|cccccc}
+						$g\backslash a$  & $e$  & $c$       & $c^{-1}$  & $\sigma$    & $\sigma$    & $\sigma$    \\\hline
+						$e$              & $e$  & $c$       & $c^{-1}$  & $\sigma_1$  & $\sigma_2$  & $\sigma_3$  \\
+						$c$              & $e$  & $c$       & $c^{-1}$  & $\sigma_2$  & $\sigma_3$  & $\sigma_1$  \\
+						$c^{-1}$         & $e$  & $c$       & $c^{-1}$  & $\sigma_3$  & $\sigma_1$  & $\sigma_2$  \\
+						$\sigma_1$       & $e$  & $c^{-1}$  & $c$       & $\sigma_1$  & $\sigma_3$  & $\sigma_2$  \\
+						$\sigma_2$       & $e$  & $c^{-1}$  & $c$       & $\sigma_3$  & $\sigma_2$  & $\sigma_1$  \\
+						$\sigma_3$       & $e$  & $c^{-1}$  & $c$       & $\sigma_2$  & $\sigma_1$  & $\sigma_3$
+					\end{tabular}
+				\end{table}
+			\end{ex}
+\end{document}

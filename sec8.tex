@@ -1,0 +1,68 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{表現の指標と直交性}
+	\begin{dfn}[指標(character)]
+		有限群$G$の$d$次元表現$\qty(\rho,V)$に対し，指標と呼ばれる$G$上の関数$\chi^\rho$を
+		\[\chi^\rho\qty(g)=\chi\qty(g)=\Trace\qty(\rho\qty(g))=\sum_{i=1}^d\rho_{ii}\qty(g)\quad\qty(g\in G)\]
+		で定める．このとき，単位元の表現$\rho\qty(e)$は単位行列であり，$\chi\qty(e)=d$．
+	\end{dfn}
+	\begin{ex}[$D_3$の$\rho_\text{ex5}$の指標]
+		\[\chi\qty(e)=3,\chi\qty(a)=\chi\qty(a^2)=0,\chi\qty(b)=\chi\qty(ab)=\chi\qty(ba)=1\]
+	\end{ex}
+	\begin{note*}
+		$D_3$の共役類\footnote{$g\stackrel{\text{conj}}{\sim}\suchthat\exists a\in G,ag^\prime a^{-1}=g$}
+		\[C_1=\qty{e},C_2=\qty{a,a^2},C_3=\qty{b,ab,ba}\]
+	\end{note*}
+	\begin{dfn}[類関数]
+		群$G$上の関数$\varphi$が類関数であるとは，$G$の任意の元$g,h$に対して，
+		\[\varphi\qty(ghg^{-1})=\varphi\qty(h)\]
+		が成り立つこと．このとき，$\varphi\qty(gh)=\varphi\qty(hg)$．
+	\end{dfn}
+	\begin{cor}
+		同値な表現$\rho$と$\rho^\prime$に対する指標は等しい．また，共役な言，すなわち，同一共役類の指標は等しい．指標は類関数の1つ．
+	\end{cor}
+	\begin{proof}
+		$T\rho T^{-1}=\rho^\prime$ならば，
+		\[\Tr\qty(\rho^\prime)=\Tr\qty(T\rho T^\prime)=\Tr\qty(\rho)\]
+		$gg_ig^{-1}=g_j$ならば，
+		\[\Tr\qty(\rho\qty(g_j))=\Tr\qty(\rho\qty(g)\rho\qty(g_i)\rho\qty(g)^{-1})=\Tr\qty(\rho\qty(g_i))\]
+	\end{proof}
+	\begin{thm}
+		$G$の表現$\lambda$と$\mu$が同値であるためには，その指標$\chi^\lambda$と$\chi^\mu$が$G$上の関数として一致することが必要十分である．
+	\end{thm}
+	証明は後述．
+	\begin{cor}
+		群$G$の$d$次元表現$\qty(\rho,V)$の指標$\chi$は次の性質を持つ．
+		\begin{enumerate}
+			\item $\chi\qty(e)=d$
+			\item $\chi\qty(g)$は$d$個の1の$\qty|G|$乗根の和
+			\item $\chi\qty(g^{-1})=\overline{\chi\qty(g)}$
+		\end{enumerate}
+	\end{cor}
+	\begin{proof}
+		\begin{enumerate}
+			\item $\rho\qty(e)=\text{Id}$から明らか．
+			\item $\rho\qty(g)$の固有値を重複を含め$\lambda_1,\cdots,\lambda_d$とし，対応する固有ベクトル$v_1,\cdots,v_d$とする．このとき，$\chi\qty(g)=\lambda_1+\cdots+\lambda_d$であり，$\rho\qty(g)v_i=\lambda_iv_i$を満たす．さらに\footnote{$g^\qty|G|=e$}\[\lambda_i^\qty|G|v_i=\rho\qty(g^\qty|G|)v_i=v_i\]よって$\lambda_i$は1の$\qty|G|$乗根，ここでゼロ固有値でもないことに注意．
+			\item ユニタリー表現から，\[\chi\qty(g^{-1})=\Tr\qty(\rho\qty(g^{-1}))=\Tr\qty(^{\top}\rho\qty(g^{-1}))=\Tr\qty(\overline{\rho}\qty(g))=\overline{\chi}\qty(g)\]$G$上の複素数値関数$\varphi,\psi$に対する内積を次で定義する．\[\left<\varphi,\psi\right>=\frac{1}{\qty|G|}\sum_{g\in G}\varphi\qty(g)\overline{\psi\qty(g)}\]指標の性質から，指標の内積\[\left<\chi^\lambda,\chi^\mu\right>=\frac{1}{\qty|G|}\sum_{g\in G}\chi^\lambda\qty(g)\chi^\mu\qty(g^{-1})\]
+		\end{enumerate}
+	\end{proof}
+	\begin{lem}[Schurの補題1]
+		$F=\bbR$または$\bbC$とする，群$G$の$F$上の2つの表現，$m$次既約表現$\rho^\qty(1)$と$n$次既約表現$\rho^\qty(2)$に対して，$F$上の$m\times n$行列$M$が
+		\[\rho^\qty(1)\qty(g)M=M\rho^\qty(2)\qty(g)\]
+		を満たすならば，$M$は正則行列(このとき$m=n$)であるか，または$M=O$である．
+	\end{lem}
+	\begin{proof}
+		任意の$x\in\Ker M$に対して
+		\[M\qty(\rho^\qty(2)\qty(g)x)=\rho^\qty(1)\qty(g)Mx=0\]
+		よって$\rho^\qty(2)\qty(g)x\in\Ker M$であり，$\Ker M$は$\rho^\qty(2)$の不変部分空間．さらに$\rho^\qty(2)$は既約なので，不変部分空間である$\Ker M$は零空間$\qty{0}$あるいは全空間$F^n$に等しい．
+
+		また，任意の$y\in\Im M$に対して，$y=Mx$なる$x$によって，
+		\[\rho^\qty(1)\qty(g)y=\rho^\qty(1)\qty(g)Mx=M\qty(\rho^\qty(2)\qty(g)x)\in\Im M\]
+		が従う．よって$\Im M$は$\rho^\qty(1)$に関する不変部分空間であり，$\rho^\qty(1)$が既約表現であることより，$\Im M$は零空間$\qty{0}$あるいは全空間$F^m$に等しい．
+
+		したがって$M$は零行列あるいは正則行列．
+	\end{proof}
+\end{document}

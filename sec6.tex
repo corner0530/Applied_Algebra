@@ -1,0 +1,140 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{群の乗法作用の軌道について}
+	$t$は$G$集合$T$に属する．
+	\begin{align*}
+		G_t      & = \qty{g\in G\mid gt = t}        & : & t\text{の固定部分群}      \\
+		G\qty(t) & = \qty{g\cdot t\in T\mid g\in G} & : & t\text{の}G\text{軌道}
+	\end{align*}
+	\begin{prop}
+		$T$を$G$集合とする．
+		\begin{enumerate}
+			\item $a\in G,t\in T$に対し，$G_{a\cdot t}=a\cdot G_t\cdot a^{-1}$
+			\item $a\in G,t\in T$に対し，$\qty|G_t|=\qty|G_{a\cdot t}|$
+		\end{enumerate}
+	\end{prop}
+	\begin{proof}
+		\begin{enumerate}
+			\item $g\in G_{a\cdot t}$とすると$gat=at\Leftrightarrow a^{-1}gat=t\Leftrightarrow a^{-1}ga\in G_t\Leftrightarrow g\in aG_ta^{-1}.$
+			\item $\qty|G_{a\cdot t}|=\qty|aG_ta^{-1}|=\qty|G_t|$
+		\end{enumerate}
+	\end{proof}
+	\begin{thm}[軌道構造定理]
+		$G$集合$T$において$t_0\in T$を1つ選んで固定．$G_{t_0}$と$G\qty(t_0)$に対して
+		\[\bar{f}:G/G_{t_0}\to G\qty(t_0);aG_{t_0}\mapsto a\cdot t_0\]
+		このとき，$\bar{f}$は全単射である．すなわち，固定部分群$G_{t_0}$に関する$G$の左剰余類と軌道$G\qty(t_0)$の点とは一対一に対応する．
+	\end{thm}
+	\begin{proof}
+		\begin{itemize}
+			\item well-definedであること\\$\forall b\in aG_{t_0}$とする．このとき，$\exists g\in G_{t_0}\suchthat b=ag\Rightarrow b\cdot t_0=\qty(ag)\cdot t_0=a\cdot\qty(g\cdot t_0)=a\cdot t_0$
+			\item 全射\\$G\qty(t_0)$の元$a\cdot t_0\,\qty(a\in G)$に対して$G/G_{t_0}$の元$aG_{t_0}$を取ればよい．
+			\item 単射\\$G/G_{t_0}$の元$aG_{t_0},bG_{t_0}$に対し，
+					\begin{align*}
+						\bar{f}\qty(aG_{t_0})=\bar{f}\qty(bG_{t_0}) & \Leftrightarrow a\cdot t_0=b\cdot t_0                  \\
+						                                            & \Leftrightarrow \qty(a^{-1}b)t_0=t_0                   \\
+						                                            & \Leftrightarrow a^{-1}b\in G_{t_0}                     \\
+						                                            & \Leftrightarrow\exists g\in G_{t_0}\suchthat g=a^{-1}b
+					\end{align*}
+					このとき$bG_{t_0}=agG_{t_0}=aG_{t_0}$が成り立つ．
+		\end{itemize}
+	\end{proof}
+	\begin{cor}\label{cor:6-3}
+		$G$を有限群，$T$を$G$集合とする．$t\in T$に対して，$t$の軌道$G\qty(t)$内の点の個数
+		\[\qty|G\qty(t)|=\qty(G:G_t)=\frac{\qty|G|}{\qty|G_t|}\]
+	\end{cor}
+	次に軌道がいくつあるのかを数えるのが次の定理(数え上げ問題)．
+	\begin{thm}[コーシー・フロベニウスの定理]
+		$G$集合$T$が$m$個の軌道に分解されるとする．
+		\[T=T_1\sqcup T_2\sqcup\cdots\sqcup T_m,\quad T_j\cap T_k=\emptyset\,\qty(j\neq k)\]
+		$g\in G$による固定元の集合を$T^g$で表す．
+		\[T^g=\qty{t\in T\mid g\cdot t=t}\]
+		このとき，軌道の個数$m$は
+		\[m=\frac{1}{\qty|G|}\sum_{g\in G}\qty|T^g|\]
+		と表される．すなわち，軌道の個数は，固定元の個数の平均値．
+	\end{thm}
+	\begin{proof}
+		積集合$\qty(G,T)=\qty{\qty(g,t)\mid g\in G,t\in T}$を考える．$\qty(G,T)$の部分集合$S$を$S=\qty{\qty(g,t)\mid g\in G,t\in T,\redunderline{gt=t}}$で定義するとき，$S$は次の2通りに分解することができる．
+		\begin{align*}
+			S & =\bigcup_{g\in G}\qty{\qty(g,t)\mid t\in T^g} &  & \qty(g\in G\text{ごとに固定元をまとめる})   \\
+			  & =\bigcup_{t\in T}\qty{\qty(g,t)\mid g\in G_t} &  & \qty(t\in T\text{ごとに固定部分群をまとめる})
+		\end{align*}
+		このとき，
+		\[\qty|S|=\sum_{g\in G}\qty|T^g|=\sum_{t\in T}\qty|G_t|\]
+		ここで右辺の和を軌道ごとの和に書き直すと
+		\[\sum_{t\in T}\qty|G_t|=\sum_{j=1}^m\sum_{t\in T_j}\qty|G_t|\]
+		となる．同じ軌道に属する$t$に対して$\qty|G_t|$の値は一定であり，$T_j$の代表元を$t_j$とすると$T_j=G\qty(t_j)$である．さらに系\ref{cor:6-3}の結果を用いると
+		\[\sum_{t\in T_j}\qty|G_t|=\qty|G\qty(t_j)|\cdot\qty|G_{t_j}|=\frac{\qty|G|}{\qty|G_{t_j}|}\qty|G_{t_j}|=\qty|G|\]
+		以上より
+		\[\sum_{g\in G}\qty|T^g|=\sum_{t\in T}\qty|G_t|=m\qty|G|\]
+	\end{proof}
+	\subsection{数え上げ問題への応用}
+		\begin{exe}
+			正四面体の4つの面を$n$色で塗り分ける場合の数を$C\qty(n)$とする．このとき$C\qty(n)$を$n$の式で表せ．ただし，色を重複して使ってよいものとする．また，適当な回転で一致するものは1通りとして数える．
+		\end{exe}
+		まず，$n=1$のときは4つの面全て1色で塗るしかない
+		\[C\qty(1)=1\]
+		次に$n=2$のとき
+		\[C\qty(2)=5\]
+		4つの面の色をそれぞれ\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4}によって表すことにすると
+		\[\qty(\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4})\in\qty{\qty(1,1,1,1),\qty(2,2,2,2),\qty(1,1,1,2),\qty(1,1,2,2),\qty(1,2,2,2)}\]
+		$n=3$のとき
+		\[C\qty(3)=15\]
+		正四面体群の作用を考える．正四面体の頂点を$A_1,A_2,A_3,A_4$とする．正四面体の重心を$O$とし，各辺の中点を図\ref{fig:tetrahedron}のように$L,M,N,L^\prime,M^\prime,N^\prime$とする．
+		\begin{figure}[h]
+			\centering
+			\tdplotsetmaincoords{60}{45}
+			\begin{tikzpicture}[tdplot_main_coords]
+				\coordinate[label=above:$A_1$] (A1) at (0,{2/sqrt(3)},{4*sqrt(2/3)});
+				\coordinate[label=left:$A_2$] (A2) at (-2,0,0);
+				\coordinate[label=right:$A_3$] (A3) at (2,0,0);
+				\coordinate[label=right:$A_4$] (A4) at (0,{2*sqrt(3)},0);
+				\coordinate[label=above:$O$] (O) at (0,{2/sqrt(3)},{sqrt(2/3)});
+				\coordinate (L) at ($0.5*(A1)+0.5*(A2)$);
+				\coordinate (M) at ($0.5*(A1)+0.5*(A4)$);
+				\coordinate (N) at ($0.5*(A1)+0.5*(A3)$);
+				\coordinate (Lp) at ($0.5*(A3)+0.5*(A4)$);
+				\coordinate (Mp) at ($0.5*(A2)+0.5*(A3)$);
+				\coordinate (Np) at ($0.5*(A2)+0.5*(A4)$);
+				\draw (A1)--(A2)--(A3)--cycle;
+				\draw (A1)--(A4);
+				\draw[dashed] (A2)--(A4);
+				\draw (A3)--(A4);
+				\draw[red] (L) node[left] {$L$};
+				\draw[red] (M) node[right] {$M$};
+				\draw[red] (N) node[right] {$N$};
+				\draw[red] (Lp) node[right] {$L^\prime$};
+				\draw[red] (Mp) node[below] {$M^\prime$};
+				\draw[red] (Np) node[below] {$N^\prime$};
+				\fill[black] (O) circle(0.05);
+				\fill[red] (L) circle(0.05);
+				\fill[red] (M) circle(0.05);
+				\fill[red] (N) circle(0.05);
+				\fill[red] (Lp) circle(0.05);
+				\fill[red] (Mp) circle(0.05);
+				\fill[red] (Np) circle(0.05);
+			\end{tikzpicture}
+			\caption{正四面体}
+			\label{fig:tetrahedron}
+		\end{figure}
+		このとき，正四面体群$P\qty(4)$は次の12種類の回転からなる群．
+		\begin{align*}
+			\sigma_i        & : OA_i\text{を軸とする}\frac{2}{3}\pi\text{回転}\,\qty(i=1,2,3,4) \\
+			\sigma_i^\prime & : OA_i\text{を軸とする}\frac{4}{3}\pi\text{回転}\,\qty(i=1,2,3,4) \\
+			\tau_L          & : LL^\prime\text{を軸とする}\pi\text{回転}                        \\
+			\tau_M          & : MM^\prime\text{を軸とする}\pi\text{回転}                        \\
+			\tau_N          & : NN^\prime\text{を軸とする}\pi\text{回転}                        \\
+			I               & : \text{恒等写像}
+		\end{align*}
+		それぞれの面に$n$通りの塗り方があるので回転による同一視がない場合，$n^4$通りの塗り方がある．
+		\[\qty(\textcircled{1},\textcircled{2},\textcircled{3},\textcircled{4})\in\qty(k_1,k_2,k_3,k_4)\quad\qty(k_j=1,2,\cdots,n;j=1,2,3,4)\]
+		集合$T$を$T=\qty{\qty(k_1,k_2,k_3,k_4)\mid k_1,k_2,k_3,k_4\in\qty{1,2,\cdots,n}}$によって定め，$G=P\qty(4)$の$T$への応用を考えればよい．このとき軌道の個数は
+		\begin{align*}
+			m & =\frac{1}{\qty|G|}\sum_{g\in G}\qty|T^g|                                                                                                   \\
+			  & =\frac{1}{12}\qty(\qty|T^I|+\qty|T^{\sigma_1}|+\cdots+\qty|T^{\sigma_1^\prime}|+\cdots+\qty|T^{\tau_L}|+\qty|T^{\tau_M}|+\qty|T^{\tau_N}|) \\
+			  & =\frac{1}{12}\qty(n^4+n^2+\cdots+n^2+\cdots+n^2+n^2+n^2)                                                                                   \\
+			  & =\frac{1}{12}\qty(n^4+11\times n^2)
+		\end{align*}
+\end{document}

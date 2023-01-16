@@ -1,0 +1,103 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{準同型定理}
+	\redunderline{準同型写像}は，1対1の写像とも，上への写像とも限らない．しかし，その中から\redunderline{同型写像}を取り出すことができる．
+	\begin{prop}
+		$G$を群．$N\triangleleft G$とする．このとき，標準射影(自然な全射)
+		\[\kappa:G\to G/N;a\mapsto\kappa\qty(a)=C_N\qty(a)=aN\]
+		は準同型写像となる．
+	\end{prop}
+	\begin{proof}
+		$a,b\in G$とする．このとき，$\kappa\qty(ab)=\qty(ab)N=aN\cdot bN=\kappa\qty(a)\cdot\kappa\qty(b).$
+	\end{proof}
+	\begin{prop}
+		準同型写像の核は，正規部分群．
+	\end{prop}
+	\begin{proof}
+		$f\in\Hom\qty(G,G^\prime)$とする．
+		\begin{itemize}
+			\item 部分群であること\\$\Ker f$には少なくとも$G$の単位元が属している．$a,b\in \Ker f$に対して，\begin{align*}
+						            & f\qty(ab^{-1})=f\qty(a)f\qty(b)^{-1}=e_{G^\prime}\cdot e_{G^\prime}^{-1}=e_{G^\prime} \\
+						\Rightarrow & ab^{-1}\in\Ker f
+					\end{align*}
+					が成立．よって$\Ker f$は$G$の部分群．
+			\item 正規であること\\任意の$g\in G$に対して$a\in\Ker f$ならば，
+				\[f\qty(gag^{-1})=f\qty(g)\cdot f\qty(a)\cdot f\qty(g)^{-1}=f\qty(g)\cdot e_{G^\prime}\cdot f\qty(g)^{-1}=e_{G^\prime}\]
+				より$gag^{-1}\in\Ker f$が成り立つ．
+		\end{itemize}
+	\end{proof}
+	\begin{thm}[準同型定理]
+		$f\in\Hom\qty(G,G^\prime)$，$f$の像$\Im f$のなす$G^\prime$の部分群について，
+		\[\bar{f}:G/\Ker f\to\Im f;g\Ker f\mapsto f\qty(g)\]
+		による，群の同型\redunderline{$G/\Ker f\simeq\Im f$}が成り立つ\footnote{$\kappa$:準同型，$\Ker f$:$G$の正規部分群}．この$\bar{f}$を\redunderline{$f$から誘導される(引き起こされる)同型写像}という．
+	\end{thm}
+	\begin{align*}
+		\begin{array}{ccccc}
+			G &                & \stackrel{f}{\longrightarrow} &                                                           & \Im f\subset G^\prime \\
+			  & \kappa\searrow &                               & \rotatebox{45}{$\stackrel{\sim}{\longrightarrow}$}\bar{f} &                       \\
+			  &                & G/\Ker f                      &                                                           &
+		\end{array}
+	\end{align*}
+	\begin{align*}
+		\begin{array}{rccc}
+			\bar{f}: & G/\Ker f              & \longrightarrow & \Im f                 \\
+			         & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+			         & g\Ker f               & \longmapsto     & f\qty(g)
+		\end{array}
+	\end{align*}
+	\begin{proof}
+		\begin{itemize}
+			\item 写像の定義が代表元によらないこと\\$g^\prime\in g\Ker f$より，
+				\begin{align*}
+					g^\prime        & =gn\quad\qty(n\in\Ker f)                   \\
+					f\qty(g^\prime) & =f\qty(gn)=f\qty(g)\cdot f\qty(n)=f\qty(g)
+				\end{align*}
+			\item 準同型
+				\begin{align*}
+					\bar{f}\qty(g\Ker f\cdot g^\prime\Ker f) & =\bar{f}\qty(\qty(gg^\prime)\Ker f)                   \\
+					                                         & =f\qty(gg^\prime)=f\qty(g)\cdot f\qty(g^\prime)       \\
+					                                         & =\bar{f}\qty(g\Ker f)\cdot\bar{f}\qty(g^\prime\Ker f)
+				\end{align*}
+			\item 単射\\$\bar{f}\qty(g\Ker f)=\bar{f}\qty(g^\prime\Ker f)$，つまり，$f\qty(g)=f\qty(g^\prime)$とすると，
+					\[f\qty(g^{-1}\cdot g^\prime)=f\qty(g)^{-1}\cdot f\qty(g^\prime)=e_{G^\prime}\]
+					となり，$g^{-1}\cdot g^\prime\in\Ker f$である．よって$g^\prime\in g\Ker f$から，
+				\[g\Ker f=g^\prime\Ker f\]
+				が得られる．
+			\item 全射\\任意の$\tilde{g}\in\Im f$から$\bar{f}\qty(g\Ker f)=\tilde{g}$を満たす$g\Ker f\in G/\Ker f$が存在することを示す．$\Im f$の定義より，$\forall\tilde{g}\in\Im f$に対して$f\qty(g)=\tilde{g}$を満たす$g\in G$が存在する．この$g$の属する剰余集合$g\Ker f$を取れば，$\bar{f}\qty(g\Ker f)=f\qty(g)=\tilde{g}$である．
+		\end{itemize}
+	\end{proof}
+	\begin{cor}
+		特に$G$が有限群のとき，
+		\[\qty|\Im f|=\qty|G|/\qty|\Ker f|\]
+		が成り立つ．
+	\end{cor}
+	\begin{note*}
+		線形代数の線形写像に関する次元定理に相当する．
+	\end{note*}
+	\begin{ex}[対称群$\frakS_n$と交代群$\frakA_n$]
+		$\frakS_n$から積を演算とする$\bbR^\times\coloneqq\bbR\backslash\qty{0}$への写像
+		\[\sgn:\frakS_n\to\bbR^\times;\sigma\mapsto\sgn\sigma=\begin{cases}
+				+1 & \sigma:\text{偶置換} \\
+				-1 & \text{それ以外}
+			\end{cases}\]
+		は準同型写像であり，$\Ker\sgn=\frakA_n,\Im\sgn=\qty{+1,-1}$である．
+		\[\bar{f}:\frakS_n/\frakA_n\to\qty{\pm 1};\sigma\frakA_n\mapsto\sgn\sigma\]
+		例えば，$\sigma_1=\qty(1, 2)$とすると
+		\[\frakS_n/\frakA_n=\qty{e\frakA_n,\sigma_1\frakA_n}\]
+		となり，
+		\[\bar{f}\qty(e\frakA_n)=1,\bar{f}\qty(\sigma_1\frakA_n)=-1\]
+		これは，$\qty{\pm 1}$への同型写像．
+	\end{ex}
+	\begin{ex}
+		$\GL\qty(n;\bbC)$から$\bbC^\times\coloneqq\bbC\backslash\qty{0}$への写像$\det:A\mapsto\det A$は準同型であり，
+		\begin{align*}
+			\Ker\det & =\SL\qty(n;\bbC)=\qty{g\in \GL\qty(n,\bbC)\mid\det g=1} \\
+			\Im\det  & =\bbC^\times=\bbC\backslash\qty{0}
+		\end{align*}
+		である．
+		\[\GL\qty(n;\bbC)/\SL\qty(n;\bbC)\simeq\bbC^\times\]
+	\end{ex}
+\end{document}

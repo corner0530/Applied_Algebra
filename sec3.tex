@@ -1,0 +1,299 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{群作用と軌道分解}
+	\subsection{作用について}
+		群$G$の集合$X$への作用について，$G$自身への作用を含めて議論する．群の作用には，左作用と右作用がある．
+		\begin{dfn}
+			群$G$の集合$X$への\redunderline{左作用(left action)}とは，次の条件を満たす写像$\lambda:G\times X\to X$のこと．
+			\begin{itemize}
+				\item $\forall x\in X$に対し，
+					\[\lambda\qty(e_G,x)=x\]
+				\item $\forall g,h\in G,\,\forall x\in X$に対し，
+					\[\redunderline{\lambda\qty(gh,x)=\lambda\qty(g,\lambda\qty(h,x))}\]
+			\end{itemize}
+			このとき，$G$は$\lambda$によって$X$に左から作用(act from left)するという．このような写像$\lambda$が与えられた集合$X$を\redunderline{左$G$集合(left $G$-set)}という．
+		\end{dfn}
+		\begin{dfn}
+			群$G$の集合$X$への\redunderline{右作用(right action)}とは，次の条件を満たす写像$\rho:X\times G\to X$のこと．
+			\begin{itemize}
+				\item $\forall x\in X$に対し，
+					\[\rho\qty(x,e_G)=x\]
+				\item $\forall g,h\in G,\,\forall x\in X$に対し，
+					\[\redunderline{\rho\qty(x,gh)=\rho\qty(\rho\qty(x,g),h)}\]
+			\end{itemize}
+			このとき，$G$は$\rho$によって$X$に右から作用(act from right)するという．このような写像$\rho$が与えられた集合$X$を\redunderline{右$G$集合(right $G$-set)}という．
+		\end{dfn}
+		\begin{remark*}
+			明示する必要がない場合，$\lambda\qty(g,x)$を$g\cdot x$や$gx$などと省略することが多い．
+		\end{remark*}
+		\begin{note*}
+			自明な作用:\,全ての$g\in G,\,x\in X$に対し，$\lambda\qty(g,x)=x$とする作用
+		\end{note*}
+		\begin{note*}
+			対称群$\frakS_n$はその定義から，$X=\qty{1,2,\cdots,n}$上に自然に置換として作用している．本講義では通常は左作用としている．
+		\end{note*}
+		\begin{remark*}
+			$\rho\qty(x,g)$を$\qty(x)\rho_g,\,x^g$あるいは$x\cdot g,\,xg$などと省略する．
+		\end{remark*}
+		\begin{prop}
+			群$G$が集合$X$に$\qty(g,x)\mapsto g\cdot x$によって\redunderline{左から作用}しているとき，$\rho\qty(x,g)=x^g=g^{-1}\cdot x$とおくと，これは$G$の右作用となる．逆も同様，$G$の$X$への左作用と$G$の$X$への右作用は1対1となる．
+		\end{prop}
+		\begin{proof}
+			$\qty(G,\circ)$に対し，
+			\[\qty(g\circ h,x)\mapsto\qty(g\circ h)\cdot x=g\cdot\qty(h\cdot x)\]
+			このとき
+			\begin{align*}
+				\rho\qty(x,g\circ h) & =\qty(g\circ h)^{-1}\cdot x=\qty(h^{-1}\circ g^{-1})\cdot x=h^{-1}\cdot\qty(g^{-1}\cdot x) \\
+				                     & =\rho\qty(\rho\qty(x,g),h)
+			\end{align*}
+		\end{proof}
+		\begin{ex}
+			正三角形への作用について，% 書き直す?
+			\begin{itemize}
+				\item[変換1] $\rho_a$:反時計周りに$\frac{2}{3}\pi$回転\\$\rho_h$:重心を通る垂直軸で折り返し変換
+				\item[変換2] $\sigma_{132}=\mqty(1&2&3\\3&1&2)$:頂点番号集合$\qty{1,2,3}$への置換\\$\sigma_{23}=\mqty(1&2&3\\1&3&2)$:頂点番号集合$\qty{1,2,3}$への置換
+			\end{itemize}
+			\begin{align*}
+				\rho_a\qty(\triangle\qty(123))                             & \mapsto\triangle\qty(312)                              \\
+				\rho_b\qty(\triangle\qty(123))                             & \mapsto\triangle\qty(132)                              \\
+				\sigma_{132}\qty(\triangle\qty(123))                       & \mapsto\triangle\qty(312)                              \\
+				\sigma_{23}\qty(\triangle\qty(123))                        & \mapsto\triangle\qty(132)                              \\
+				\qty(\rho_a\circ\rho_b)\qty(\triangle\qty(123))            & \mapsto\rho_a\qty(\rho_b\triangle\qty(123))            \\
+				                                                           & =\triangle\qty(213)                                    \\
+				\qty(\sigma_{132}\circ\sigma_{23})\qty(\triangle\qty(123)) & =\sigma_{132}\qty(\sigma_{23}\triangle\qty(123))       \\
+				                                                           & =\sigma_{132}\qty(\triangle\qty(132))                  \\
+				                                                           & =\triangle\qty(321)                                    \\
+				\qty(\triangle\qty(123))\qty(\rho_a\circ\rho_b)            & =\qty(\qty(\triangle\qty(123))\rho_a)\rho_b            \\
+				                                                           & =\qty(\triangle\qty(312))\rho_b=\triangle 321          \\
+				\qty(\triangle\qty(123))\qty(\sigma_{132}\circ\sigma_{23}) & =\qty(\qty(\triangle\qty(123))\sigma_{132})\sigma_{23} \\
+				                                                           & =\triangle\qty(213)
+			\end{align*}
+			ここで$x\mapsto f\qty(g^{-1}\circ x)$とすると{\color{red} 左作用}となる．
+		\end{ex}
+		\begin{prop}[$G$集合$X$上の関数への作用]
+			群$G$が集合$X$に\redunderline{左から作用}しているとき，$X$上の複素数値関数全体を$F\qty(X)$と置き，$g\in G$の$F\qty(X)$への作用を，関数$f\in F\qty(X)$を関数$x\mapsto f\qty(g\cdot x)\quad\qty(\forall x\in X)$に写す写像を定める．これは{\color{red} 右作用}になる．これを$G$の$X$への作用から引き起こされる$X$上の関数への作用という．
+		\end{prop}
+		\begin{ex}
+			$\calH=\qty{z\in\bbC\mid\Im z>0}$，左作用$\mu:\SL_2\qty(\bbR)\times\calH\to\calH$
+			\[\qty(g=\mqty(a&b\\c&d),z)\mapsto\mu\qty(g,z)=\frac{az+b}{cz+d}\quad\qty(ad-bc=1)\]
+			複素上半平面$\calH$の上の正則関数$f\qty(z)$全体の集合$H\qty(\calH)$への作用$f\qty(g\cdot z)$は右作用となる．
+
+			このとき，
+			\begin{align*}
+				\mu\qty(hg,z) & =\mu\qty(h,\mu\qty(g,z))                                                                          \\
+				              & =\mu\qty(\mqty(a^\prime                                                                & b^\prime \\c^\prime&d^\prime),\frac{az+b}{cz+d})\\
+				              & =\frac{a^\prime\qty(az+b)/\qty(cz+d)+b^\prime}{c^\prime\qty(az+b)/\qty(cz+d)+d^\prime}
+			\end{align*}
+			例えば，$g=\mqty(1&1\\0&1),h=\mqty(1&0\\1&1)\in \SL_2\qty(\bbR)$
+			\[gh=\mqty(2&1\\1&1),\quad hg=\mqty(1&1\\1&2)\]
+			\begin{align*}
+				f\qty(z) & \stackrel{g}{\to}F\qty(z)=f\qty(g\cdot z)=f\qty(z+1)                                                                                                    \\
+				         & \stackrel{h}{\to}F\qty(h\cdot z)=F\qty(\frac{z}{z+1})=f\qty(\frac{z}{z+1}+1)=f\qty(\frac{2z+1}{z+1})=f\qty(\qty(gh)\cdot z)=f\qty(h\cdot\qty(g\cdot z))
+			\end{align*}
+		\end{ex}
+	\subsection{集合$X$の軌道分解}
+		\begin{dfn}
+			(二項演算が定義されている)集合$S$の集合$X$への左からの作用とは，次の条件より写像
+			\[\lambda:S\times X\to X\]
+			のこと．
+			\begin{itemize}
+				\item 任意の$g,h\in S,\,x\in X$に対し，
+					\[\lambda\qty(gh,x)=\lambda\qty(g,\lambda\qty(h,x))\]
+			\end{itemize}
+		\end{dfn}
+		\begin{dfn}
+			$\cdot:S\times X\to X$を集合$S$の集合$X$への左からの作用とする．$x\in X$に対し，$x$の$S$-軌道($S$-orbit)を，
+			\[S\qty(x)\coloneqq S\cdot x=\qty{s\cdot x\mid s\in S}\subset X\]
+			で定義する．
+		\end{dfn}
+		\begin{prop}
+			$\qty(G,\circ)$を群とし，$\cdot :G\times X\to X$を$G$の群としての$X$への左からの作用とする．このとき，\redunderline{二項関係$x\stackrel{G}{\sim}y$を$x\in G\cdot y$}で定義すると，同値関係\footnote{cf.同値関係:集合$X$上の同値関係$\sim$\,$\Leftrightarrow\forall a,b,c\in X$に対し，\begin{itemize}
+					\item $a\sim a$
+					\item $a\sim b\Rightarrow b\sim a$
+					\item $a\sim b$かつ$b\sim c\Rightarrow a\sim c$
+				\end{itemize}}になる．
+			\begin{align*}
+				x\stackrel{G}{\sim}y & \Leftrightarrow\exists g\in G\suchthat x=g\cdot y \\
+				                     & \Leftrightarrow G\qty(x)=G\qty(y)
+			\end{align*}
+		\end{prop}
+		ここで$x\stackrel{G}{\sim}y$は同値関係なので同値類に関する類別を考えることができる．これを\redunderline{軌道分解}という．
+		\begin{dfn}
+			$x\stackrel{G}{\sim}y$に関して$X$を同値類に分割したものを，$X$の$G$による\redunderline{軌道分解}といい$X/{\sim} G$で表す．
+			\[X/{\sim} G=\qty{G\qty(t)\mid t\in\Lambda},\suchthat X=\bigsqcup_{t\in\Lambda}G\qty(t)\]
+			ここで$\Lambda$は完全代表系，集合$X$の群$G$による軌道分解を$G\backslash X$で表すことも多い．また，軌道が唯一つになるとき，作用が\redunderline{推移的}(transitive)であるという．
+		\end{dfn}
+		\begin{note*}
+			$G$の$X$への作用が推移的\\
+			$\Leftrightarrow\forall x,y\in X$に対し，$\exists g\in G\suchthat x=g\cdot y$\\
+			$\Leftrightarrow\forall x_0\in X$に対し，$G\cdot x_0=G\qty(x_0)=X$
+		\end{note*}
+		\begin{ex}[軌道分解の例]
+			4次の巡回群$C_4$の正六面体に作用
+			\begin{align*}
+				C_4\cdot 1 & =\qty{1,2,3,4} \\
+				C_4\cdot 5 & =\qty{5,6,7,8}
+			\end{align*}
+			\begin{figure}[h]
+				\centering
+				\tdplotsetmaincoords{60}{30}
+				\begin{tikzpicture}[tdplot_main_coords]
+					\draw (-1,-1,1)node[left]{1};
+					\draw (1,-1,1)node[right]{2};
+					\draw (1,1,1)node[right]{3};
+					\draw (-1,1,1)node[above]{4};
+					\draw (-1,-1,-1)node[left]{5};
+					\draw (1,-1,-1)node[right]{6};
+					\draw (1,1,-1)node[right]{7};
+					\draw (-1,1,-1)node[left]{8};
+					\draw (-1,-1,1)--(1,-1,1)--(1,1,1)--(-1,1,1)--(-1,-1,1);
+					\draw (-1,-1,1)--(-1,-1,-1)--(1,-1,-1)--(1,-1,1);
+					\draw (1,1,1)--(1,1,-1)--(1,-1,-1);
+					\draw[dashed] (-1,1,1)--(-1,1,-1)--(-1,-1,-1);
+					\draw[dashed] (1,1,-1)--(-1,1,-1);
+					\fill[red] (0,0,1)circle(0.05);
+					\fill[red] (0,0,-1)circle(0.05);
+					\draw[->][red] (0,0,-2.5)--(0,0,3);
+					\draw[->][red] (0.25,0,2.5)arc(0:270:0.25);
+				\end{tikzpicture}
+				\caption{正六面体}
+			\end{figure}
+		\end{ex}
+		\begin{dfn}[固定部分群]
+			群$G$が集合$X$に作用しているとき，$X$の1点$x$を動かさない$g\in G$の全体は，$G$の部分群となる．これを$x$の\redunderline{固定部分群}(stabilizer of $x$)といい，$G_x$とかく．
+			\[G_x=\qty{g\in G\mid g\cdot x}\qty(\leqq G)\]
+		\end{dfn}
+		\begin{ex}
+			正六面体群$P\qty(6)$において頂点$A_1$を固定する部分群は位数3の巡回部分群．
+			\[P\qty(6)_{A_1}=\qty{\text{恒等変換},\text{立方体の重心と頂点}A_1\text{を通る対角線周りの}\frac{2}{3}\pi\text{回転},\frac{4}{3}\pi\text{回転}}\]
+		\end{ex}
+		\begin{itemize}
+			\item 集合$X$への群$G$の作用が推移的である時，集合$X$と集合$G$は以下の意味で``ほぼ同じ''とみなすことができる．
+		\end{itemize}
+		\begin{prop}
+			$G$を群，$X$を$G$-集合．$x_0\in X$に対し，
+			\[f:G\to X;\,g\mapsto g\cdot x_0\]
+			を定める．このとき，
+			\[G\text{の$X$への作用が推移的}\Leftrightarrow f\text{が全射},\,f\qty(G)=X\]
+		\end{prop}
+		\begin{remark*}
+			このとき，$f$は単射であるとは限らない．しかし，群$G$を固定部分群で``割る''ことで全単射を作ることができる．(cf.準同型定理など\dots)
+
+			「群$G$を部分群で割る」→$G$の同値類のひとつである\blueunderline{剰余類}の導入
+		\end{remark*}
+	\subsection{群$G$の剰余類分解}
+		特に，部分群の$G$自身への作用による軌道分解
+		\begin{itemize}
+			\item 部分群$H$の群$G$への右作用乗法移動
+				\[\rho:G\times H\to G;\,\qty(g,h)\mapsto gh\]
+			\item 部分群$H$の群$G$への左作用乗法移動
+				\[\lambda:H\times G\to G;\,\qty(h,g)\mapsto hg\]
+		\end{itemize}
+		$\Rightarrow$対応する軌道分解によって，群$G$は部分群による同値類に分解(類別)できる．
+
+		以下$H\leqq G$とする．
+		\subsubsection{部分群$H$の群$G$への\redunderline{右からの乗法移動}による$g\in G$の軌道}
+			\[H\qty(g)=\qty{\rho\qty(g,h)\mid h\in H}=\qty{g\cdot h\mid h\in H}=gH\]
+			による軌道分解$G=\bigsqcup_{a\in\Lambda}aH$から誘導される同値関係，同値類，剰余(商)集合が得られる．
+
+			\begin{prop}[$H$軌道から誘導される$G$上の同値関係]
+				$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
+				\[a\sim b\Leftrightarrow a^{-1}b\in H\]
+				は同値関係．$\stackrel{\text{L}}{\sim}$と表すこともある．
+			\end{prop}
+			\begin{proof}
+				$a\sim a$ : $a^{-1}a=e\in H.$
+
+				$a\sim b\Leftrightarrow b\sim a$ : $a^{-1}b\in H\Leftrightarrow\qty(a^{-1}b)^{-1}=b^{-1}a\in H$
+
+				$a\sim b$かつ$b\sim c\Rightarrow a\sim c$ : $a^{-1}b,b^{-1}c\in H$とすると，
+				\[a^{-1}c=\qty(a^{-1}b)\cdot \qty(b^{-1}c)\in H\]
+			\end{proof}
+			\begin{note*}
+				同値関係$\stackrel{\text{L}}{\sim}$による$a$の同値類$aH$
+				\[C_H\qty(a)=\qty{b\in G\mid a\stackrel{\text{L}}{\sim}b}=\qty{b\in G\mid a^{-1}b\in H}\]
+				と表すこともある．
+			\end{note*}
+			このとき，$a\sim b$ならば，$\exists h\in H\suchthat a^{-1}b=h\Leftrightarrow b=ah$
+			\begin{dfn}
+				$H\leqq G$．$G$の部分集合$gH=\qty{gh\mid h\in H}$を$g$の\redunderline{左剰余類}(left coset)とよび，同値関係$\stackrel{\text{L}}{\sim}$による$g$の同値類を表す．
+			\end{dfn}
+			\begin{dfn}[剰余集合・商集合]
+				(左)剰余類$aH$全体のなす集合\redunderline{(左)剰余集合}または\redunderline{商集合}と呼ぶ．群$G$の部分群$H$による左剰余集合を$G/H$で表す．
+
+				また，各類から1つずつ代表元を取ってきた代表元全体の集合$\Lambda$を$G$の$H$に関する\redunderline{左完全代表系}という．
+			\end{dfn}
+			このとき，相異なる左剰余類の個数を$H$の$G$による\redunderline{指数}(index)といい，$\qty(G:H)$で表す．指数が$\infty$となる場合もある．定義より
+			\[\qty(G:H)=\qty|G/H|\]
+			である．
+
+			部分群$H$による群$G$の左剰余類への分解(coset decomposition)(左類別ともいう)．
+			\[G=\bigsqcup_{a\in\Lambda}aH\]
+			このとき，左完全代表形$\Lambda=\qty{a^\prime,b^\prime,\cdots}$とすると
+			\begin{align*}
+				G/H           & =\qty{a^\prime H,b^\prime H,\cdots } \\
+				\qty|\Lambda| & =\qty|G/H|=\qty(G:H)
+			\end{align*}
+		\subsubsection{部分群の群$G$への\redunderline{左からの乗法移動}による$g\in G$の$H$軌道}
+			\[H\qty(g)=\qty{\lambda\qty(h,g)\mid h\in H}=\qty{h\cdot g\mid h\in H}=Hg\]
+			による軌道分解(右類別ともいう)
+			\[G=\bigsqcup_{a\in\Lambda^\prime}Ha\]
+			から誘導される同値関係・同値類・剰余(商)集合が得られる．
+			\begin{prop}[左乗法移動から得られる$H$軌道が誘導する$G$上の同値関係]
+				$H\leqq G$とする．$a,b\in G$に対する関係$a\sim b$
+				\[a\sim b\Leftrightarrow ba^{-1}\in H\]
+				は同値関係となる．以降$\stackrel{\text{R}}{\sim}$と表す．
+			\end{prop}
+			この同値関係$\stackrel{\text{R}}{\sim}$による剰余類
+			\[C^\prime_H\qty(a)=\qty{x\in G\mid x\stackrel{\text{R}}{\sim}a}\]
+			を$G$の$H$による\redunderline{右剰余類}という．$Ha$と表すことも多い
+			\begin{ex}
+				3次対称群$\frakS_3$に対して，部分群$H_1\qty(\simeq C_2), H_2\qty(\simeq C_3)$を次で定める．
+				\begin{align*}
+					H_1      & =\qty{e,\qty(1\ 2)},                                                       \\
+					H_2      & =\qty{e, \qty(1\ 2\ 3), \qty(1\ 3\ 2)},                                    \\
+					\frakS_3 & =\qty{e, \qty(1\ 2), \qty(1\ 3), \qty(2\ 3), \qty(1\ 2\ 3), \qty(1\ 3\ 2)}
+				\end{align*}
+				において，
+				\begin{align*}
+					eH_1          & =\qty{e, \qty(1\ 2)},                                \\
+					\qty(1\ 2)H_1 & =\qty{\qty(1\ 2)e=\qty(1\ 2),\qty(1\ 2)\qty(1\ 2)=e}
+				\end{align*}
+				よって
+				\[eH_1=\qty(1\ 2)H_1\]
+				$H_1$による左剰余集合$\frakS_3/H_1=\qty{eH_1,\qty(1\ 3)H_1,\qty(2\ 3)H_1}$
+				\begin{align*}
+					\qty(1\ 3)H_1 & =\qty{\qty(1\ 3)e=\qty(1\ 3),\qty(1\ 3)\qty(1\ 2)=\qty(1\ 2\ 3)}=\qty(1\ 2\ 3)H_1            \\
+					\qty(2\ 3)H_1 & =\qty{\qty(2\ 3)e=\qty(2\ 3),\qty(2\ 3)\qty(1\ 2)=\qty(1\ 3\ 2)}=\qty(1\ 3\ 2)H_1            \\
+					\frakS_3/H_1  & =\qty{e,\qty(1\ 2)}\sqcup\qty{\qty(1\ 3), \qty(1\ 2\ 3)}\sqcup\qty{\qty(2\ 3),\qty(1\ 3\ 2)}
+				\end{align*}
+				$H_1$による右剰余集合$H_1\backslash\frakS_3=\qty{H_1e,H_1\qty(1\ 3),H_1\qty(2\ 3)}$
+				\begin{align*}
+					H_1\qty(1\ 3)         & =\qty{e\qty(1\ 3)=\qty(1\ 3),\qty(1\ 2)\qty(1\ 3)=\qty(1\ 3\ 2)}=H_1\qty(1\ 3\ 2)            \\
+					H_1\qty(2\ 3)         & =\qty{e\qty(2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(2\ 3)=\qty(1\ 2\ 3)}=H_1\qty(1\ 2\ 3)            \\
+					H_1\backslash\frakS_3 & =\qty{e, \qty(1\ 2)}\sqcup\qty{\qty(1\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(2\ 3),\qty(1\ 2\ 3)}
+				\end{align*}
+				{\color{red} ここで
+				\[\frakS_3/H_1\neq H_1\backslash\frakS_3\]
+				である．}
+
+				$H_2$による左剰余集合$\frakS_3/H_2=\qty{eH_2,\qty(1\ 2)H_2}$
+				\begin{align*}
+					eH_2          & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}                                                                \\
+					\qty(1\ 2)H_2 & =\qty{\qty(1\ 2)e=\qty(1\ 2),\qty(1\ 2)\qty(1\ 2\ 3)=\qty(2\ 3),\qty(1\ 2)\qty(1\ 3\ 2)=\qty(1\ 3)} \\
+					\frakS_3/H_2  & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(2\ 3),\qty(1\ 3)}                    \\
+				\end{align*}
+				\noindent $H_2$による右剰余集合$H_2\backslash\frakS_3=\qty{H_2e,H_2\qty(1\ 2)}$
+				\begin{align*}
+					H_2e                  & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}                                                                \\
+					H_2\qty(1\ 2)         & =\qty{e\qty(1\ 2)=\qty(1\ 2),\qty(1\ 2\ 3)\qty(1\ 2)=\qty(1\ 3),\qty(1\ 3\ 2)\qty(1\ 2)=\qty(2\ 3)} \\
+					H_2\backslash\frakS_3 & =\qty{e,\qty(1\ 2\ 3),\qty(1\ 3\ 2)}\sqcup\qty{\qty(1\ 2),\qty(1\ 3),\qty(2\ 3)}                    \\
+				\end{align*}
+				{\color{red} ここで
+				\[\frakS_3/H_2= H_2\backslash\frakS_3\]
+				である．}
+			\end{ex}
+\end{document}

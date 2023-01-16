@@ -1,0 +1,199 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{群の表現}
+	行列を用いて群を理解する．
+	$G$を群，$V$を数体$K$\footnote{$\bbR$とか$\bbC$など}上の線形空間とする．$G$から$V$上の一般線形群$\GL\qty(V)$への準同型写像
+	\[\rho:G\to G\qty(V)\]
+	のことを$G$の$V$における\redunderline{表現(representation)}という．$V$を$\rho$の\redunderline{表現空間}と呼び，$\qty(\rho,V)$あるいは$V$を表現ということもある．$V$の次元が有限/$d\in\bbN$/無限のとき，$\rho$を有限/$d$/無限次元表現という．\\
+	$\Rightarrow$群$G$の線形空間$V$における表現$\rho$は，$G$の$V$への線形な作用に他ならない．特に有限次元表現の場合，群$G$の各元$g$に対して$K$上に値を取る行列要素からなる正則行列$\rho\qty(g)$が与えられ，それらの行列の間に
+	\[\rho\qty(gh)=\rho\qty(g)\cdot\rho\qty(h)\quad\qty(g,h\in G)\]
+	が成り立つ．このとき，各行列$\rho\qty(g)$を表現行列といい，表現行列の次数\footnote{以降$d$とする．}は$g\in G$に依らず一定である．
+
+	\begin{itemize}
+		\item 単位元$e$の表現行列$\rho\qty(e)$\\$\rho\qty(g)=\rho\qty(ge)=\qty(\rho)\cdot\rho\qty(e)$および$\rho\qty(g)$の正則性から$\rho\qty(e)$は$d$次単位行列$I$
+		\item $g\in G$,逆元$g^{-1}$の表現行列$\rho\qty(g^{-1})$\\$\rho\qty(g)\cdot\qty(g^{-1})=\rho\qty(gg^{-1})=\rho\qty(e)=I$から$\rho\qty(g^{-1})$は$\rho\qty(g)$の逆行列
+	\end{itemize}
+	群が$g_1,\cdots,g_k\in G$によって生成される場合，生成元に対する表現行列$\rho\qty(g_1),\cdots,\rho\qty(g_k)$からすべての表現行列$\rho\qty(g)\,\qty(g\in G)$は定まる．
+	\paragraph{\redunderline{ユニタリ表現}} 各$g\in G$に対して，$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$をユニタリ表現という．$K=\bbC$の場合，一般に$\rho$を\redunderline{ユニタリ表現}としても一般性を失うことはない．また$K=\bbR$の場合，各$g\in G$に対して$\rho\qty(g)\cdot^\top\rho\qty(g)=I$が成り立つとき，$\rho$を\redunderline{直交表現}という．
+	\paragraph{\redunderline{恒等表現}} 全ての元に単位行列を対応させた表現
+	\paragraph{\redunderline{忠実な表現(faithful)}} 各$g_i$に対する$\rho\qty(g_i)$が全て相異なる行列で与えられているとき
+		\begin{remark*}
+			表現において，異なる$g,h\in G$に対して，表現行列$\rho\qty(g)$と$\rho\qty(h)$が異なるとは限らない．
+		\end{remark*}
+		\begin{ex}[$\rho_\text{ex1}$:$G$の単位表現]
+			$G$を任意の群とする．すべての$g\in G$に対して$\rho\qty(g)=1$を定める．
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex2}$:巡回群$C_2=\braket{a}{a^2=1}$の忠実な1次元表現]
+			\[\rho\qty(e)=1,\rho\qty(a)=-1\]
+			このとき，表現であることは以下により確かめられる．
+			\begin{align*}
+				\rho\qty(e)\cdot\rho\qty(e) & =1\times 1=1=\rho\qty(e)                          &  & \qty(e^2=a)        \\
+				\rho\qty(e)\cdot\rho\qty(a) & =1\times\qty(-1)=-1=\rho\qty(a)                   &  & \qty(e\cdot a=a)   \\
+				\rho\qty(a)\cdot\rho\qty(e) & =\qty(-1)\times 1=-1=\rho\qty(a)                  &  & \qty(a\cdot e=a)   \\
+				\rho\qty(a)\cdot\rho\qty(a) & =\qty(-1)\times\qty(-1)          = 1 =\rho\qty(e) &  & \qty(a\cdot a=a^2)
+			\end{align*}
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex3}$:$D_3=\braket{a,b}{a^3=b^2=abab=e}$の2次元忠実表現]
+			$c=\cos\frac{2}{3}\pi=-\frac{1}{2},s=\sin\frac{2}{3}\pi=\frac{\sqrt{3}}{2}$として，
+			\begin{align*}
+				\rho\qty(e)    & =\mqty(1                          & 0  \\0&1),\\
+				\rho\qty(a)    & =\mqty(c                          & -s \\s&c),\\
+				\rho\qty(b)    & =\mqty(1                          & 0  \\0&-1),\\
+				\rho\qty(ab)   & =\rho\qty(a)\rho\qty(b)=\mqty(c   & s  \\s&-c),\\
+				\rho\qty(a^2)  & =\rho\qty(a)\rho\qty(a)=\mqty(c   & s  \\-s&c),\\
+				\rho\qty(a^2b) & =\rho\qty(a^2)\rho\qty(b)=\mqty(c & -s \\-s&-c)
+			\end{align*}
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex4}$:$G$の置換表現]
+			群$G$が有限集合$P=\qty{1,2,\cdots,n}$に作用しているとき，$P$上の置換$\pi\qty(g)$が定まり，
+			\[\pi\qty(gh)=\pi\qty(g)\cdot\pi\qty(h)\quad\qty(g,h\in G)\]
+			が成り立つ．さらに各$g\in G$に対して定まる置換$\pi\qty(g)$を表す$n$次置換行列を$\rho\qty(g)$とする．
+			\[\rho\qty(g)=\qty(\delta_{i,\pi\qty(g)\qty[j]})_{1\leq i,j\leq n}\quad\qty(g\in G)\]
+			が得られる．\footnote{各行各列に1が1つで残りは0}この$\rho$を$G$の\redunderline{置換表現}という．また$G$の異なる元が$P$上の異なる置換を引き起こすとき，対応する置換表現は忠実．
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex5}$:$D_3$の正三角形への作用かつ置換表現]\label{ex:rho_ex5}
+			正三角形の3つの頂点を$\qty(1,0,0),\qty(0,1,0),\qty(0,0,1)$によって与え，それぞれ1，2，3とラベル付けする．$D_3$の正三角形の頂点集合$P=\qty{1,2,3}$への作用を
+			\begin{align*}
+				a\cdot 1=2,\ a\cdot 2=3,\ a\cdot 3=1 \\
+				b\cdot 1=1,\ b\cdot 2=3,\ a\cdot 3=2
+			\end{align*}
+			によって定めると，
+			\begin{align*}
+				\pi\qty(e)    & =\text{Id},                                                    \\
+				\pi\qty(a)    & =\qty(1\ 2\ 3),                                                \\
+				\pi\qty(b)    & =\qty(2\ 3),                                                   \\
+				\pi\qty(a^2)  & =\qty(1\ 3\ 2),                                                \\
+				\pi\qty(ab)   & =\pi\qty(a)\cdot\pi\qty(b)=\qty(1\ 2\ 3)\qty(2\ 3)=\qty(1\ 2), \\
+				\pi\qty(a^2b) & =\qty(1\ 3)
+			\end{align*}
+			このとき，$D_3$の置換表現として，3次正方行列の集合$\qty{\rho\qty(g)\mid g\in D_3}$が得られる．これは忠実な直交表現の1つ．
+			\begin{align*}
+				\rho\qty(e)    & =\mqty(1                        & 0 & 0 \\0&1&0\\0&0&1),\\
+				\rho\qty(a)    & =\mqty(0                        & 0 & 1 \\1&0&0\\0&1&0),\\
+				\rho\qty(b)    & =\mqty(1                        & 0 & 0 \\0&0&1\\0&1&0),\\
+				\rho\qty(a^2)  & =\rho\qty(a)\rho\qty(a)=\mqty(0 & 1 & 0 \\0&0&1\\1&0&0),\\
+				\rho\qty(ab)   & =\mqty(0                        & 1 & 0 \\1&0&0\\0&0&1),\\
+				\rho\qty(a^2b) & =\mqty(0                        & 0 & 1 \\0&1&0\\1&0&0)
+			\end{align*}
+			\begin{note*}
+				ここで表現は必ず存在するが，得られた表現が必ずしも``最も簡単''な表現になっているとは限らない．
+			\end{note*}
+		\end{ex}
+		\begin{ex}[$\rho_\text{ex6}$:$G$の(左)正則表現]
+			$G$を位数$n$の有限群とし，その元に順番をつけて$\qty{g_1=e,g_2,\cdots,g_n}$と並べ，集合$P=\qty{1,2,\cdots,n}$と同一視する．このとき$G$の任意の元$g$は，次の$P$上の置換を誘導する．
+			\begin{align*}
+				\begin{array}{ccccl}
+					T_G: & G                     & \longrightarrow & \frakS_n                          &                                 \\
+					     & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$}             &                                 \\
+					     & g                     & \longmapsto     & \pi\qty(g)                        & =\mqty(g_1 & g_2 & \cdots & g_n \\g_{i_1}&g_{i_2}&\cdots&g_{i_n})=\mqty(g_1&g_2&\cdots&g_n\\gg_1&gg_2&\cdots&gg_n)\\
+					     &                       &                 & \rotatebox{90}{$\Leftrightarrow$} &                                 \\
+					     &                       &                 & \pi\qty(g)                        & =\mqty(1   & 2   & \cdots & n   \\i_1&i_2&\cdots&i_n)\quad P\text{上の置換}
+				\end{array}
+			\end{align*}
+			{\color{red} $T_G$から$G$の左移動による正則表現}
+			\subparagraph{$G$の(左)正則表現}
+				\begin{align*}
+					\begin{array}{cccc}
+						\rho^\qty(R): & G                     & \longrightarrow & M\qty(\qty|G|\times\qty|G|;\qty{0,1}) \\
+						              & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$}                 \\
+						              & g                     & \longmapsto     & \rho^\qty(R)\qty(g)
+					\end{array}
+				\end{align*}
+				ここで$G=\qty{g_1=e,g_2,\cdots,g_n}$とすると\footnote{$g_i^{-1}\cdot g\cdot g_j=e$ならば$g=g_i\cdot g_j^{-1}$}
+				\[\qty(\rho^\qty(R)\qty(g))_{i,j}=\delta\qty(g_i^{-1}\cdot g\cdot g_j),\quad\delta\qty(g)=\begin{cases}
+						1 & \qty(g=e)     \\
+						0 & \qty(g\neq e)
+					\end{cases}\]
+		\end{ex}
+		\begin{remark*}
+			列を$\qty(g_1,g_2,\cdots g_\qty|G|)$，行を$\qty(g_1^{-1},g_2^{-1},\cdots,g_\qty|G|^{-1})$とする群積表を作り，表中の$g$を1，その他を0として得られる行列は$\rho^\qty(R)\qty(g)$
+		\end{remark*}
+		\begin{ex}[$D_3$の正則表現$\qty(e,a,a^2,b,ab,ba)\leftrightarrow\qty(1,2,3,4,5,6)$]
+			\begin{align*}
+				\begin{array}{l}
+					a\cdot e=a   \\
+					\updownarrow \\
+					a\cdot 1=2,\ a\cdot 2=3,\ a\cdot 3=1,\ a\cdot 4=5,\ a\cdot 5=6,\ a\cdot 1=4
+				\end{array}
+			\end{align*}
+			より，
+			\begin{align*}
+				\rho\qty(a) & =\mqty(0                            & 0 & 1 & 0 & 0 & 0 \\1&0&0&0&0&0\\0&1&0&0&0&0\\0&0&0&0&0&1\\0&0&0&1&0&0\\0&0&0&0&1&0)\\
+				\rho\qty(b) & =\qty(\begin{array}{ccc:ccc}
+					                    0 & 0 & 0 & 1 & 0 & 0 \\
+					                    0 & 0 & 0 & 0 & 0 & 1 \\
+					                    0 & 0 & 0 & 0 & 1 & 0 \\ \hdashline
+					                    1 & 0 & 0 & 0 & 0 & 0 \\
+					                    0 & 0 & 1 & 0 & 0 & 0 \\
+					                    0 & 1 & 0 & 0 & 0 & 0
+				                    \end{array})
+			\end{align*}
+			\begin{align*}
+				\begin{array}{c|cccccc}
+					g_i\circ g_j^{-1} & g_1=e & g_2=a & g_3=a^2 & g_4=b & g_5=ab & g_6=ba \\\hline
+					g_1=e             & e     & a^2   & a       & b     & ab     & ba     \\
+					g_2=a             & a     & e     & a^2     & ab    & ba     & b      \\
+					g_3=a^2           & a^2   & a     & e       & ba    & b      & ab     \\
+					g_4=b             & b     & ab    & ba      & e     & a^2    & a      \\
+					g_5=ab            & ab    & ba    & b       & a     & e      & a^2    \\
+					g_6=ba            & ba    & b     & ab      & a^2   & a      & e
+				\end{array}
+			\end{align*}
+		\end{ex}
+	\paragraph{$D_3$の表現のブロック対角化と既約表現}
+		以下，例\ref{ex:rho_ex5}の$\rho_\text{ex5}$の表現について考える．この表現は正三角形の重心を動かさない．
+
+		$a_0=\qty(e_1+e_2+e_3)/\sqrt{3}$とおく．
+		\[e_1=\qty(1\ 0\ 0),\ e_2=\qty(0\ 1\ 0),\ e_3=\qty(0\ 0\ 1)\]
+		さらにベクトル$a_0$と直交するベクトルとして$a_1,a_2$を選び，新しい座標を$\qty(a_0,a_1,a_2)$とする．
+		\[\qty(a_0\ a_1\ a_2)=\qty(e_1\ e_2\ e_3)T\quad\qty(T=\mqty[1/\sqrt{3}&2/\sqrt{6}&0\\1/\sqrt{3}&-1/\sqrt{6}&1/\sqrt{2}\\1/\sqrt{3}&-1/\sqrt{6}&-1/\sqrt{2}])\]
+		このとき表現行列は$\rho^\prime_\text{ex5}\qty(g)=T^{-1}\rho_\text{ex5}T\,\qty(g\in\qty{e,a,a^2,b,ab,ba})$によって各元の表現行列はそれぞれ
+		\begin{align*}
+			\rho^\prime_\text{ex5}\qty(g) & =\qty[\begin{array}{cc}
+					                                      \rho_\text{ex1}\qty(g)                & {\begin{array}{cc} 0 & 0 \end{array}} \\
+					                                      {\begin{array}{c} 0 \\ 0 \end{array}} & \rho_\text{ex3}\qty(g)
+				                                      \end{array}]   \\
+			\rho_\text{ex1}\qty(e)        & =\rho_\text{ex1}\qty(a)=\rho_\text{ex1}\qty(b)=\cdots=1                      \\
+			\rho_\text{ex3}\qty(e)        & =\mqty[1                                                                & 0  \\0&1],\\
+			\rho_\text{ex3}\qty(a)        & =\mqty[c                                                                & -s \\s&c],\\
+			\rho_\text{ex3}\qty(b)        & =\mqty[1                                                                & 0  \\0&-1]
+		\end{align*}
+		{\color{red}``同時ブロック対角化'': \underline{6つの表現行列を全て考える}}
+
+		どのように基底を取り替えても全てを\redunderline{同時に対角化}はできない．
+		\begin{itemize}
+			\item $\rho_\text{ex1}$は$D_3$の1次元単位表現
+			\item $\rho_{ex3}$は$D_3$の2次の正方行列による忠実な表現
+		\end{itemize}
+		\begin{dfn}
+			$V$の基底を正則行列$S$によって取り替えると表現$\rho\qty(g)$も
+			\[\rho^\prime=S^{-1}\rho\qty(g)S\]
+			と変換される．このとき，群の表現として，$\rho\qty(g)$と$\rho^\prime\qty(g)$は同値であるという．
+		\end{dfn}
+		\begin{dfn}
+			表現$\qty(\rho,V)$において，線形空間$V$の部分空間$W$が不変．
+			\[\iff\rho\qty(g)W\subset W\quad\qty(g\in G)\]
+		\end{dfn}
+		\begin{dfn}
+			表現$\qty(\rho,V)$が既約$\iff$不変な部分空間は$V$自身と$\qty{0}$のみ．
+		\end{dfn}
+		\begin{dfn}
+			既約でない表現を可約表現という．
+			\[\rho_\text{ex5}=\qty(\begin{array}{cc}
+						\rho_\text{ex1}\qty(g)                & {\begin{array}{cc} 0 & 0 \end{array}} \\
+						{\begin{array}{c} 0 \\ 0 \end{array}} & \rho_\text{ex3}\qty(g)
+					\end{array})=\rho_\text{ex1}\oplus\rho\text{ex3}\]
+			$\rho_\text{ex5}^\prime$は$\rho_\text{ex1}$と$\rho_\text{ex3}$に\redunderline{直和分解}あるいは\redunderline{既約分解}されたという．
+		\end{dfn}
+		二面体群$D_3$は$\rho_\text{ex1}$と$\rho_\text{ex3}$以外に持つ1つの規約表現
+		\begin{align*}
+			\rho_\text{ex2}\qty(e) & =\rho_\text{ex2}\qty(a)=\rho_\text{ex2}\qty(a^2)=1  \\
+			\rho_\text{ex2}\qty(b) & =\rho_\text{ex2}\qty(ab)=\rho_\text{ex2}\qty(ba)=-1
+		\end{align*}
+		を持つ．これは二面体群が巡回群を鏡映群に分解できることに由来している．
+
+		\redunderline{事実:$D_3$の規約表現は$\rho_\text{ex1},\rho_\text{ex2},\rho_\text{ex3}$の3つのみ}
+\end{document}

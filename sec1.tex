@@ -1,0 +1,222 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{群}
+	\begin{dfn}[二項演算]
+		一般に，集合$M$の2つの元$x,y$に対してただ一つの元$\mu\qty(x,y)\in M$が対応しているとき，$\mu$を$M$上の二項演算という．すなわち，\[\mu:M\times M\to M\]
+		ここで記号$\mu$は省略して，$\mu\qty(x,y)$を$x\cdot y, x\circ y,$あるいは$xy$などと書く(誤解のない限り)．
+	\end{dfn}
+	\begin{dfn}[群]
+		群(group)$G$とは，以下の規則を満たす二項演算$\mu$をもつ集合のこと．
+		\[\mu:G\times G\to G\]
+		厳密には$\qty(G,\mu)$のことを群と呼ぶが群$G$などと省略することが多い．
+		任意の$x,y,z\in G$に対して成立:
+		\begin{enumerate}
+			\item 結合法則\[\mu\qty(\mu\qty(x,y),z)=\mu\qty(x,\mu(y,z))\]
+			\item 単位元$e\in G$の存在．\[\mu\qty(e,x)=\mu\qty(x,e)=x\]
+			\item 逆元の存在．\[\mu\qty(x,x^\prime)=\mu\qty(x^\prime,x)=e\]なる$x^\prime\in G$\footnote{あとで$x$の逆元$x^\prime$は唯一に定まることを示す．$x^\prime$を$x^{-1}$と書くことが多い}
+		\end{enumerate}
+	\end{dfn}
+	\begin{dfn}
+		\redunderline{群$G$の位数(order)}:$G$に含まれる元の個数を表し，$\qty|G|$と書く．
+		位数が有限のとき，\redunderline{有限群}という．有限群でないとき，\redunderline{無限群}という．
+	\end{dfn}
+	一般に群では($\mu\qty(x,y)\neq\mu\qty(y,x)$)
+	\[x\circ y\neq y\circ x\quad\qty(\text{交換関係が必ずしも成立しない})\]
+	\begin{dfn}
+		$G$の任意の元について，$xy=yx$が成り立つとき可換群(Abel群)という．可換群の演算記号を加法的に$x+y$と書くとき，加法群と呼び，このとき加法に関する単位元を$0$と表し，零元と呼ぶことが多い($x$の逆元は$-x$)．
+	\end{dfn}
+	\subsection{群の基本的な性質}
+		\begin{prop}
+			単位元$e$は存在すればただ1つ．逆元$x^\prime\neq x$に対してただ1つに定まる(通常，$x^\prime$を$x^{-1}$と書く．)
+		\end{prop}
+		\begin{proof}[単位元の一意性]
+			\[e=e\circ e^\prime=e^\prime\]
+		\end{proof}
+		\begin{proof}[逆元の一意性]
+			\[x^\prime=x^\prime\circ e=x^\prime\circ\qty(x\circ x^{\prime\prime})=\qty(x^\prime\circ x)\circ x^{\prime\prime}=e\circ x^{\prime\prime}=x^{\prime\prime}\]
+		\end{proof}
+		\begin{prop}[簡約律]
+			$\qty(G,\circ)$が群のとき，$x,y,z\in G$に対して，
+			\[x\neq y\Rightarrow z\circ x\neq z\circ y,\quad x\circ z\neq y\circ z\]
+		\end{prop}
+		\begin{proof}
+			$z\circ x=z\circ y$とすると
+			\begin{align*}
+				x=e\circ x & =\qty(z^\prime\circ z)\circ x=z^\prime\circ \qty(z\circ x) \\
+				           & =z^\prime\circ \qty(z\circ y)=\qty(z^\prime\circ z)\circ y \\
+				           & =e\circ y = y
+			\end{align*}
+			これは$x\neq y$に矛盾．$x\circ z\neq y\circ z$も同様に示される．
+		\end{proof}
+		\begin{cor}[組み替え定理]
+			位数$n$の群$G$に任意の元$x\in G$をかけて得られる集合を$G^\prime=xG$とする．$G=\qty{y_k\mid k=1,2,\cdots,n}$と$G^\prime=\qty{xy_k\mid k=1,2,\cdots,n}$の間には全単射の写像が存在し，$G$と$G^\prime$は対等である．
+		\end{cor}
+		\begin{ex}
+			$\bbZ,\bbQ,\bbR,\bbC$: 通常の足し算を群演算として加法群．単位元$0$，$x$の逆元は$-x$．$K\in\qty{\bbQ,\bbR,\bbC}$に対して，$K^\times=K\backslash\qty{0}$:通常の掛け算を群演算とした乗法群．単位元$1$，$x$の逆元は$\frac{1}{x}=x^{-1}$．
+		\end{ex}
+		まず，位数の小さな群について考える．「有限集合$G$に対して，$\qty(G,\circ)$が群となるよう二項演算$\circ:G\times G\to G$を与える」
+		\begin{itemize}
+			\item 位数1の群$G_1=\qty{e}$の群積表 \begin{table}[h]
+					\centering
+					\caption{自明な群(trivial group)}
+					\label{tabl:g1}
+					\begin{tabular}{c|c}
+						$G_1$  & $e$           \\\hline
+						$e$    & $e\circ e=e$
+					\end{tabular}
+				\end{table}
+			\item 位数2の群$G_2=\qty{e,a}$\begin{table}[h]
+					\centering
+					\caption{}
+					\label{tabl:g2}
+					\begin{tabular}{c|cc}
+						$G_2$  & $e$           & $a$                                              \\\hline
+						$e$    & $e\circ e=e$  & $e\circ a = a$                                   \\
+						$a$    & $a\circ e=a$  & $a\circ a = e$\tablefootnote{$a$でないことは簡約律から従う．}
+					\end{tabular}
+				\end{table}
+			\item 位数3の群$G_3=\qty{e,a,b}$\begin{table}[h]
+					\centering
+					\caption{}
+					\label{tabl:g3}
+					\begin{tabular}{c|ccc}
+						$G_3$  & $e$  & $a$                                           & $b$  \\\hline
+						$e$    & $e$  & $a$                                           & $b$  \\
+						$a$    & $a$  & $b$\tablefootnote{$a\circ b$が$b$だと簡約律を満たさない}  & $e$  \\
+						$b$    & $b$  & $e$                                           & $a$
+					\end{tabular}
+				\end{table}
+			\item 位数4の群$G_4^{\qty(1)}=\qty{e,a,b,c},\circ_1$，$G_4^{\qty(2)}=\qty{e,a,b,c},\circ_2$
+		\end{itemize}
+		群積表では\\
+		\centerline{元は各行，各列においてそれぞれ1回のみ現れる．(全単射)}
+		について確かめることができる．特に，対角線に対して対称な場合，可換群，非対称な場合，非可換群．
+	\subsection{群の例}
+		\subsubsection{巡回群$C_n$}
+			\begin{dfn}
+				一つの元のべきで群の全ての元が表示できるとき，この群を\redunderline{巡回群(cyclic group)}という．位数$n$の巡回群を$C_n$と書く．
+			\end{dfn}
+			$C_1=\qty{e},C_2=\qty{e,c}=\braket{c}{c^2=e}, C_3=\qty{e,c,c^2}=\braket{c}{c^3=e},C_4,\cdots,C_n=\qty{e,c,\cdots,c^{n-1}}=\braket{c}{c^n=e},\cdots,C_\infty$において指数法則$c^mc^n=c^{m+n}$が成り立ち，加法群$\bbZ$と同一視することができる．$C_\infty=\qty{e,c,c^{-1},c^2,c^{-2},\cdots}$
+		\subsubsection{二面体群$D_n$}
+			\begin{dfn}
+				位数$2n$の二面体群(dihedral group)$D_n$
+				\begin{align*}
+					D_n       & =\qty{e,a,a^2,\cdots,a^{n-1},b,ab,a^2b,\cdots,a^{n-1}b} \\
+					          & =\braket{a,b}{e=a^n=b^2=abab}                           \\
+					\qty|D_n| & =2n.
+				\end{align*}
+				二面体群の表記の1つに，任意の元が2つの元$a,b$のいくつかの積で表示するものがある．このとき，$D_n$は集合$\qty{a,b}\subset D_n$によって生成されるといい，$\qty{a,b}$を\redunderline{生成系}，生成系の元を\redunderline{生成元}という．
+
+				また，生成元の間の任意の関係式が還元される関係式のことを\redunderline{基本関係式}という．\footnote{$D_n$では，$e=a^n=b^2=abab$}
+			\end{dfn}
+			\begin{itemize}
+				\item 群積表で構成した群において，
+					\[G_1=C_1,G_2=C_2,G_3=C_3,G_4^{\qty(1)}=C_4\]
+				\item 巡回群でない最小位数の群$D_2=\qty(G_4^{\qty(2)})$
+				\item 位数最小の非可換な群$D_3$
+			\end{itemize}
+			\begin{dfn}
+				一般の群$G$において，元$x\in G$が生成する巡回群の位数を\redunderline{元$x$の位数}という\footnote{cf.群の位数}．$x^n=e$となる最小の$n>0$が$x$の位数(ない場合は，元$x$の位数は$\infty$として扱う)．
+			\end{dfn}
+			\begin{ex}
+				\[C_4=\qty{e,c,c^2,c^3}=\braket{c}{c^4=e}\]
+				$c$の位数は4，$c^2$の位数は2，$\cdots$
+			\end{ex}
+		\subsubsection{(行列群)} $n$次正則行列の全体は，行列積について群をなす．単位元:\,$n$次単位行列，$x$の逆元は$x$の逆行列．\\
+			\begin{itemize}
+				\item 一般線形群\[\GL_n\qty(\bbC)=\qty{g\in\text{Mat}\qty(n\times n;\bbC)\mid\det g\neq 0}\]
+				\item 特殊線形群\[\SL_n\qty(\bbC)=\qty{g\in \GL_n\qty(\bbC)\mid\det g=1}\]
+				\item 直交群\[O_n=\qty{g\in \GL_n\qty(\bbR)\mid\,^t\!g\cdot g=1}\]
+				\item ユニタリー群\[U_n=\qty{g\in \GL_n\qty(\bbC)\mid\overline{^t\!g}\cdot g=1}\]
+			\end{itemize}
+	\subsection{いろいろな代数系}
+		群以外にさまざまな``代数''が考えられる．
+		\begin{dfn}
+			集合$M$上に二項演算$\mu:M\times M\to M$が定義されているとする．
+			\begin{itemize}
+				\item 結合法則を満たすとき，$M$は\redunderline{半群(semi group)}であるという．
+					\[\mu\qty(\mu\qty(x,y),z)=\mu\qty(x,\mu\qty(y,z))\]
+				\item 単位元(identity)$e\in M$を持つ半群を\redunderline{単位的半群}あるいは，\redunderline{モノイド(monoid)}という．$e$を$1_M,I_d$と表すこともある．
+					\[\mu\qty(e,x)=\mu\qty(x,e)=x\]
+				\item 任意の$x\in M$に対して
+					\[\mu\qty(x,x^\prime)=\mu\qty(x^\prime,x)=e\]
+					を満たす$x^\prime\in M$が存在するモノイドを\redunderline{群}という．
+			\end{itemize}
+		\end{dfn}
+		さらに，環，体などの複雑な``代数系''もある．
+		\begin{ex}[半群の例]
+			$\qty(\bbR,\max)$: $x,y\in\bbR$に対して
+			\[x\circ y=\max\qty(x,y)\]
+			このとき，$\qty(\bbR,\max)$は半群．
+			\[\max\qty(\max\qty(x,y),z)=\max(x,\max\qty(y,z))\]
+			さらに形式的な単位元となる$-\infty$を考慮に入れる場合，$\qty(\bbR\cup\qty{-\infty},\max)$はモノイドとなる．逆元は存在しない($\because\max\qty(x,x^\prime)=-\infty$となる$x^\prime$が存在しない)
+		\end{ex}
+		\begin{dfn}
+			モノイド$M$の元で逆元$x^\prime$が存在するものを\redunderline{単元(unit)}といい$M^\times$を$M$の単元のなす部分集合とする．このとき，$M^\times$は群をなし，\redunderline{単元群(unit group)}と呼ばれる．
+		\end{dfn}
+		\begin{ex}
+			$K\in\qty{\bbQ,\bbR,\bbC}$に対して，$K^\times=K\backslash\qty{0}$は積に関して単元群．
+		\end{ex}
+	\subsection{写像の合成と群}
+		集合$X$から$X$自身への写像全体のなす集合を$M\qty(X)$とかく．$x\in X$および$f,g\in M\qty(X)$に対し，写像の合成$f\cdot g\qty(x)=f\qty(g\qty(x))$を$f\cdot g\in M\qty(X)$とかく．このとき
+		\begin{enumerate}
+			\item $f,g,h\in M\qty(X)$に対し，$\qty(f\cdot g)\cdot h=f\cdot\qty(g\cdot h)$
+			\item $e=Id_{X}$を$X$の恒等写像とすると$f\cdot e=e\cdot f=f$
+			\item $S\qty(X)=\qty{f\in M\qty(X)\mid f\text{は全単射}}$とおくと，$e\in S\qty(X)$で，$f,g\in S\qty(X)$ならば，$f\cdot g\in S\qty(X)$．また$f^{-1}$を$f\in S\qty(X)$の逆写像とすると
+				\[f\cdot f^{-1}=f^{-1}\cdot f=e\]
+		\end{enumerate}
+		以上より，次の命題を得る．
+		\begin{prop}
+			任意の集合$X$に対し，$X$から$X$への写像の集合$M\qty(X)$はモノイドをなす．全単射のなす部分集合$S\qty(X)=M\qty(X)^\times$が単位元となる．$S\qty(X)$を$X$の\redunderline{対称群(symmetric group)}という．
+
+			特に$X$が有限集合のとき$\qty(\sharp X=n<\infty)$，$S\qty(X)$を$n$次対称群といい，$S\qty(X)=S_n$あるいは$\frakS_n$とかく．$S_n$を$n$次置換群(permutation group)と呼ぶ場合もある．$S_n$の位数は$\qty|S_n|=n!$
+		\end{prop}
+		\begin{remark*}
+			特に$X=\qty{1,2,\cdots,n}$のとき，$S_n=S\qty(X)$の元$\sigma$を1つ選べば，重複なしに$n$個の数字を並べたもの，つまり，$1,2,\cdots,n$の順列の1つが定まる．
+			\[\sigma:X\overset{\text{1to1}}{\to}X;\quad j\mapsto\sigma\qty(j)\in X\]
+			置換の記法
+			$X=\qty{1,2,\cdots,n}=\qty{i_1,i_2,\cdots,i_n}=\qty{j_1,j_2,\cdots,j_n}$に対して，$\sigma=\mqty(i_1&i_2&\cdots&i_n\\j_1&j_2&\cdots&j_n)$は$\sigma\qty(i_k)=j_k\quad\qty(k=1,2,\cdots,n)$を定める．例えば，$X=\qty{1,2,3}$において，$\sigma=\mqty(1&2&3\\3&1&2)\in S_3$とすると，
+			\[\sigma\qty(1)=3,\quad\sigma\qty(2)=1,\quad\sigma\qty(3)=2\]
+			ここで，
+			\[\sigma=\mqty(2&3&1\\1&2&3)=\mqty(1&3&2\\3&2&1)=\mqty(1&2&3\\3&1&2)\]
+		\end{remark*}
+		\begin{dfn}[交代群]
+			$S_n$の元の中で偶数個の互換の積で表すことができる元の全体を$A_n$あるいは$\frakA_n$で表す．\footnote{ここで互換とは，2つの数字(文字)の入れ替え $i\leftrightarrow j$を表し，$\qty(i,j)$と表記する．}
+			この$S_n$の部分集合$A_n$は，$S_n$の演算で群となり，\redunderline{$n$次交代群(alternating group)}と呼ばれる．
+		\end{dfn}
+		\begin{prop}
+			$S_n=A_n\cup\qty(1,2)A_n$である($n\geq 2$)．
+			\[\qty|A_n|=\frac{\qty|S_n|}{2}=\frac{n!}{2}\]
+		\end{prop}
+		\begin{remark*}
+			表示方法によって偶奇性が変わらないことを証明する必要
+		\end{remark*}
+		\subsubsection*{巡回置換の記号}
+			\[\qty(j_1,j_2,\cdots,j_l)\coloneqq\mqty(j_1&j_2&\cdots&j_{l-1}&j_l\\j_2&j_3&\cdots&j_l&j_1)\]
+			\begin{align*}
+				S_3 & =\qty{\mqty(1                                                                                                                                                                               & 2 & 3 \\1&2&3),\mqty(1&2&3\\1&3&2),\mqty(1&2&3\\3&2&1),\mqty(1&2&3\\2&1&3),\mqty(1&2&3\\3&1&2),\mqty(1&2&3\\2&3&1)}\\
+				    & =\qty{{\color{red} e},{\color{blue} \qty(2,3)},{\color{blue} \qty(1,3)},{\color{blue} \qty(1,2)},{\color{red} \qty(1,3,2)=\qty(2,3)\qty(1,2)},{\color{red} \qty(1,2,3)=\qty(1,2)\qty(2,3)}}         \\
+				A_3 & =\qty{e,\qty(2,3)\qty(1,2),\qty(1,2)\qty(2,3)}
+			\end{align*}
+	\subsection{部分群}
+		\begin{dfn}
+			群$G$の空でない部分集合$H$が群$G$の演算で群となるとき，$H$を$G$の\redunderline{部分群(subgroup)}と呼び，$H\leqq G$と書くことがある．
+		\end{dfn}
+		\begin{remark*}
+			群$G$の自明な部分群に，$G$の単位元のみからなる群と，$G$自身の2つある．
+		\end{remark*}
+		\begin{prop}
+			群$G$の空でない部分集合$H$が
+			\[x,y\in H\,\Rightarrow\,x\cdot y^{-1}\in H\]
+			をみたすとき，$H$は$G$の部分群となる．$H$は単位元を含み，$G$の演算で群をなす．
+		\end{prop}
+		\begin{proof}
+			$x\in H$とすると，$e=x\cdot x^{-1}\in H$.
+			\[x\in H\,\Rightarrow\,x^{-1}=x^{-1}\cdot e\in H\]
+			\[x,y\in H\,\Rightarrow\,x,y^{-1}\in H\,\Rightarrow\,xy\in H\]
+			$H$は空でない部分群．
+		\end{proof}
+\end{document}

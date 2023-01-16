@@ -1,0 +1,73 @@
+\documentclass[main]{subfiles}
+
+\usepackage{subfiles}
+
+\begin{document}
+\section{準備}
+	集合$X,Y,Z$に対して
+	\begin{itemize}
+		\item $Y\backslash X$:$X,Y\subset Z$に対して，$X$に属さない$Y$の元のなす集合\[Y\backslash X=\qty{y\mid y\in Y\text{\,かつ\,}y\not\in X}\]
+		\item $X\sqcup Y$:集合$X$と$Y$の直和(direct sum)あるいは分割和(disjoint sum)を表し，互いに交わらない二つの集合$X$と$Y$の和集合\[A\sqcup B\Leftrightarrow A\cup B\text{\quad for\quad}A\cap B=\emptyset\]
+		\item (有限)集合$X$の元の個数を$\sharp X$\[\sharp\qty{a,b,c}=3\]
+	\end{itemize}
+
+	\underline{写像} 集合$X$から集合$Y$への写像$f$とは，$X$の各元$x$に対して$Y$の元$y=f\qty(x)$を対応させる規則
+	\[f:X\to Y; x\mapsto y=f\qty(x)\]
+	\begin{itemize}
+		\item $f$による$A\subset X$の像(image)\[f\qty(A)=\qty{f\qty(a)\mid a\in A}\subset Y\]
+		\item $f$による$B\subset Y$の逆像あるいは$f$による引き渡し\[f^{-1}\qty(B)=\qty{a\in X\mid f\qty(a)\in B}\]
+		\item $f:X\to Y, g:Y\to Z$において，合成$g\circ f$
+			\begin{align*}
+				\begin{array}{ccccc}
+					g\circ f: & X                     & \longrightarrow & Z                     &                                  \\
+					          & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} &                                  \\
+					          & x                     & \longmapsto     & z                     & =g\circ f\qty(x)=g\qty(f\qty(x))
+				\end{array}
+			\end{align*}
+	\end{itemize}
+
+	\subsection{集合の分割と同値関係}
+		一般に集合$S$を交わりのない(空でない)集合の和で表すことを\redunderline{類別(classification)}という%undlineは赤線
+		\[S=A_1\sqcup A_2\sqcup\cdots\]
+		各部分集合$A_j$をこの類別における\redunderline{類}という
+
+		全ての類から一つずつ元を選んできて得られる集合$R$を\redunderline{完全代表系}という．集合$R$の元を\redunderline{代表元}という．
+		このとき，任意の$x\in S$に対して，集合$S$から集合族$\qty{A_1,A_2,\cdots}$への\redunderline{自然な全射写像}$x\mapsto A_j\qty(\ni x)$が得られる．
+
+		\begin{dfn}[同値関係]
+			集合$S$上の同値関係$\sim$$\Leftrightarrow$集合$S$上の二項関係$\sim$が任意の$a,b,c\in S$に対し，
+			\begin{itemize}
+				\item[反射則] $a\sim a$
+				\item[対称則] $a\sim b \Rightarrow b\sim a$
+				\item[推移則] $a\sim b\text{かつ}b\sim c\Rightarrow a\sim c$
+			\end{itemize}
+		\end{dfn}
+
+		\begin{dfn}[同値類]
+			集合$S$に同値関係$\sim$が存在するとき，$S$の各元$a$に対して定まる空でない部分集合
+			\[C_a=\qty{x\mid x\in S,x\sim a}\]
+			を$a$の同値類(equivalence class)という．
+		\end{dfn}
+
+		\begin{dfn}[商集合]
+			同値関係$\sim$による同値類の集合を$S$の$\sim$による商集合(quotient set)といい$S/{\sim}$で表す
+			\[S/{\sim}\,=\qty{C_a\mid a\in S}\]
+		\end{dfn}
+
+		\begin{dfn}[同値類別]
+			同値関係による集合の分割．同値関係$\sim$による同値類別
+			\[S=\bigsqcup_{a\in R\subset S}C_a\]
+			ここで$S$の部分集合$R$は全ての同値類の代表元の集合であり，完全代表系である．
+			このとき，自然な全射$\pi:S\to S/{\sim};x\mapsto C_x$が存在する．
+			さらに全単射写像$R\to S/{\sim}$も存在する．
+		\end{dfn}
+		\begin{screen}
+			\[C_a\cap C_b\neq\emptyset\Rightarrow C_a=C_b\]
+			が成立する(同値関係の性質から直ちに示される)
+		\end{screen}
+
+		\begin{ex}
+			$S$:ある学校の学生全体の集合．$a,b\in S$の間の関係「クラスメートである」は同値関係．
+			この関係を$\sim^\prime$で表すと，$a\sim^\prime b$は「$a$は$b$とクラスメートである」の意．このとき$C_a=\qty{x\in S\mid x\sim a}$は「$a$さんのクラスメート($a$さんを含む)の全体」$\leftrightarrow$ $a$さんの属するクラス
+		\end{ex}
+\end{document}
