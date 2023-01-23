@@ -65,4 +65,103 @@
 
 		したがって$M$は零行列あるいは正則行列．
 	\end{proof}
+	\begin{lem}[Schurの補題2]
+		群$G$の$\bbC$上の有限次元表現$\rho$が既約ならば，全ての元$g\in G$に対して\redunderline{$\rho\qty(g)M=M\rho\qty(g)$}を満たす行列は$M=\lambda I$に限られる．ただし，$\lambda\in\bbC$，$I$は単位行列．
+	\end{lem}
+	\begin{proof}
+		$\bbC$上なので$M$の固有値$\lambda\in\bbC$が存在し，
+		\[\rho\qty(g)\qty(M-\lambda I)=\qty(M-\lambda I)\rho\qty(g),\ g\in G\]
+		ここで$M-\lambda I$は正則でなく，$\rho\qty(g)$は既約であることから，Schurの補題1より，$M-\lambda I=O$
+	\end{proof}
+	\begin{remark*}
+		無限行列では固有値を持たないこともある．例えば，$\qty(a_1,a_2,\cdots)\mapsto\qty(0,a_1,a_2,\cdots)$
+	\end{remark*}
+	\begin{thm}[表現の直交性定理]
+		位数$\qty|G|$の群$G$の2つの$\bbC$上の既約表現$\rho^\qty(\alpha)\qty(g),\rho^\qty(\beta)\qty(g)$の行列要素は次の直交関係を満たす．
+		\[\sum_{g\in G}\rho^\qty(\alpha)_{ji}\qty(g)\cdot\rho^\qty(\beta)_{kl}\qty(g^{-1})=\frac{\qty|G|}{d_\alpha}\delta_{ik}\delta_{jl}\delta_{\alpha\beta}\]
+		ここで，$d_\alpha,d_\beta$はそれぞれ表現$\rho^\qty(\alpha)$と$\rho^\qty(\beta)$の次元．
+		\[\delta_{\alpha\beta}=\begin{cases}
+				1 & \qty(\rho^\qty(\alpha)\text{と}\rho^\qty(\beta)\text{が同一既約表現})     \\
+				0 & \qty(\rho^\qty(\alpha)\text{と}\rho^\qty(\beta)\text{が同値な既約表現でない})
+			\end{cases}\]
+	\end{thm}
+	\begin{proof}
+		任意の行列$B\in\Mat\qty(d_\alpha\times d_\beta)$を用いて，行列$M\in\Mat\qty(d_\alpha\times d_\beta):\,M=\sum_{g\in G}\rho^\qty(\alpha)\qty(g)B\rho^\qty(\beta)\qty(g^{-1})$を導入し，任意の元$g,g^\prime\in G$に対し，$g^\prime g=g^{\prime\prime}$なる群$G$の元$gg^{\prime\prime}$が存在することを用いると，
+		\begin{align*}
+			\rho^\qty(\alpha)\qty(g^\prime)M & =\sum_{g\in G}\rho^\qty(\alpha)\qty(g^\prime)\rho^\qty(\alpha)\qty(g)B\rho^\qty(\beta)\qty(g^{-1}) \\
+			                                 & =\sum_{g\in G}\rho^\qty(\alpha)\qty(g^\prime g)B\rho^\qty(\beta)\qty(g^{-1})                       \\
+			                                 & =\sum_{g\in G}\rho^\qty(\alpha)\qty(g^{\prime\prime})B\rho^\qty(\beta)\qty(g^{-1})
+		\end{align*}
+		が得られ，$g$に関する和を$g^{\prime\prime}$に関する和に書き換えると，
+		\begin{align*}
+			\rho^\qty(\alpha)\qty(g^\prime)M & =\sum_{g^{\prime\prime}\in G}\rho^\qty(\alpha)\qty(g^{\prime\prime})B\rho^\qty(\beta)\qty({g^{\prime\prime}}^{-1}g^\prime)                       \\
+			                                 & =\sum_{g^{\prime\prime}\in G}\rho^\qty(\alpha)\qty(g^{\prime\prime})B\rho^\qty(\beta)\qty({g^{\prime\prime}}^{-1})\rho^\qty(\beta)\qty(g^\prime) \\
+			                                 & =M\rho^\qty(\beta)\qty(g^\prime)
+		\end{align*}
+		\begin{itemize}
+			\item \underline{$\alpha\neq\beta$の場合}\\
+				Schurの補題1から$M=O$．行列$B$を$B_{ik}=1$，それ以外は0と選ぶと\[\sum_{g\in G}\rho_{ji}^\qty(\alpha)\qty(g)\rho_{kl}^\qty(\beta)\qty(g^{-1})=0\]である．
+			\item \underline{$\alpha=\beta$の場合}(同一の既約表現)\\
+				Schurの補題2から$M=\lambda I$．行列$B$を$B_{ik}=1$，それ以外を0とする．両辺の$\qty(j,l)$要素から，\[\lambda\delta_{jl}=\sum_{g\in G}\rho_{ji}^\qty(\alpha)\qty(g)\rho^\qty(\alpha)_{kl}\qty(g^{-1})\]差に，$j=l$と置いて$j$について和を取ると\begin{align*}
+					\lambda d_\alpha & =\sum_{g\in G}\sum_{j=1}^{d_\alpha}\rho_{kj}^\qty(\alpha)\qty(g^{-1})\rho_{ji}^\qty(\alpha)\qty(g) \\
+					                 & =\qty|G|\delta_{ki}
+				\end{align*}が$\rho^\qty(\alpha)\qty(g^{-1})\rho^\qty(\alpha)\qty(g)=I_{d_\alpha}$より導かれる．定数$\lambda=\qty|G|\delta_{ki}/d_\alpha$である．
+		\end{itemize}
+	\end{proof}
+	\begin{thm}[指標の第1種直交性]
+		群$G$の$\bbC$上の規約指標$\chi^\qty(\alpha),\chi^\qty(\beta)$に対して$\left<\chi^\qty(\alpha),\chi^\qty(\beta)\right>=\delta^\prime_{\alpha\beta}$が成り立つ．
+
+		(別表示)\[\sum_{i=1}^{n_c}\qty|C_i|\chi^\qty(d)\qty(C_i)\overline{\chi}^\qty(\beta)\qty(C_i)=\qty|G|\delta^\prime_{\alpha\beta}\]
+		ただし，共役類$C_i$の元の指標$\chi\qty(C_i)$，群$G$の共役類の個数を$n$とする．
+	\end{thm}
+	\begin{proof}
+		表現の直交性定理において$i=j,k=l$として，$k,i$についてそれぞれ和を取る．
+		\begin{align*}
+			\sum_g\rho_{ii}^\qty(\alpha)\qty(g)\overline{\chi}^\qty(\beta)\qty(g) & =\sum_{k=1}^{d_\beta}\frac{\qty|G|}{d_\alpha}\delta_{ik}\delta_{\alpha\beta}=\frac{\qty|G|}{d_\alpha}\delta_{\alpha\beta} \\
+			\sum_g\chi^\qty(\alpha)\qty(g)\overline{\chi}^\qty(\beta)\qty(g)      & =\sum_{i=1}^{d_\alpha}\frac{\qty|G|}{d_\alpha}\delta_{\alpha\beta}=\qty|G|\delta_{\alpha\beta}
+		\end{align*}
+		指標は同値な表現に対して同じ値を取るので
+		\[\delta^\prime_{\alpha\beta}=\begin{cases}
+				1 & \qty(\alpha\text{と}\beta\text{が同値な既約表現}) \\
+				0 & \qty(\text{それ以外})
+			\end{cases}\]
+		(別表示については，同じ共役類に属する元の指標は等しい．)
+	\end{proof}
+	\subparagraph{$\bbC$上の既約表現の直和による分解}
+		一般な可約表現$\rho$は，適当なユニタリ変換によって既約表現の直和に分解できる．
+		\[\rho\qty(g)\sim\bigoplus_{\alpha=1}^{n_r}\bigoplus_{i=1}^{q_\alpha}\rho^\qty(\alpha)\qty(g)\]
+		\begin{itemize}
+			\item $\bigoplus_\alpha$:群$G$の全ての$\bbC$上の既約表現$\rho^\qty(\alpha)$に関する直和
+			\item $q_\alpha\in\bbZ_{\geq 0}$: $\rho^\qty(\alpha)$の多重度
+			\item 群の同値でない既約表現の全体$\qty{\rho^\qty(1),\cdots,\rho^\qty(n_r)}$
+		\end{itemize}
+		表現$\rho$の指標$\chi\qty(g)$と$\rho^\qty(\alpha)\qty(g)$の既約指標$\chi^\qty(\alpha)\qty(g)$を用いることで$\chi\qty(g)=\sum q_\alpha\chi^\qty(\alpha)\qty(g)$が$A$のtraceから得られる．さらに両辺に$\overline{\chi}^\qty(\beta)\qty(g)$をかけて元$g$について和を取ると指標の直交性から，
+		\[q_\beta=\frac{1}{\qty|G|}\sum_{g\in G}\chi\qty(g)\overline{\chi}^\qty(\beta)\qty(g)\]
+		あるいは
+		\[q_\beta=\frac{1}{\qty|G|}\sum_{i=1}^{n_C}\qty|C_i|\chi\qty(C_i)\overline{\chi}^\qty(\beta)\qty(C_i)\]
+		が得られる．すなわち，既約指標$\chi^\qty(\alpha)$が分かれば，群の表現$\rho$の中に既約表現$\rho^\qty(\alpha)$の多重度$q_\alpha$が得られる．
+	\subparagraph{$D_3$の指標と既約分解}
+		\[D_3=\qty{e,a,a^2,b,ab,ba},C_1=\qty{e},C_2=\qty{a,a^2},C_3=\qty{b,ab,ba}\]
+		既約表現$\rho^\qty(\text{ex1}),\rho^\qty(\text{ex2}),\rho^\qty(\text{ex3})$に関する各共役類の指標
+		\begin{align*}
+			\begin{array}{lll}
+				\chi^\qty(\text{ex1})\qty(C_1)=1, & \chi^\qty(\text{ex1})\qty(C_2)=1,  & \chi^\qty(\text{ex1})\qty(C_3)=1  \\
+				\chi^\qty(\text{ex2})\qty(C_1)=1, & \chi^\qty(\text{ex2})\qty(C_2)=1,  & \chi^\qty(\text{ex2})\qty(C_3)=-1 \\
+				\chi^\qty(\text{ex3})\qty(C_1)=2, & \chi^\qty(\text{ex3})\qty(C_2)=-1, & \chi^\qty(\text{ex3})\qty(C_3)=0
+			\end{array}
+		\end{align*}
+
+		(可約な)表現$\rho_\text{ex5}$の各共役類の指標
+		\[\chi\qty(C_1)=3,\chi\qty(C_2)=0,\chi\qty(C_3)=1\]
+
+		(可約な)表現$\rho_\text{ex5}$に含まれる既約表現の多重度
+		\begin{align*}
+			\rho_\text{ex1} & =\frac{1}{6}\qty(\qty|C_1|\chi\qty(C_1)\overline{\chi}^\qty(\text{ex1})\qty(C_1)+\cdots+\qty|C_3|\chi\qty(C_3)\overline{\chi}^\qty(\text{ex1})\qty(C_3)) \\
+			                & =\frac{1}{6}\qty(1\times 3\times 1+2\times 0\times 1+3\times 1\times 1)=1                                                                                \\
+			\rho_\text{ex2} & =\frac{1}{6}\qty(1\times 3\times 1+2\times 0\times 1+3\times 1\times\qty(-1))=0                                                                          \\
+			\rho_\text{ex3} & =\frac{1}{6}\qty(1\times 3\times 2+2\times 0\times\qty(-1)+3\times 1\times 0)=1                                                                          \\
+		\end{align*}
+		以上より，ブロック対角化を経由せずに
+		\[\rho=\rho^\qty(\text{ex1})\oplus\rho^\qty(\text{ex3})\]
+		が示された．
 \end{document}
